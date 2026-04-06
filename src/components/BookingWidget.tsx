@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useLocation } from "wouter";
-import { format, addMonths, subMonths, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, isSameMonth, isPast, isToday, startOfToday } from "date-fns";
+import { format, addMonths, subMonths, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, isSameMonth, isToday, startOfToday } from "date-fns";
 
 const CITIES = [
   "Vadodara", "Ahmedabad", "Surat", "Rajkot", "Gandhinagar", "Anand", "Nadiad",
@@ -375,66 +375,78 @@ export default function BookingWidget() {
         }
         /* Mobile overrides */
         @media (max-width: 768px) {
-          .widget-container { padding: 4px 10px; }
-          .form-border-container { gap: 8px; padding: 12px; }
+          .widget-container { padding: 4px 8px; }
+          .form-border-container { gap: 6px; padding: 10px 10px; border-radius: 12px; }
           .tabs-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 6px;
-            margin-bottom: 8px;
+            gap: 5px;
+            margin-bottom: 6px;
           }
           .tab-btn {
-            padding: 6px;
+            padding: 6px 4px;
             font-size: 11px;
             justify-content: center;
             gap: 4px;
+            border-radius: 30px;
           }
           .tab-btn .material-symbols-rounded {
             font-size: 14px;
           }
+          /* Make form rows display as 2-col grid on mobile */
           .input-row {
-            flex-direction: column;
-            gap: 8px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            align-items: stretch;
+          }
+          /* Single-item rows stay full width */
+          .input-row.single-item {
+            grid-template-columns: 1fr;
+          }
+          /* hide swap button on mobile - simplify flow */
+          .swap-btn {
+            display: none !important;
           }
           .input-box {
-            padding: 6px 12px;
-            gap: 10px;
-            min-height: 40px;
+            padding: 7px 10px;
+            gap: 8px;
+            min-height: 44px;
             border-radius: 10px;
           }
           .icon-box {
             width: 28px;
             height: 28px;
             min-width: 28px;
-            border-radius: 8px;
+            border-radius: 7px;
           }
           .icon-box .material-symbols-rounded {
             font-size: 14px;
           }
           .field-label {
-            font-size: 9px;
+            font-size: 8px;
+            letter-spacing: 0.3px;
             margin-bottom: 0px;
           }
           .field-input {
-            font-size: 13px;
+            font-size: 12px;
           }
           .submit-btn-row {
-            margin-top: 8px;
+            margin-top: 6px;
           }
           .submit-btn {
-            padding: 10px 24px;
+            padding: 10px 32px;
             font-size: 14px;
+            width: 100%;
+            border-radius: 10px;
           }
-          .swap-btn {
-            transform: rotate(90deg);
-            margin: -6px 0;
-            width: 26px;
-            height: 26px;
-            min-width: 26px;
-          }
-          .swap-btn:hover {
-            transform: rotate(90deg) scale(1.1);
-          }
+        }
+        @media (max-width: 380px) {
+          .field-label { font-size: 7px; }
+          .field-input { font-size: 11px; }
+          .icon-box { width: 24px; height: 24px; min-width: 24px; }
+          .icon-box .material-symbols-rounded { font-size: 12px; }
+          .input-box { padding: 6px 8px; gap: 6px; min-height: 40px; }
         }
         
         /* Premium Calendar Styles */
@@ -711,7 +723,7 @@ export default function BookingWidget() {
           )}
         </div>
 
-        {/* Bottom Row: Date / Phone */}
+        {/* Middle Row: Date fields */}
         <div className="input-row">
            {tripType === "local" ? (
              <>
@@ -749,8 +761,11 @@ export default function BookingWidget() {
                  )}
              </>
            )}
+        </div>
 
-           <div className="input-box" style={{ flex: tripType === "roundtrip" ? "1.5" : "1" }}>
+        {/* Phone Row: always full-width */}
+        <div className="input-row single-item">
+           <div className="input-box">
              <div className="icon-box">
                 <span className="material-symbols-rounded">chat</span>
              </div>
@@ -761,14 +776,14 @@ export default function BookingWidget() {
                    <span style={{ fontSize: 11, fontWeight: 800, color: "#fff" }}>IN</span>
                    <span style={{ fontSize: 13, fontWeight: 900, color: "#fff" }}>+91</span>
                  </div>
-                                   <input 
+                 <input 
                     type="tel" 
                     value={phone} 
                     onChange={e => {
                       const val = e.target.value.replace(/\D/g, "").slice(0, 10);
                       setPhone(val);
                     }} 
-                    placeholder="Enter Here" 
+                    placeholder="Your 10-digit number" 
                     className="field-input" 
                     required 
                   />

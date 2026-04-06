@@ -10,11 +10,11 @@ interface SEOProps {
 
 export default function SEO({ title, description, image, url }: SEOProps) {
   const [location] = useLocation();
-  const siteTitle = "Divyakshi Tours & Travels";
+  const siteTitle = "Divyakshi Cabs";
   const fullTitle = `${title} | ${siteTitle}`;
   const siteUrl = "https://www.divyakshicabs.in";
   const currentUrl = url || `${siteUrl}${location}`;
-  const defaultDesc = "Book taxi, tours, visa & hotel in Vadodara. Divyakshi Tours & Travels — Vadodara's most trusted travel partner. Call 82009 09915.";
+  const defaultDesc = "Divyakshi Cabs Vadodara — Book taxi, outstation cabs, bus rental, tour packages, hotels & visa assistance. Trusted travel service since 10+ years. Call 82009 09915.";
   const fullDesc = description || defaultDesc;
   const defaultImage = `${siteUrl}/new-logo.png`;
   const fullImage = image || defaultImage;

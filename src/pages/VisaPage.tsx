@@ -65,21 +65,36 @@ export default function VisaPage() {
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif" }}>
       <SEO 
-        title="Visa & Passport Assistance | Vadodara" 
-        description="Expert guidance for passport services, tourist visas, work permits, and student visas in Vadodara. Our agency provides fast-track processing and document assistance." 
+        title="Visa & Passport Services Vadodara | Divyakshi Cabs - Tourist, Work, Student Visa" 
+        description="Divyakshi Cabs Vadodara offers expert visa & passport assistance: tourist visa, work permit, student visa, PR & business visa for USA, UK, Canada, Dubai & more. Call 82009 09915." 
       />
       {/* Hero */}
       <section style={{ 
         background: "linear-gradient(135deg, rgba(15,12,41,0.92) 0%, rgba(15,23,42,0.85) 50%, rgba(15,52,96,0.92) 100%), url('https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=1600&fit=crop&auto=format') center/cover", 
-        padding: "32px 1.25rem", textAlign: "center", position: "relative", overflow: "hidden" 
+        padding: "40px 1.25rem", textAlign: "center", position: "relative", overflow: "hidden" 
       }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 50% 50%, rgba(212,160,23,0.08) 0%, transparent 60%)" }} />
         <div style={{ position: "relative" }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(212,160,23,0.15)", border: "1px solid rgba(212,160,23,0.3)", color: "#F5C842", padding: "4px 14px", borderRadius: 30, fontSize: 10, fontWeight: 700, letterSpacing: 1, marginBottom: 12 }}>
-            📋 VISA & IMMIGRATION
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+            <div style={{ height: 2, width: 30, background: "linear-gradient(to right, transparent, #F59E0B)" }} />
+            <span style={{ color: "#FCD34D", fontSize: 11, fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase" }}>Visa & Immigration</span>
+            <div style={{ height: 2, width: 30, background: "linear-gradient(to left, transparent, #F59E0B)" }} />
           </div>
-          <h1 style={{ color: "#fff", fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 900, marginBottom: 8 }}>Visa, Passport & Immigration</h1>
-          <p style={{ color: "#94a3b8", maxWidth: 480, margin: "0 auto", fontSize: 14, lineHeight: 1.5 }}>
+          <div style={{ marginBottom: 10 }}>
+            <span style={{
+              display: "inline-block",
+              background: "linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #D97706 100%)",
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+              fontSize: "clamp(28px, 5vw, 52px)", fontWeight: 900, letterSpacing: "clamp(2px,0.4vw,5px)",
+              lineHeight: 1, fontFamily: "'Poppins', sans-serif",
+              filter: "drop-shadow(0 3px 15px rgba(245,158,11,0.4))",
+            }}>DIVYAKSHI CABS</span>
+          </div>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(212,160,23,0.15)", border: "1px solid rgba(212,160,23,0.3)", color: "#F5C842", padding: "4px 14px", borderRadius: 30, fontSize: 10, fontWeight: 700, letterSpacing: 1, marginBottom: 10 }}>
+            Passport • Tourist Visa • Work Permit • Student Visa
+          </div>
+          <h1 style={{ color: "#CBD5E1", fontSize: "clamp(15px, 2vw, 20px)", fontWeight: 500, marginBottom: 6, marginTop: 4 }}>Visa, Passport & Immigration Services — Vadodara</h1>
+          <p style={{ color: "#94a3b8", maxWidth: 480, margin: "0 auto", fontSize: 13, lineHeight: 1.5 }}>
             Expert guidance for all your international travel documents — passport to PR
           </p>
         </div>

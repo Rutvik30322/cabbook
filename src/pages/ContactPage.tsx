@@ -15,19 +15,34 @@ export default function ContactPage() {
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif", background: "#fff" }}>
       <SEO 
-        title="Contact & Booking Inquiry | Vadodara" 
-        description="Get in touch with Divyakshi Tours & Travels for taxi bookings, group tours, or visa inquiries. We provide 24/7 support and custom travel quotes." 
+        title="Contact Divyakshi Cabs | Booking Inquiry Vadodara - 82009 09915" 
+        description="Contact Divyakshi Cabs Vadodara for taxi bookings, corporate travel, group tours or visa inquiries. Call 82009 09915 or WhatsApp. Instant 24/7 support available." 
       />
       
       {/* 1. Header Hero with Breadcrumbs & Background */}
       <section style={{ 
-        background: `linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)), url(${executiveImage})`,
+        background: `linear-gradient(rgba(15,23,42,0.88), rgba(15,23,42,0.88)), url(${executiveImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        padding: "55px 20px 85px", 
+        padding: "48px 20px 90px", 
         textAlign: "center"
       }}>
-        <h1 style={{ color: "#fff", fontSize: "clamp(28px, 5vw, 36px)", fontWeight: 900, marginBottom: 8 }}>Contact & Booking Inquiry</h1>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+          <div style={{ height: 2, width: 30, background: "linear-gradient(to right, transparent, #F59E0B)" }} />
+          <span style={{ color: "#FCD34D", fontSize: 11, fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase" }}>Contact & Inquiry</span>
+          <div style={{ height: 2, width: 30, background: "linear-gradient(to left, transparent, #F59E0B)" }} />
+        </div>
+        <div style={{ marginBottom: 10 }}>
+          <span style={{
+            display: "inline-block",
+            background: "linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #D97706 100%)",
+            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+            fontSize: "clamp(26px, 5vw, 48px)", fontWeight: 900, letterSpacing: "clamp(2px,0.4vw,5px)",
+            lineHeight: 1, fontFamily: "'Poppins', sans-serif",
+            filter: "drop-shadow(0 3px 15px rgba(245,158,11,0.4))",
+          }}>DIVYAKSHI CABS</span>
+        </div>
+        <h1 style={{ color: "#fff", fontSize: "clamp(18px, 3vw, 28px)", fontWeight: 900, marginBottom: 8 }}>Contact & Booking Inquiry</h1>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, color: "#94A3B8", fontSize: 12, fontWeight: 600 }}>
           <Link href="/" style={{ color: "#fff", opacity: 0.8, textDecoration: "none" }}>🏠 Home</Link>
           <ChevronRight size={14} />

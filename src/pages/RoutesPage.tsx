@@ -23,8 +23,8 @@ export default function RoutesPage() {
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif", background: "#f8fafc", minHeight: "100vh" }}>
       <SEO 
-        title="One-Way Cab Routes - Ahmedabad, Mumbai, Surat" 
-        description="Check all our popular one-way cab routes across Gujarat and Maharashtra. Book affordable one-way rentals from Vadodara to any city." 
+        title="One-Way Cab Booking from Vadodara | Divyakshi Cabs - Ahmedabad, Mumbai, Surat" 
+        description="Divyakshi Cabs offers one-way cab booking from Vadodara to Ahmedabad, Mumbai, Surat, Rajkot, Somnath, Dwarka & 30+ cities. Affordable one-way fares. Book now!" 
       />
       
       {/* 1. Header Hero */}
@@ -32,19 +32,31 @@ export default function RoutesPage() {
         background: "linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)), url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1600&fit=crop&auto=format')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        padding: "80px 20px",
+        padding: "60px 20px",
         textAlign: "center",
         color: "#fff",
         position: "relative",
         overflow: "hidden"
       }}>
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: "linear-gradient(to right, #FCD34D, #F59E0B)" }} />
-        <div style={{ textTransform: "uppercase", letterSpacing: 4, fontSize: 13, fontWeight: 800, color: "#F59E0B", marginBottom: 12 }}>
-          THIS IS DIVYAKSHI TOURS & TRAVELS
+        {/* DIVYAKSHI CABS brand name */}
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+          <div style={{ height: 2, width: 30, background: "linear-gradient(to right, transparent, #F59E0B)" }} />
+          <span style={{ color: "#FCD34D", fontSize: 11, fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase" }}>Vadodara's #1 Cab Service</span>
+          <div style={{ height: 2, width: 30, background: "linear-gradient(to left, transparent, #F59E0B)" }} />
         </div>
-        <h1 style={{ fontSize: "clamp(26px, 6vw, 48px)", fontWeight: 900, marginBottom: 16, lineHeight: 1.1 }}>
-          Book One-Way Cabs for<br />
-          <span style={{ color: "#FCD34D" }}>One-Way Travels</span>
+        <div style={{ marginBottom: 10 }}>
+          <span style={{
+            display: "inline-block",
+            background: "linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #D97706 100%)",
+            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+            fontSize: "clamp(28px, 5vw, 52px)", fontWeight: 900, letterSpacing: "clamp(2px,0.4vw,5px)",
+            lineHeight: 1, fontFamily: "'Poppins', sans-serif",
+            filter: "drop-shadow(0 3px 15px rgba(245,158,11,0.4))",
+          }}>DIVYAKSHI CABS</span>
+        </div>
+        <h1 style={{ fontSize: "clamp(18px, 3.5vw, 30px)", fontWeight: 800, marginBottom: 12, lineHeight: 1.2, color: "#CBD5E1" }}>
+          Book One-Way Cabs from <span style={{ color: "#FCD34D" }}>Vadodara</span>
         </h1>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, fontSize: 14, fontWeight: 600 }}>
           <Link href="/" style={{ color: "rgba(255,255,255,0.8)", textDecoration: "none", display: "flex", alignItems: "center", gap: 6 }}>

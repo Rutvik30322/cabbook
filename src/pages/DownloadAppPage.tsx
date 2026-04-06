@@ -1,8 +1,13 @@
 import { Smartphone, Download, Apple, Globe, ShieldCheck, Zap, History, Headphones } from "lucide-react";
+import SEO from "@/components/SEO";
 
 export default function DownloadAppPage() {
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif", background: "#0F172A", minHeight: "100vh", color: "#F8FAFC" }}>
+      <SEO
+        title="Download Divyakshi Cabs App | Vadodara Taxi Booking App - Coming 2026"
+        description="Download the Divyakshi Cabs app for one-tap taxi booking from Vadodara. Real-time tracking, trip history & 24/7 support. Available for Android & iOS. Coming 2026!"
+      />
       {/* Hero Section */}
       <section style={{ 
         position: "relative",

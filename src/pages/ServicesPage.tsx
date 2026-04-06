@@ -60,23 +60,39 @@ export default function ServicesPage() {
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif" }}>
       <SEO 
-        title="Our Services - Taxi, Bus Rental & Visa Assistance" 
-        description="Explore our range of travel services in Vadodara including local and outstation taxis, luxury bus rentals, hotel bookings, and professional visa assistance." 
+        title="Taxi, Bus Rental, Hotel & Visa Services in Vadodara | Divyakshi Cabs" 
+        description="Divyakshi Cabs Vadodara: Book local taxis, outstation cabs, luxury bus rentals, hotel packages, tour packages & visa assistance. Trusted by 5000+ customers. Call 82009 09915." 
       />
       {/* Hero */}
       <section style={{ 
         background: "linear-gradient(135deg, rgba(15,12,41,0.92) 0%, rgba(15,23,42,0.85) 50%, rgba(15,52,96,0.92) 100%), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1600&fit=crop&auto=format') center/cover", 
-        padding: "32px 20px", textAlign: "center", position: "relative", overflow: "hidden" 
+        padding: "40px 20px", textAlign: "center", position: "relative", overflow: "hidden" 
       }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 50% 50%, rgba(245,158,11,0.08) 0%, transparent 60%)" }} />
         <div style={{ position: "relative" }}>
-          <div className="section-badge" style={{ background: "rgba(245,158,11,0.15)", color: "#FCD34D", border: "1px solid rgba(245,158,11,0.3)", marginBottom: 12 }}>
+          {/* DIVYAKSHI CABS Brand Name */}
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+            <div style={{ height: 2, width: 30, background: "linear-gradient(to right, transparent, #F59E0B)" }} />
+            <span style={{ color: "#FCD34D", fontSize: 11, fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase" }}>Vadodara's #1 Cab Service</span>
+            <div style={{ height: 2, width: 30, background: "linear-gradient(to left, transparent, #F59E0B)" }} />
+          </div>
+          <div style={{ marginBottom: 10 }}>
+            <span style={{
+              display: "inline-block",
+              background: "linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #D97706 100%)",
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+              fontSize: "clamp(28px, 5vw, 52px)", fontWeight: 900, letterSpacing: "clamp(2px,0.4vw,5px)",
+              lineHeight: 1, fontFamily: "'Poppins', sans-serif",
+              filter: "drop-shadow(0 3px 15px rgba(245,158,11,0.4))",
+            }}>DIVYAKSHI CABS</span>
+          </div>
+          <div className="section-badge" style={{ background: "rgba(245,158,11,0.15)", color: "#FCD34D", border: "1px solid rgba(245,158,11,0.3)", marginBottom: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
             <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14 }}>auto_awesome</span>
             OUR SERVICES
           </div>
-          <h1 style={{ color: "#fff", fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 900, marginBottom: 8 }}>Travel Services We Offer</h1>
-          <p style={{ color: "#94A3B8", maxWidth: 480, margin: "0 auto", fontSize: 14, lineHeight: 1.5 }}>
-            From taxi rentals to visa assistance — we've got every travel need covered
+          <h1 style={{ color: "#CBD5E1", fontSize: "clamp(15px, 2vw, 20px)", fontWeight: 500, marginBottom: 6, marginTop: 4 }}>Taxi • Bus • Hotels • Tour Packages • Visa — All Under One Roof</h1>
+          <p style={{ color: "#94A3B8", maxWidth: 480, margin: "0 auto", fontSize: 13, lineHeight: 1.5 }}>
+            From taxi rentals to visa assistance — we've got every travel need covered in Vadodara
           </p>
         </div>
       </section>

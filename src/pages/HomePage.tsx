@@ -110,7 +110,7 @@ export default function HomePage() {
 
       <style>{`
         .hero-section {
-          padding: 16px 20px 8px;
+          padding: 14px 16px 8px;
         }
         .hero-title-container {
           margin-bottom: 2px;
@@ -119,18 +119,50 @@ export default function HomePage() {
           margin-bottom: 6px;
           padding: 4px 14px;
         }
-        @media (max-width: 768px) {
+        .hero-tagline {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 8px;
+        }
+        .hero-tagline span {
+          font-size: clamp(9px, 1.4vw, 13px);
+          letter-spacing: 3px;
+          white-space: nowrap;
+        }
+        .hero-brand-name {
+          font-size: clamp(30px, 7vw, 78px);
+          letter-spacing: clamp(1px, 0.5vw, 6px);
+        }
+        .hero-subtitle {
+          font-size: clamp(13px, 2.2vw, 22px);
+          margin-top: 4px;
+          margin-bottom: 0;
+          line-height: 1.4;
+        }
+        @media (max-width: 480px) {
           .hero-section {
-            padding: 12px 10px 5px;
+            padding: 10px 10px 4px;
             min-height: auto;
           }
-          .hero-title-container {
-            margin-bottom: 2px;
+          .hero-tagline span {
+            font-size: 9px;
+            letter-spacing: 2px;
+          }
+          .hero-tagline > div {
+            width: 20px !important;
+          }
+          .hero-brand-name {
+            font-size: clamp(26px, 9vw, 44px);
+            letter-spacing: 2px;
           }
           .hero-badge {
             margin-bottom: 4px;
             font-size: 10px !important;
             padding: 3px 10px;
+          }
+          .hero-subtitle {
+            font-size: 12px;
           }
           .stats-row {
             grid-template-columns: repeat(2, 1fr) !important;
@@ -149,20 +181,41 @@ export default function HomePage() {
 
         <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
           <div className="hero-title-container" style={{ textAlign: "center" }}>
-            <div className="hero-badge" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(245,158,11,0.15)", border: "1px solid rgba(245,158,11,0.3)", color: "#FCD34D", borderRadius: 30, fontSize: 12, fontWeight: 700, letterSpacing: 1 }}>
-              <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14 }}>star</span>
-              VADODARA'S #1 TRUSTED TRAVEL PARTNER
-              <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14 }}>star</span>
+            {/* Service Name — like divyakshicabs.in */}
+            <div className="hero-tagline">
+              <div style={{ height: 2, width: 40, background: "linear-gradient(to right, transparent, #F59E0B)" }} />
+              <span style={{
+                color: "#FCD34D", fontWeight: 700,
+                textTransform: "uppercase", fontFamily: "'Poppins', sans-serif",
+                opacity: 0.9,
+              }}>Vadodara's #1 Cab Service</span>
+              <div style={{ height: 2, width: 40, background: "linear-gradient(to left, transparent, #F59E0B)" }} />
             </div>
-            <h1 className="hero-title" style={{ color: "#fff", fontSize: "clamp(26px, 5.5vw, 60px)", fontWeight: 900, lineHeight: 1.1, marginBottom: 0, marginTop: 0 }}>
-              Book Your Perfect{" "}
-              <span style={{ background: "linear-gradient(135deg, #D97706, #F59E0B, #FCD34D)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                Journey
-              </span>
-              <br />
-              <span style={{ fontSize: "clamp(12px, 0.4em, 20px)", color: "#94A3B8", fontWeight: 600, WebkitTextFillColor: "#94A3B8", display: "inline-block", marginTop: 4 }}>
-                Taxi &nbsp;•&nbsp; Tours &nbsp;•&nbsp; Visa &nbsp;•&nbsp; Hotels
-              </span>
+
+            {/* Big Service Brand Name */}
+            <div style={{ marginBottom: 6 }}>
+              <span className="hero-brand-name" style={{
+                display: "inline-block",
+                background: "linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #D97706 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                fontWeight: 900,
+                lineHeight: 1,
+                fontFamily: "'Poppins', sans-serif",
+                filter: "drop-shadow(0 4px 20px rgba(245,158,11,0.4))",
+              }}>DIVYAKSHI CABS</span>
+            </div>
+
+            <div className="hero-badge" style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(245,158,11,0.15)", border: "1px solid rgba(245,158,11,0.3)", color: "#FCD34D", borderRadius: 30, fontSize: 12, fontWeight: 700, letterSpacing: 1 }}>
+              <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14 }}>verified</span>
+              Taxi &nbsp;•&nbsp; Tours &nbsp;•&nbsp; Visa &nbsp;•&nbsp; Hotels
+              <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14 }}>verified</span>
+            </div>
+
+            <h1 className="hero-subtitle" style={{ color: "#CBD5E1", fontWeight: 500, lineHeight: 1.4, marginBottom: 0 }}>
+              Book Your Perfect Ride from{" "}
+              <span style={{ color: "#F59E0B", fontWeight: 700 }}>Vadodara</span>
+              {" "}— Fast, Safe & Affordable
             </h1>
           </div>
           <div style={{ display: "flex", justifyContent: "center" }}>

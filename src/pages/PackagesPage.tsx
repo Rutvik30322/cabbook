@@ -96,23 +96,38 @@ export default function PackagesPage() {
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif" }}>
       <SEO 
-        title="Best Tour Packages from Vadodara - Gujarat & International" 
-        description="Book affordable and curated tour packages from Vadodara. From Statue of Unity to Bali and Dubai — we offer the best travel deals and custom itineraries." 
+        title="Best Tour Packages from Vadodara | Divyakshi Cabs - Gujarat & International" 
+        description="Divyakshi Cabs offers curated tour packages from Vadodara — Statue of Unity, Goa, Rajasthan, Dubai & more. All-inclusive holiday packages starting ₹2,499. Book now!" 
       />
       {/* Hero */}
       <section style={{ 
         background: "linear-gradient(135deg, rgba(15,12,41,0.92) 0%, rgba(15,23,42,0.85) 50%, rgba(15,52,96,0.92) 100%), url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&fit=crop&auto=format') center/cover", 
-        padding: "32px 20px", textAlign: "center", position: "relative", overflow: "hidden" 
+        padding: "40px 20px", textAlign: "center", position: "relative", overflow: "hidden" 
       }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 50% 50%, rgba(245,158,11,0.08) 0%, transparent 60%)" }} />
         <div style={{ position: "relative" }}>
-          <div className="section-badge" style={{ background: "rgba(245,158,11,0.15)", color: "#FCD34D", border: "1px solid rgba(245,158,11,0.3)", marginBottom: 12 }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+            <div style={{ height: 2, width: 30, background: "linear-gradient(to right, transparent, #F59E0B)" }} />
+            <span style={{ color: "#FCD34D", fontSize: 11, fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase" }}>Tours & Packages</span>
+            <div style={{ height: 2, width: 30, background: "linear-gradient(to left, transparent, #F59E0B)" }} />
+          </div>
+          <div style={{ marginBottom: 10 }}>
+            <span style={{
+              display: "inline-block",
+              background: "linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #D97706 100%)",
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+              fontSize: "clamp(28px, 5vw, 52px)", fontWeight: 900, letterSpacing: "clamp(2px,0.4vw,5px)",
+              lineHeight: 1, fontFamily: "'Poppins', sans-serif",
+              filter: "drop-shadow(0 3px 15px rgba(245,158,11,0.4))",
+            }}>DIVYAKSHI CABS</span>
+          </div>
+          <div className="section-badge" style={{ background: "rgba(245,158,11,0.15)", color: "#FCD34D", border: "1px solid rgba(245,158,11,0.3)", marginBottom: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
             <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14 }}>luggage</span>
             TOUR PACKAGES
           </div>
-          <h1 style={{ color: "#fff", fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 900, marginBottom: 8 }}>Curated Holiday Packages</h1>
-          <p style={{ color: "#94A3B8", maxWidth: 460, margin: "0 auto", fontSize: 14, lineHeight: 1.5 }}>
-            Handpicked destinations, expert guides & completely hassle-free planning
+          <h1 style={{ color: "#CBD5E1", fontSize: "clamp(15px, 2vw, 20px)", fontWeight: 500, marginBottom: 6, marginTop: 4 }}>Curated Holiday Packages — Gujarat, India & International</h1>
+          <p style={{ color: "#94A3B8", maxWidth: 460, margin: "0 auto", fontSize: 13, lineHeight: 1.5 }}>
+            Handpicked destinations, expert guides & completely hassle-free planning from Vadodara
           </p>
         </div>
       </section>
