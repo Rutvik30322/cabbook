@@ -723,7 +723,7 @@ export default function BookingWidget() {
           )}
         </div>
 
-        {/* Middle Row: Date fields */}
+        {/* Bottom Row: Date + Phone in same row */}
         <div className="input-row">
            {tripType === "local" ? (
              <>
@@ -761,36 +761,32 @@ export default function BookingWidget() {
                  )}
              </>
            )}
-        </div>
 
-        {/* Phone Row: always full-width */}
-        <div className="input-row single-item">
+           {/* Phone always in same row as date */}
            <div className="input-box">
              <div className="icon-box">
                 <span className="material-symbols-rounded">chat</span>
              </div>
              <div className="field-content">
-               <span className="field-label">Enter WhatsApp Number</span>
-               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", lineHeight: 1.1 }}>
-                   <span style={{ fontSize: 11, fontWeight: 800, color: "#fff" }}>IN</span>
-                   <span style={{ fontSize: 13, fontWeight: 900, color: "#fff" }}>+91</span>
-                 </div>
-                 <input 
-                    type="tel" 
-                    value={phone} 
+               <span className="field-label">WhatsApp Number</span>
+               <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                 <span style={{ fontSize: 12, fontWeight: 800, color: "#F59E0B", whiteSpace: "nowrap" }}>+91</span>
+                 <input
+                    type="tel"
+                    value={phone}
                     onChange={e => {
                       const val = e.target.value.replace(/\D/g, "").slice(0, 10);
                       setPhone(val);
-                    }} 
-                    placeholder="Your 10-digit number" 
-                    className="field-input" 
-                    required 
+                    }}
+                    placeholder="10-digit no."
+                    className="field-input"
+                    required
                   />
                </div>
              </div>
            </div>
         </div>
+
 
         {/* Submit Button */}
         <div className="submit-btn-row">
