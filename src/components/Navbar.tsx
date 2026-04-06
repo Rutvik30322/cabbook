@@ -93,11 +93,12 @@ export default function Navbar() {
         {/* Download App Link (Left) */}
         <Link href="/download-app" style={{
           display: "flex", alignItems: "center", gap: 6,
-          color: "#FCD34D", fontSize: 13, fontWeight: 700, textDecoration: "none",
-          fontFamily: "'Poppins', sans-serif", flexShrink: 0
+          color: "#FFFFFF", fontSize: 13, fontWeight: 700, textDecoration: "none",
+          fontFamily: "'Poppins', sans-serif", flexShrink: 0,
+          opacity: 0.9
         }}
-        onMouseEnter={(e: any) => e.currentTarget.style.color = "#F59E0B"}
-        onMouseLeave={(e: any) => e.currentTarget.style.color = "#FCD34D"}>
+        onMouseEnter={(e: any) => { e.currentTarget.style.color = "#FCD34D"; e.currentTarget.style.opacity = "1"; }}
+        onMouseLeave={(e: any) => { e.currentTarget.style.color = "#FFFFFF"; e.currentTarget.style.opacity = "0.9"; }}>
           <span className="material-symbols-rounded icon-filled" style={{ fontSize: 16 }}>smartphone</span>
           <span className="hide-mobile">Download App</span>
         </Link>

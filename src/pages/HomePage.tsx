@@ -252,9 +252,9 @@ export default function HomePage() {
                 onMouseEnter={e => { e.currentTarget.style.borderColor = c.color; e.currentTarget.style.background = "#fff"; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = "#E2E8F0"; e.currentTarget.style.background = "#F8FAFC"; }}>
                 {/* Car image */}
-                <div style={{ height: 165, overflow: "hidden", position: "relative" }}>
-                  <img src={c.img} alt={c.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                  <div style={{ position: "absolute", top: 12, right: 12, background: c.color, color: "#fff", borderRadius: 20, padding: "4px 12px", fontSize: 11, fontWeight: 700 }}>{c.badge}</div>
+                <div style={{ height: 165, overflow: "hidden", position: "relative", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", padding: "12px" }}>
+                  <img src={c.img} alt={c.name} style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block" }} />
+                  <div style={{ position: "absolute", top: 12, right: 12, background: c.color, color: "#fff", borderRadius: 20, padding: "4px 12px", fontSize: 11, fontWeight: 700, zIndex: 2 }}>{c.badge}</div>
                 </div>
                 <div style={{ padding: "18px 20px" }}>
                   <h3 style={{ fontWeight: 800, fontSize: 18, color: "#0F172A", marginBottom: 3 }}>{c.name}</h3>
@@ -292,36 +292,40 @@ export default function HomePage() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 320px), 1fr))", gap: 14 }}>
             {popularRoutes.map(r => (
-              <div key={r.to} className="card-hover route-card" style={{
+              <div key={r.to} className="card-hover" style={{
                 background: "#fff", borderRadius: 18, overflow: "hidden",
-                boxShadow: "0 2px 12px rgba(0,0,0,0.07)", border: "1.5px solid #E2E8F0",
-                display: "flex", alignItems: "stretch",
-              }}>
+                boxShadow: "0 4px 15px rgba(0,0,0,0.06)", border: "1.5px solid #E2E8F0",
+                display: "flex", flexDirection: "column", transition: "all 0.3s"
+              }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = "#F59E0B"}
+              onMouseLeave={e => e.currentTarget.style.borderColor = "#E2E8F0"}>
                 {/* Route image */}
-                <div className="route-img" style={{ width: 100, flexShrink: 0, overflow: "hidden" }}>
-                  <img src={r.img} alt={r.to} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <div style={{ height: 180, overflow: "hidden" }}>
+                  <img src={r.img} alt={r.to} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                 </div>
                 {/* Info */}
-                <div style={{ padding: "16px 18px", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                  <div style={{ fontWeight: 800, color: "#0F172A", fontSize: 15, marginBottom: 5 }}>
-                    {r.from}
-                    <span className="material-symbols-rounded icon-filled" style={{ fontSize: 16, color: "#F59E0B", margin: "0 6px", verticalAlign: "middle" }}>arrow_forward</span>
-                    {r.to}
+                <div style={{ padding: "20px" }}>
+                  <div style={{ marginBottom: 18 }}>
+                    <h3 style={{ fontWeight: 800, color: "#0F172A", fontSize: 18, display: "flex", alignItems: "center", flexWrap: "wrap", marginBottom: 8 }}>
+                      {r.from}
+                      <span className="material-symbols-rounded icon-filled" style={{ fontSize: 20, color: "#F59E0B", margin: "0 10px" }}>arrow_forward</span>
+                      {r.to}
+                    </h3>
+                    <div style={{ display: "flex", gap: 16 }}>
+                      <span style={{ color: "#64748B", fontSize: 13, display: "flex", alignItems: "center", gap: 6 }}>
+                        <span className="material-symbols-rounded" style={{ fontSize: 18, color: "#94A3B8" }}>route</span>
+                        {r.km}
+                      </span>
+                      <span style={{ color: "#64748B", fontSize: 13, display: "flex", alignItems: "center", gap: 6 }}>
+                        <span className="material-symbols-rounded" style={{ fontSize: 18, color: "#94A3B8" }}>schedule</span>
+                        {r.time}
+                      </span>
+                    </div>
                   </div>
-                  <div style={{ display: "flex", gap: 14 }}>
-                    <span style={{ color: "#64748B", fontSize: 12, display: "flex", alignItems: "center", gap: 4 }}>
-                      <span className="material-symbols-rounded icon-filled" style={{ fontSize: 13, color: "#94A3B8" }}>route</span>
-                      {r.km}
-                    </span>
-                    <span style={{ color: "#64748B", fontSize: 12, display: "flex", alignItems: "center", gap: 4 }}>
-                      <span className="material-symbols-rounded icon-filled" style={{ fontSize: 13, color: "#94A3B8" }}>schedule</span>
-                      {r.time}
-                    </span>
+                  <div style={{ borderTop: "1px solid #F1F5F9", paddingTop: 16, display: "flex", justifyContent: "flex-end", alignItems: "baseline", gap: 5 }}>
+                    <div style={{ color: "#D97706", fontWeight: 900, fontSize: 24, lineHeight: 1 }}>{r.price}</div>
+                    <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 600 }}>One Way</div>
                   </div>
-                </div>
-                <div className="route-price" style={{ padding: "16px 18px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-end", borderLeft: "1px solid #F1F5F9" }}>
-                  <div style={{ color: "#D97706", fontWeight: 900, fontSize: 18, lineHeight: 1 }}>{r.price}</div>
-                  <div style={{ color: "#94A3B8", fontSize: 10, marginTop: 3 }}>One Way</div>
                 </div>
               </div>
             ))}
