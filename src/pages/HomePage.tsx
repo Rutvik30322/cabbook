@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import BookingWidget from "@/components/BookingWidget";
+import SEO from "@/components/SEO";
 import taxiImage from "../assets/premium_taxi_fleet.png";
 import busImage from "../assets/luxury_bus.png";
 import hotelImage from "../assets/Luxury Rambagh Palace Jaipur India _ Royal Palace Hotel for Foreign Tourists.jpg";
@@ -102,6 +103,10 @@ const testimonials = [
 export default function HomePage() {
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif" }}>
+      <SEO 
+        title="Best Taxi & Tour Service in Vadodara" 
+        description="Book affordable taxi, luxury tours, visa assistance & hotels in Vadodara. Divyakshi Tours & Travels is your #1 trusted travel partner for one-way cabs and group tours." 
+      />
 
       <style>{`
         .hero-section {
@@ -194,7 +199,7 @@ export default function HomePage() {
               <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14 }}>auto_awesome</span>
               OUR SERVICES
             </div>
-            <h2 className="section-title">Everything You Need for Your Trip</h2>
+            <h1 className="section-title">Best Travel Services in Vadodara</h1>
             <p className="section-desc">From Vadodara and across India — we handle every detail so you can relax</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 280px), 1fr))", gap: 22 }}>
@@ -253,7 +258,7 @@ export default function HomePage() {
                 onMouseLeave={e => { e.currentTarget.style.borderColor = "#E2E8F0"; e.currentTarget.style.background = "#F8FAFC"; }}>
                 {/* Car image */}
                 <div style={{ height: 165, overflow: "hidden", position: "relative", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", padding: "12px" }}>
-                  <img src={c.img} alt={c.name} style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block" }} />
+                  <img src={c.img} alt={`Divyakshi Travels ${c.name} Taxi Vadodara - ${c.models}`} style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block" }} />
                   <div style={{ position: "absolute", top: 12, right: 12, background: c.color, color: "#fff", borderRadius: 20, padding: "4px 12px", fontSize: 11, fontWeight: 700, zIndex: 2 }}>{c.badge}</div>
                 </div>
                 <div style={{ padding: "18px 20px" }}>

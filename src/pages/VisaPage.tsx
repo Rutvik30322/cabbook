@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FileText, Briefcase, GraduationCap, Globe, Building, BookOpen, Clock, Check, Phone, MessageCircle } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const visaServices = [
   {
@@ -63,6 +64,10 @@ export default function VisaPage() {
 
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif" }}>
+      <SEO 
+        title="Visa & Passport Assistance | Vadodara" 
+        description="Expert guidance for passport services, tourist visas, work permits, and student visas in Vadodara. Our agency provides fast-track processing and document assistance." 
+      />
       {/* Hero */}
       <section style={{ 
         background: "linear-gradient(135deg, rgba(15,12,41,0.92) 0%, rgba(15,23,42,0.85) 50%, rgba(15,52,96,0.92) 100%), url('https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=1600&fit=crop&auto=format') center/cover", 

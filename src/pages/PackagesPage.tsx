@@ -4,6 +4,7 @@ import somnathImg from "../assets/16 Best Places to Visit in Dwarka, Things to D
 import rajasthanImg from "../assets/Luxury Rambagh Palace Jaipur India _ Royal Palace Hotel for Foreign Tourists.jpg";
 import chardhamImg from "../assets/chardham.jpg";
 import himachalImg from "../assets/Himachal.png";
+import SEO from "@/components/SEO";
 
 const packages = [
   {
@@ -94,6 +95,10 @@ export default function PackagesPage() {
 
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif" }}>
+      <SEO 
+        title="Best Tour Packages from Vadodara - Gujarat & International" 
+        description="Book affordable and curated tour packages from Vadodara. From Statue of Unity to Bali and Dubai — we offer the best travel deals and custom itineraries." 
+      />
       {/* Hero */}
       <section style={{ 
         background: "linear-gradient(135deg, rgba(15,12,41,0.92) 0%, rgba(15,23,42,0.85) 50%, rgba(15,52,96,0.92) 100%), url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&fit=crop&auto=format') center/cover", 

@@ -1,5 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { ArrowRight } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const popularRoutes = [
   "Ahmedabad", "Surat", "Mumbai", "Rajkot", "Bhavnagar", "Junagadh", 
@@ -21,6 +22,10 @@ export default function RoutesPage() {
 
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif", background: "#f8fafc", minHeight: "100vh" }}>
+      <SEO 
+        title="One-Way Cab Routes - Ahmedabad, Mumbai, Surat" 
+        description="Check all our popular one-way cab routes across Gujarat and Maharashtra. Book affordable one-way rentals from Vadodara to any city." 
+      />
       
       {/* 1. Header Hero */}
       <section style={{ 

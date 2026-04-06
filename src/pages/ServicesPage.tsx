@@ -3,6 +3,7 @@ import busImage from "../assets/luxury_bus.png";
 import hotelImage from "../assets/Luxury Rambagh Palace Jaipur India _ Royal Palace Hotel for Foreign Tourists.jpg";
 import tourImage from "../assets/Neon7 Tour & Travel Agency – Best Travel Packages in Indore, MP.jpg";
 import visaImage from "../assets/download.jpg";
+import SEO from "@/components/SEO";
 
 const services = [
   {
@@ -58,6 +59,10 @@ const services = [
 export default function ServicesPage() {
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif" }}>
+      <SEO 
+        title="Our Services - Taxi, Bus Rental & Visa Assistance" 
+        description="Explore our range of travel services in Vadodara including local and outstation taxis, luxury bus rentals, hotel bookings, and professional visa assistance." 
+      />
       {/* Hero */}
       <section style={{ 
         background: "linear-gradient(135deg, rgba(15,12,41,0.92) 0%, rgba(15,23,42,0.85) 50%, rgba(15,52,96,0.92) 100%), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1600&fit=crop&auto=format') center/cover", 

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { User, Mail, Phone, ChevronRight, CheckCircle2, Building2, UserCircle } from "lucide-react";
+import { User, Mail, Phone, ChevronRight, CheckCircle2, UserCircle } from "lucide-react";
 import executiveImage from "../assets/executive_travel_corporate_1775444530170.png";
+import SEO from "@/components/SEO";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -13,6 +14,10 @@ export default function ContactPage() {
 
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif", background: "#fff" }}>
+      <SEO 
+        title="Contact & Booking Inquiry | Vadodara" 
+        description="Get in touch with Divyakshi Tours & Travels for taxi bookings, group tours, or visa inquiries. We provide 24/7 support and custom travel quotes." 
+      />
       
       {/* 1. Header Hero with Breadcrumbs & Background */}
       <section style={{ 
