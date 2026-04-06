@@ -131,8 +131,8 @@ input, select, textarea { font-family: 'Poppins', sans-serif; }
   /* Stats 2 columns */
   .stats-row { grid-template-columns: repeat(2,1fr) !important; }
 
-  /* Hero padding */
-  .hero-section { padding: 40px 14px 52px !important; }
+  /* Hero padding compressed so it fits on screen */
+  .hero-section { padding: 25px 10px 10px !important; }
 
   /* Sections compact */
   .section-pad { padding: 48px 14px !important; }

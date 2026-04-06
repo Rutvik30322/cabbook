@@ -6,8 +6,12 @@ import ServicesPage from "@/pages/ServicesPage";
 import PackagesPage from "@/pages/PackagesPage";
 import VisaPage from "@/pages/VisaPage";
 import ContactPage from "@/pages/ContactPage";
+import RoutesPage from "@/pages/RoutesPage";
 import SearchResults from "@/pages/SearchResults";
+import DownloadAppPage from "@/pages/DownloadAppPage";
 import NotFound from "@/pages/not-found";
+import BookingPopup from "@/components/BookingPopup";
+import FloatingContact from "@/components/FloatingContact";
 
 function Router() {
   return (
@@ -20,9 +24,13 @@ function Router() {
         <Route path="/packages" component={PackagesPage} />
         <Route path="/visa" component={VisaPage} />
         <Route path="/contact" component={ContactPage} />
+        <Route path="/one-way-cabs" component={RoutesPage} />
+        <Route path="/download-app" component={DownloadAppPage} />
         <Route component={NotFound} />
       </Switch>
       <Footer />
+      <BookingPopup />
+      <FloatingContact />
     </>
   );
 }

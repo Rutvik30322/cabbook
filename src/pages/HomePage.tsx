@@ -1,56 +1,87 @@
 import { Link } from "wouter";
 import BookingWidget from "@/components/BookingWidget";
+import taxiImage from "../assets/premium_taxi_fleet.png";
+import busImage from "../assets/luxury_bus.png";
+import hotelImage from "../assets/Luxury Rambagh Palace Jaipur India _ Royal Palace Hotel for Foreign Tourists.jpg";
+import tourImage from "../assets/Neon7 Tour & Travel Agency – Best Travel Packages in Indore, MP.jpg";
+import visaImage from "../assets/download.jpg";
+import hatchbackImg from "../assets/Wagon R.png";
+import sedanImg from "../assets/Toyota Etios.png";
+import suvImg from "../assets/Innova Crysta.png";
+import tempoImg from "../assets/Tempo Traveler.png";
+import ertigaImg from "../assets/Eritga.png";
+import toyotaInnovaImg from "../assets/Toyota Innova.png";
+import ahmedabadImg from "../assets/_Ahmedabad_ A Reflection of Heritage and Harmony_.jpg";
+import suratImg from "../assets/Ahmedabad.jpg";
+import souImg from "../assets/Statue of Unity.jpg";
+import mumbaiImg from "../assets/Mumbai _333.jpg";
+import dwarkaImg from "../assets/The Magnificent Dwarkadhish Temple.jpg";
+import somnathImg from "../assets/16 Best Places to Visit in Dwarka, Things to Do & Sightseeing.jpg";
+import chardhamImg from "../assets/chardham.jpg";
+import himachalImg from "../assets/Himachal.png";
 
 const services = [
-  { icon: "directions_car", label: "Taxi Rental", desc: "City rides, airport drops & comfortable outstation cabs", color: "#2563EB", bg: "#EFF6FF", href: "/services", img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=500&h=300&fit=crop&auto=format" },
+  { icon: "directions_car", label: "Local Taxi", desc: "City rides, airport drops & comfortable outstation cabs", color: "#2563EB", bg: "#EFF6FF", href: "/services", img: taxiImage },
   { icon: "airport_shuttle", label: "Tempo Traveller", desc: "Group travel for 9–16 passengers — pilgrimages & events", color: "#7C3AED", bg: "#F5F3FF", href: "/services", img: "/tempo_traveller_card.png" },
-  { icon: "directions_bus", label: "Luxury Bus", desc: "Premium AC buses for weddings, corporate & tours", color: "#D97706", bg: "#FFFBEB", href: "/services", img: "https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=500&h=300&fit=crop&auto=format" },
-  { icon: "hotel", label: "Hotel Booking", desc: "Best deals across India — budget to luxury, no hidden costs", color: "#059669", bg: "#ECFDF5", href: "/services", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop&auto=format" },
-  { icon: "flight", label: "Tour Packages", desc: "Curated holidays — domestic & international all-inclusive", color: "#DC2626", bg: "#FEF2F2", href: "/packages", img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500&h=300&fit=crop&auto=format" },
-  { icon: "article", label: "Visa & Passport", desc: "Full visa, passport & immigration assistance", color: "#0891B2", bg: "#ECFEFF", href: "/visa", img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500&h=300&fit=crop&auto=format" },
+  { icon: "directions_bus", label: "Luxury Bus", desc: "Premium AC buses for weddings, corporate & tours", color: "#D97706", bg: "#FFFBEB", href: "/services", img: busImage },
+  { icon: "hotel", label: "Hotel Booking", desc: "Best deals across India — budget to luxury, no hidden costs", color: "#059669", bg: "#ECFDF5", href: "/services", img: hotelImage },
+  { icon: "travel_explore", label: "Tour Packages", desc: "Curated holidays — domestic & international all-inclusive", color: "#DC2626", bg: "#FEF2F2", href: "/packages", img: tourImage },
+  { icon: "article", label: "Visa & Passport", desc: "Full visa, passport & immigration assistance", color: "#0891B2", bg: "#ECFEFF", href: "/services", img: visaImage },
 ];
 
 const popularRoutes = [
-  { from: "Vadodara", to: "Ahmedabad", km: "115 km", price: "₹1,800", time: "1.5 hrs", img: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=400&h=250&fit=crop&auto=format" },
-  { from: "Vadodara", to: "Surat", km: "155 km", price: "₹2,400", time: "2.5 hrs", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=250&fit=crop&auto=format" },
-  { from: "Vadodara", to: "Statue of Unity", km: "90 km", price: "₹1,600", time: "1.5 hrs", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Statue_of_Unity.jpg/800px-Statue_of_Unity.jpg" },
-  { from: "Vadodara", to: "Mumbai", km: "425 km", price: "₹6,500", time: "6 hrs", img: "https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?w=400&h=250&fit=crop&auto=format" },
-  { from: "Vadodara", to: "Dwarka", km: "440 km", price: "₹7,200", time: "7 hrs", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Dwarkadhish_Temple%2C_Dwarka%2C_Gujarat.JPG/800px-Dwarkadhish_Temple%2C_Dwarka%2C_Gujarat.JPG" },
-  { from: "Vadodara", to: "Somnath", km: "480 km", price: "₹7,500", time: "8 hrs", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Somnath_temple_-_Gujarat.jpg/800px-Somnath_temple_-_Gujarat.jpg" },
+  { from: "Vadodara", to: "Ahmedabad", km: "115 km", price: "₹1,800", time: "1.5 hrs", img: ahmedabadImg },
+  { from: "Vadodara", to: "Surat", km: "155 km", price: "₹2,400", time: "2.5 hrs", img: suratImg },
+  { from: "Vadodara", to: "Statue of Unity", km: "90 km", price: "₹1,600", time: "1.5 hrs", img: souImg },
+  { from: "Vadodara", to: "Mumbai", km: "425 km", price: "₹6,500", time: "6 hrs", img: mumbaiImg },
+  { from: "Vadodara", to: "Dwarka", km: "440 km", price: "₹7,200", time: "7 hrs", img: dwarkaImg },
+  { from: "Vadodara", to: "Somnath", km: "480 km", price: "₹7,500", time: "8 hrs", img: somnathImg },
 ];
 
 const cars = [
   {
     name: "Hatchback", models: "Swift / WagonR / i10", seats: 4, rate: "₹11/km",
     color: "#2563EB", badge: "Economy",
-    img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=500&h=300&fit=crop&auto=format",
+    img: hatchbackImg,
   },
   {
-    name: "Sedan", models: "Honda City / Dzire", seats: 4, rate: "₹13/km",
+    name: "Sedan", models: "Dzire / Etios / Amaze", seats: 4, rate: "₹13/km",
     color: "#7C3AED", badge: "Popular",
-    img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=500&h=300&fit=crop&auto=format",
+    img: sedanImg,
   },
   {
-    name: "SUV / Innova", models: "Innova / Ertiga / Scorpio", seats: 7, rate: "₹16/km",
-    color: "#D97706", badge: "Best for Groups",
-    img: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=500&h=300&fit=crop&auto=format",
+    name: "SUV (Ertiga)", models: "Ertiga / Scorpio / Bolero", seats: 7, rate: "₹15/km",
+    color: "#059669", badge: "Extra Value",
+    img: ertigaImg,
+  },
+  {
+    name: "Innova Crysta", models: "Luxury / Group / Premium", seats: 7, rate: "₹17/km",
+    color: "#D97706", badge: "Premium",
+    img: suvImg,
+  },
+  {
+    name: "Premium SUV", models: "Toyota Innova / Advanced", seats: 7, rate: "₹19/km",
+    color: "#0891B2", badge: "Executive",
+    img: toyotaInnovaImg,
   },
   {
     name: "Tempo Traveller", models: "12 / 14 / 16 Seater", seats: 16, rate: "₹22/km",
     color: "#DC2626", badge: "Groups 10+",
-    img: "/tempo_traveller_card.png",
+    img: tempoImg,
   },
 ];
 
 const destinations = [
-  { name: "Statue of Unity", tag: "Day Trip", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Statue_of_Unity.jpg/800px-Statue_of_Unity.jpg" },
+  { name: "Statue of Unity", tag: "Day Trip", img: souImg },
   { name: "Goa", tag: "Beach Holiday", img: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=400&h=280&fit=crop&auto=format" },
   { name: "Rajasthan", tag: "Heritage Tour", img: "https://images.unsplash.com/photo-1477587458883-47145ed94245?w=400&h=280&fit=crop&auto=format" },
   { name: "Kerala", tag: "Nature & Backwaters", img: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=400&h=280&fit=crop&auto=format" },
-  { name: "Shimla", tag: "Hill Station", img: "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=400&h=280&fit=crop&auto=format" },
-  { name: "Somnath", tag: "Pilgrimage", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Somnath_temple_-_Gujarat.jpg/800px-Somnath_temple_-_Gujarat.jpg" },
-  { name: "Dwarka", tag: "Pilgrimage", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Dwarkadhish_Temple%2C_Dwarka%2C_Gujarat.JPG/800px-Dwarkadhish_Temple%2C_Dwarka%2C_Gujarat.JPG" },
+  { name: "Himachal", tag: "Hill Station", img: himachalImg },
+  { name: "Somnath", tag: "Pilgrimage", img: somnathImg },
+  { name: "Dwarka", tag: "Pilgrimage", img: dwarkaImg },
+  { name: "Chardham", tag: "Pilgrimage", img: chardhamImg },
   { name: "Ladakh", tag: "Adventure", img: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=400&h=280&fit=crop&auto=format" },
+  { name: "Nepal", tag: "International", img: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&h=280&fit=crop&auto=format" },
 ];
 
 const whyUs = [
@@ -72,29 +103,59 @@ export default function HomePage() {
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif" }}>
 
+      <style>{`
+        .hero-section {
+          padding: 16px 20px 8px;
+        }
+        .hero-title-container {
+          margin-bottom: 2px;
+        }
+        .hero-badge {
+          margin-bottom: 6px;
+          padding: 4px 14px;
+        }
+        @media (max-width: 768px) {
+          .hero-section {
+            padding: 12px 10px 5px;
+            min-height: auto;
+          }
+          .hero-title-container {
+            margin-bottom: 2px;
+          }
+          .hero-badge {
+            margin-bottom: 4px;
+            font-size: 10px !important;
+            padding: 3px 10px;
+          }
+          .stats-row {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+      `}</style>
+
       {/* HERO */}
       <section className="hero-section" style={{
         background: "linear-gradient(135deg, rgba(15,12,41,0.85) 0%, rgba(15,23,42,0.75) 40%, rgba(15,52,96,0.85) 100%), url('/tempo_traveller_hero.png') center/cover",
-        padding: "60px 20px 72px", position: "relative", overflow: "hidden",
+        position: "relative", overflow: "visible", zIndex: 11000
       }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 15% 50%, rgba(245,158,11,0.12) 0%, transparent 45%), radial-gradient(circle at 85% 25%, rgba(37,99,235,0.08) 0%, transparent 40%)" }} />
         <div style={{ position: "absolute", top: 40, right: "8%", width: 140, height: 140, border: "2px solid rgba(245,158,11,0.15)", borderRadius: "50%" }} />
         <div style={{ position: "absolute", bottom: 20, left: "4%", width: 90, height: 90, border: "2px solid rgba(245,158,11,0.1)", borderRadius: "50%" }} />
 
         <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
-          <div style={{ textAlign: "center", marginBottom: 40 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(245,158,11,0.15)", border: "1px solid rgba(245,158,11,0.3)", color: "#FCD34D", padding: "6px 18px", borderRadius: 30, fontSize: 12, fontWeight: 700, marginBottom: 22, letterSpacing: 1 }}>
+          <div className="hero-title-container" style={{ textAlign: "center" }}>
+            <div className="hero-badge" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(245,158,11,0.15)", border: "1px solid rgba(245,158,11,0.3)", color: "#FCD34D", borderRadius: 30, fontSize: 12, fontWeight: 700, letterSpacing: 1 }}>
               <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14 }}>star</span>
               VADODARA'S #1 TRUSTED TRAVEL PARTNER
               <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14 }}>star</span>
             </div>
-            <h1 className="hero-title" style={{ color: "#fff", fontSize: "clamp(30px, 5.5vw, 60px)", fontWeight: 900, lineHeight: 1.1, marginBottom: 16 }}>
+            <h1 className="hero-title" style={{ color: "#fff", fontSize: "clamp(26px, 5.5vw, 60px)", fontWeight: 900, lineHeight: 1.1, marginBottom: 0, marginTop: 0 }}>
               Book Your Perfect{" "}
               <span style={{ background: "linear-gradient(135deg, #D97706, #F59E0B, #FCD34D)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 Journey
               </span>
               <br />
-              <span style={{ fontSize: "0.55em", color: "#94A3B8", fontWeight: 600, WebkitTextFillColor: "#94A3B8" }}>
+              <span style={{ fontSize: "clamp(12px, 0.4em, 20px)", color: "#94A3B8", fontWeight: 600, WebkitTextFillColor: "#94A3B8", display: "inline-block", marginTop: 4 }}>
                 Taxi &nbsp;•&nbsp; Tours &nbsp;•&nbsp; Visa &nbsp;•&nbsp; Hotels
               </span>
             </h1>
@@ -106,8 +167,8 @@ export default function HomePage() {
       </section>
 
       {/* STATS */}
-      <section style={{ background: "linear-gradient(135deg, #D97706 0%, #F59E0B 60%, #FCD34D 100%)" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "18px 20px" }}>
+      <section style={{ background: "linear-gradient(to right, #D97706 0%, #F59E0B 40%, #FCD34D 100%)" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 20px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 8 }} className="stats-row">
             {[
               { num: "5000+", label: "Happy Customers", icon: "sentiment_very_satisfied" },
@@ -116,9 +177,9 @@ export default function HomePage() {
               { num: "24/7", label: "Support Available", icon: "support_agent" },
             ].map(s => (
               <div key={s.label} style={{ textAlign: "center", padding: "10px 0" }}>
-                <span className="material-symbols-rounded icon-filled" style={{ fontSize: 26, color: "rgba(26,26,46,0.65)", marginBottom: 4, display: "block" }}>{s.icon}</span>
-                <div style={{ fontSize: "clamp(20px, 3vw, 28px)", fontWeight: 900, color: "#1a1a2e", lineHeight: 1 }}>{s.num}</div>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(26,26,46,0.65)", letterSpacing: 0.5, marginTop: 3 }}>{s.label}</div>
+                <span className="material-symbols-rounded icon-filled" style={{ fontSize: 26, color: "#0F172A", marginBottom: 6, display: "block" }}>{s.icon}</span>
+                <div style={{ fontSize: "clamp(24px, 3.5vw, 32px)", fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>{s.num}</div>
+                <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", letterSpacing: 0.5, marginTop: 4 }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -367,23 +428,29 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: "linear-gradient(135deg, #D97706 0%, #F59E0B 60%, #FCD34D 100%)", padding: "60px 20px", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", top: -40, right: -40, width: 200, height: 200, background: "rgba(255,255,255,0.08)", borderRadius: "50%" }} />
-        <div style={{ position: "absolute", bottom: -50, left: -20, width: 160, height: 160, background: "rgba(255,255,255,0.06)", borderRadius: "50%" }} />
+      <section style={{ 
+        background: "linear-gradient(to right, rgba(217,119,6,0.9) 0%, rgba(245,158,11,0.85) 40%, rgba(252,211,77,0.9) 100%), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&fit=crop&auto=format') center/cover", 
+        padding: "60px 20px", textAlign: "center", position: "relative", overflow: "hidden" 
+      }}>
+        <div style={{ position: "absolute", inset: 0, background: "rgba(15,23,42,0.1)" }} />
+        <div style={{ position: "absolute", top: -40, right: -40, width: 200, height: 200, background: "rgba(255,255,255,0.1)", borderRadius: "50%" }} />
+        <div style={{ position: "absolute", bottom: -50, left: -20, width: 160, height: 160, background: "rgba(255,255,255,0.08)", borderRadius: "50%" }} />
         <div style={{ position: "relative" }}>
-          <span className="material-symbols-rounded icon-filled" style={{ fontSize: 50, color: "rgba(26,26,46,0.5)", display: "block", marginBottom: 12 }}>rocket_launch</span>
-          <h2 style={{ fontSize: "clamp(22px, 4vw, 34px)", fontWeight: 900, color: "#1a1a2e", marginBottom: 10 }}>Ready to Plan Your Dream Trip?</h2>
-          <p style={{ color: "rgba(26,26,46,0.65)", marginBottom: 30, fontSize: 15, maxWidth: 400, margin: "0 auto 30px" }}>
+          <span className="material-symbols-rounded icon-filled" style={{ fontSize: 50, color: "#0F172A", display: "block", marginBottom: 12 }}>rocket_launch</span>
+          <h2 style={{ fontSize: "clamp(26px, 4vw, 38px)", fontWeight: 900, color: "#0F172A", marginBottom: 10 }}>Ready to Plan Your Dream Trip?</h2>
+          <p style={{ color: "#0F172A", fontWeight: 600, marginBottom: 30, fontSize: 16, maxWidth: 400, margin: "0 auto 30px" }}>
             Call us or send a WhatsApp — we'll plan everything for you
           </p>
           <div className="cta-btns" style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="tel:+918200909915" style={{ display: "flex", alignItems: "center", gap: 9, background: "#1a1a2e", color: "#F59E0B", padding: "14px 30px", borderRadius: 12, fontWeight: 800, fontSize: 15, textDecoration: "none" }}>
-              <span className="material-symbols-rounded icon-filled" style={{ fontSize: 20 }}>call</span>
-              Call: 82009 09915
+            <a href="tel:+918200909915" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "#1a1a2e", color: "#F59E0B", padding: "14px 32px", borderRadius: 12, fontWeight: 700, fontSize: 16, textDecoration: "none", letterSpacing: "0.5px" }}>
+              <span className="material-symbols-rounded icon-filled" style={{ fontSize: 20, display: "block" }}>call</span>
+              <span style={{ display: "block", paddingTop: 1 }}>Call: 82009 09915</span>
             </a>
-            <a href="https://wa.me/918200909915?text=Hi, I want to book a cab" target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", gap: 9, background: "#25d366", color: "#fff", padding: "14px 30px", borderRadius: 12, fontWeight: 800, fontSize: 15, textDecoration: "none" }}>
-              <span className="material-symbols-rounded icon-filled" style={{ fontSize: 20 }}>chat</span>
-              WhatsApp Us
+            <a href="https://wa.me/918200909915?text=Hi, I want to book a cab" target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "#25d366", color: "#fff", padding: "14px 32px", borderRadius: 12, fontWeight: 700, fontSize: 16, textDecoration: "none", boxShadow: "0 4px 15px rgba(37,211,102,0.4)", letterSpacing: "0.5px" }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" style={{ display: "block" }}>
+                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+              </svg>
+              <span style={{ display: "block", paddingTop: 1 }}>WhatsApp Us</span>
             </a>
           </div>
         </div>

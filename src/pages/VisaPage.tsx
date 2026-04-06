@@ -64,14 +64,17 @@ export default function VisaPage() {
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif" }}>
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #0f0c29, #1a1a2e, #0f3460)", padding: "64px 1.25rem", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 50% 50%, rgba(212,160,23,0.1) 0%, transparent 60%)" }} />
+      <section style={{ 
+        background: "linear-gradient(135deg, rgba(15,12,41,0.92) 0%, rgba(15,23,42,0.85) 50%, rgba(15,52,96,0.92) 100%), url('https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=1600&fit=crop&auto=format') center/cover", 
+        padding: "32px 1.25rem", textAlign: "center", position: "relative", overflow: "hidden" 
+      }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 50% 50%, rgba(212,160,23,0.08) 0%, transparent 60%)" }} />
         <div style={{ position: "relative" }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(212,160,23,0.15)", border: "1px solid rgba(212,160,23,0.3)", color: "#F5C842", padding: "5px 16px", borderRadius: 30, fontSize: 11, fontWeight: 700, letterSpacing: 1, marginBottom: 18 }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(212,160,23,0.15)", border: "1px solid rgba(212,160,23,0.3)", color: "#F5C842", padding: "4px 14px", borderRadius: 30, fontSize: 10, fontWeight: 700, letterSpacing: 1, marginBottom: 12 }}>
             📋 VISA & IMMIGRATION
           </div>
-          <h1 style={{ color: "#fff", fontSize: "clamp(28px, 4.5vw, 46px)", fontWeight: 900, marginBottom: 14 }}>Visa, Passport & Immigration</h1>
-          <p style={{ color: "#94a3b8", maxWidth: 480, margin: "0 auto", fontSize: 15, lineHeight: 1.7 }}>
+          <h1 style={{ color: "#fff", fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 900, marginBottom: 8 }}>Visa, Passport & Immigration</h1>
+          <p style={{ color: "#94a3b8", maxWidth: 480, margin: "0 auto", fontSize: 14, lineHeight: 1.5 }}>
             Expert guidance for all your international travel documents — passport to PR
           </p>
         </div>
@@ -173,7 +176,12 @@ export default function VisaPage() {
             </div>
           ) : (
             <div style={{ background: "#fff", borderRadius: 20, padding: 36, boxShadow: "0 8px 40px rgba(0,0,0,0.1)", border: "1px solid #e2e8f0" }}>
-              <form onSubmit={e => { e.preventDefault(); setSubmitted(true); }}>
+              <form onSubmit={e => { 
+                e.preventDefault(); 
+                const msg = encodeURIComponent(`Hi! My name is ${form.name}. I'm looking for ${form.service} assistance for ${form.country}. My contact number is ${form.phone}. Please guide me.`);
+                window.open(`https://wa.me/918200909915?text=${msg}`, '_blank');
+                setSubmitted(true); 
+              }}>
                 {[
                   { label: "👤 Full Name", key: "name", type: "text", placeholder: "Enter your full name" },
                   { label: "📲 Phone Number", key: "phone", type: "tel", placeholder: "Your mobile number" },
@@ -210,16 +218,22 @@ export default function VisaPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: "linear-gradient(135deg, #1a1a2e, #0f3460)", padding: "52px 1.25rem", textAlign: "center" }}>
-        <h2 style={{ color: "#fff", fontSize: "clamp(18px, 2.5vw, 24px)", fontWeight: 800, marginBottom: 8 }}>Prefer to Talk Directly?</h2>
-        <p style={{ color: "#94a3b8", marginBottom: 24, fontSize: 14 }}>Call or WhatsApp — our visa expert is available Mon–Sat, 9 AM–8 PM</p>
-        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-          <a href="tel:+918200909915" style={{ display: "flex", alignItems: "center", gap: 8, background: "linear-gradient(135deg, #D4A017, #F5C842)", color: "#1a1a2e", padding: "12px 24px", borderRadius: 10, fontWeight: 700, fontSize: 14 }}>
-            <Phone size={15} /> 82009 09915
-          </a>
-          <a href="https://wa.me/918200909915?text=Hi, I need visa assistance" target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", gap: 8, background: "#25d366", color: "#fff", padding: "12px 24px", borderRadius: 10, fontWeight: 700, fontSize: 14 }}>
-            <MessageCircle size={15} /> WhatsApp
-          </a>
+      <section style={{ 
+        background: "linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(15,52,96,0.88) 100%), url('https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=1600&fit=crop&auto=format') center/cover", 
+        padding: "52px 1.25rem", textAlign: "center", position: "relative", overflow: "hidden" 
+      }}>
+        <div style={{ position: "absolute", inset: 0, background: "rgba(212,160,23,0.05)" }} />
+        <div style={{ position: "relative" }}>
+          <h2 style={{ color: "#fff", fontSize: "clamp(18px, 2.5vw, 24px)", fontWeight: 800, marginBottom: 8 }}>Prefer to Talk Directly?</h2>
+          <p style={{ color: "#94a3b8", marginBottom: 24, fontSize: 14 }}>Call or WhatsApp — our visa expert is available Mon–Sat, 9 AM–8 PM</p>
+          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+            <a href="tel:+918200909915" style={{ display: "flex", alignItems: "center", gap: 8, background: "linear-gradient(135deg, #D4A017, #F5C842)", color: "#1a1a2e", padding: "12px 24px", borderRadius: 10, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>
+              <Phone size={15} /> 82009 09915
+            </a>
+            <a href="https://wa.me/918200909915?text=Hi, I need visa assistance" target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", gap: 8, background: "#25d366", color: "#fff", padding: "12px 24px", borderRadius: 10, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>
+              <MessageCircle size={15} /> WhatsApp
+            </a>
+          </div>
         </div>
       </section>
     </div>
