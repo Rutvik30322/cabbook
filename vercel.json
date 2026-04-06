@@ -3,9 +3,7 @@
   "outputDirectory": "dist/public",
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
-    { "source": "/robots.txt", "destination": "/robots.txt" },
-    { "source": "/google79ddbb4861b8666c.html", "destination": "/google79ddbb4861b8666c.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/(sitemap\\.xml|robots\\.txt|google.*\\.html)", "destination": "/$1" },
+    { "source": "/((?!.*\\.).*)", "destination": "/index.html" }
   ]
 }
