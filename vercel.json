@@ -3,7 +3,15 @@
   "outputDirectory": "dist/public",
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/(sitemap\\.xml|robots\\.txt|google.*\\.html)", "destination": "/$1" },
-    { "source": "/((?!.*\\.).*)", "destination": "/index.html" }
+    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
+    { "source": "/robots.txt", "destination": "/robots.txt" },
+    { "source": "/google79ddbb4861b8666c.html", "destination": "/google79ddbb4861b8666c.html" },
+    { "source": "/services", "destination": "/index.html" },
+    { "source": "/packages", "destination": "/index.html" },
+    { "source": "/visa", "destination": "/index.html" },
+    { "source": "/contact", "destination": "/index.html" },
+    { "source": "/one-way-cabs", "destination": "/index.html" },
+    { "source": "/download-app", "destination": "/index.html" },
+    { "source": "/search", "destination": "/index.html" }
   ]
 }
