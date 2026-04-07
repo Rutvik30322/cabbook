@@ -173,7 +173,7 @@ export default function HomePage() {
       {/* HERO */}
       <section className="hero-section" style={{
         background: "linear-gradient(135deg, rgba(15,12,41,0.85) 0%, rgba(15,23,42,0.75) 40%, rgba(15,52,96,0.85) 100%), url('/tempo_traveller_hero.png') center/cover",
-        position: "relative", overflow: "visible", zIndex: 11000
+        position: "relative", overflow: "visible"
       }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 15% 50%, rgba(245,158,11,0.12) 0%, transparent 45%), radial-gradient(circle at 85% 25%, rgba(37,99,235,0.08) 0%, transparent 40%)" }} />
         <div style={{ position: "absolute", top: 40, right: "8%", width: 140, height: 140, border: "2px solid rgba(245,158,11,0.15)", borderRadius: "50%" }} />

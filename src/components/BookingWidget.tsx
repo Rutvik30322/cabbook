@@ -458,7 +458,7 @@ export default function BookingWidget() {
           height: 100vh;
           background: rgba(0, 0, 0, 0.7);
           backdrop-filter: blur(4px);
-          z-index: 99998;
+          z-index: 200000;
           display: none;
         }
         @media (max-width: 768px) {
@@ -468,17 +468,18 @@ export default function BookingWidget() {
         /* Premium Popover Styles (Shared) */
         .dropdown-popover {
           position: absolute;
-          bottom: 100%;
+          top: 100%;
           left: 0;
+          min-width: 240px;
           width: 100%;
           background: #111827;
           border: 1px solid rgba(245, 158, 11, 0.4);
-          border-bottom: none;
-          border-radius: 12px 12px 0 0;
-          z-index: 10000;
-          box-shadow: 0 -15px 50px rgba(0,0,0,0.8);
+          border-top: none;
+          border-radius: 0 0 16px 16px;
+          z-index: 200001;
+          box-shadow: 0 15px 50px rgba(0,0,0,0.8);
           overflow: hidden;
-          animation: pop-up 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+          animation: drop-in-list 0.25s ease-out;
           user-select: none;
         }
 
@@ -492,7 +493,7 @@ export default function BookingWidget() {
           border: 1px solid rgba(245, 158, 11, 0.4);
           border-top: none;
           border-radius: 0 0 16px 16px;
-          z-index: 99999;
+          z-index: 200001;
           padding: 16px 20px;
           box-shadow: 0 15px 40px rgba(0,0,0,0.8);
           animation: drop-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.25);
@@ -575,11 +576,9 @@ export default function BookingWidget() {
           opacity: 0.25;
         }
 
-        .dropdown-popover {
-          min-width: 240px;
-          border-radius: 16px 16px 0 0;
-          overflow: hidden;
-          animation: pop-up 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+        @keyframes drop-in-list {
+          0% { transform: translateY(-8px); opacity: 0; }
+          100% { transform: translateY(0); opacity: 1; }
         }
 
         @media (max-width: 768px) {
@@ -591,6 +590,7 @@ export default function BookingWidget() {
             transform: translate(-50%, -50%) !important;
             width: 90vw;
             margin: 0;
+            z-index: 200001 !important;
             box-shadow: 0 0 100px rgba(0,0,0,1);
             animation: modal-in 0.3s ease-out;
             border: 1px solid rgba(245, 158, 11, 0.4);
