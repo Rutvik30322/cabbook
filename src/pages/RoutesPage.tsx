@@ -17,7 +17,7 @@ export default function RoutesPage() {
 
   const handleRouteClick = (city: string) => {
     // Defaulting 'From' to Vadodara as it's the business base
-    navigate(`/?from=Vadodara&to=${city}&type=oneway`);
+    navigate(`/?from=&to=${city}&type=oneway`);
   };
 
   return (
@@ -29,7 +29,7 @@ export default function RoutesPage() {
       
       {/* 1. Header Hero */}
       <section style={{ 
-        background: "linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)), url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1600&fit=crop&auto=format')",
+        background: "linear-gradient(rgba(15,23,42,0.6), rgba(15,23,42,0.6)), url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1600&fit=crop&auto=format')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         padding: "60px 20px",
@@ -113,7 +113,7 @@ export default function RoutesPage() {
               }}
             >
               <span style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                Cab in {city}
+                Cab to {city}
               </span>
               <ArrowRight size={18} strokeWidth={3} />
             </button>

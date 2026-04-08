@@ -4,6 +4,7 @@ import hotelImage from "../assets/Luxury Rambagh Palace Jaipur India _ Royal Pal
 import tourImage from "../assets/Neon7 Tour & Travel Agency – Best Travel Packages in Indore, MP.jpg";
 import visaImage from "../assets/download.jpg";
 import flightTrainImg from "../assets/flight_train_banner.png";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import SEO from "@/components/SEO";
 
 const services = [
@@ -67,7 +68,7 @@ export default function ServicesPage() {
       />
       {/* Hero */}
       <section style={{ 
-        background: "linear-gradient(135deg, rgba(15,12,41,0.92) 0%, rgba(15,23,42,0.85) 50%, rgba(15,52,96,0.92) 100%), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1600&fit=crop&auto=format') center/cover", 
+        background: "linear-gradient(135deg, rgba(15,12,41,0.6) 0%, rgba(15,23,42,0.55) 50%, rgba(15,52,96,0.6) 100%), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1600&fit=crop&auto=format') center/cover", 
         padding: "40px 20px", textAlign: "center", position: "relative", overflow: "hidden" 
       }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 50% 50%, rgba(245,158,11,0.08) 0%, transparent 60%)" }} />
@@ -128,10 +129,10 @@ export default function ServicesPage() {
                 }}>
                   {/* Professional Custom Background Image */}
                   <div style={{ position: "absolute", inset: 0 }}>
-                    <div style={{ width: "100%", height: "100%", backgroundImage: `url(${flightTrainImg})`, backgroundSize: "cover", backgroundPosition: "center" }} />
+                    <div style={{ width: "100%", height: "100%", backgroundImage: `url(${flightTrainImg})`, backgroundSize: "cover", backgroundPosition: "right center" }} />
                   </div>
-                  {/* Overlay Gradient to blend text securely without hiding the airplane on the left */}
-                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.5) 50%, transparent 100%)" }} />
+                  {/* Overlay Gradient: Extra transparent on the right so the Train is 100% visible */}
+                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.4) 60%, transparent 100%)" }} />
 
                   <div style={{ position: "relative", zIndex: 1, padding: "30px 40px", maxWidth: 650 }}>
                     <div className="section-badge" style={{ background: "rgba(59,130,246,0.2)", color: "#60A5FA", border: "1px solid rgba(59,130,246,0.3)", marginBottom: 10, display: "inline-flex", alignItems: "center", gap: 6, padding: "3px 12px", fontSize: 11 }}>
@@ -209,7 +210,7 @@ export default function ServicesPage() {
                     onMouseEnter={e => e.currentTarget.style.transform = "scale(1.02)"}
                     onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
                   >
-                    <span className="material-symbols-rounded icon-filled" style={{ fontSize: 18 }}>chat</span>
+                    <WhatsAppIcon size={18} />
                     Book on WhatsApp
                   </a>
               </div>
@@ -262,7 +263,7 @@ export default function ServicesPage() {
               82009 09915
             </a>
             <a href="https://wa.me/918200909915" target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", gap: 8, background: "#25d366", color: "#fff", padding: "12px 24px", borderRadius: 10, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>
-              <span className="material-symbols-rounded icon-filled" style={{ fontSize: 18 }}>chat</span>
+              <WhatsAppIcon size={18} />
               WhatsApp
             </a>
           </div>

@@ -4,6 +4,7 @@ import somnathImg from "../assets/16 Best Places to Visit in Dwarka, Things to D
 import rajasthanImg from "../assets/Luxury Rambagh Palace Jaipur India _ Royal Palace Hotel for Foreign Tourists.jpg";
 import chardhamImg from "../assets/chardham.jpg";
 import himachalImg from "../assets/Himachal.png";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import SEO from "@/components/SEO";
 
 const packages = [
@@ -101,9 +102,9 @@ export default function PackagesPage() {
       />
       {/* Hero */}
       <section style={{ 
-        background: "linear-gradient(135deg, rgba(15,12,41,0.92) 0%, rgba(15,23,42,0.85) 50%, rgba(15,52,96,0.92) 100%), url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&fit=crop&auto=format') center/cover", 
+        background: "linear-gradient(135deg, rgba(15,12,41,0.6) 0%, rgba(15,23,42,0.55) 50%, rgba(15,52,96,0.6) 100%), url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&fit=crop&auto=format') center/cover", 
         padding: "40px 20px", textAlign: "center", position: "relative", overflow: "hidden" 
-      }}>
+      }} className="hero-section">
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 50% 50%, rgba(245,158,11,0.08) 0%, transparent 60%)" }} />
         <div style={{ position: "relative" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
@@ -211,12 +212,8 @@ export default function PackagesPage() {
                   ))}
                 </div>
 
-                {/* Price + CTA */}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: 14, borderTop: "1px solid #F1F5F9" }}>
-                  <div>
-                    <div style={{ fontWeight: 900, fontSize: 24, color: "#D97706", lineHeight: 1 }}>{p.price}</div>
-                    <div style={{ fontSize: 11, color: "#94A3B8", marginTop: 2 }}>{p.per}</div>
-                  </div>
+                {/* CTA only (Price removed) */}
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", paddingTop: 14, borderTop: "1px solid #F1F5F9" }}>
                   <button onClick={() => { 
                     const msg = encodeURIComponent(`Hello! I'm interested in the ${p.name} package from Divyakshi Travels.`);
                     window.open(`https://wa.me/918200909915?text=${msg}`, '_blank');
@@ -224,10 +221,10 @@ export default function PackagesPage() {
                     display: "flex", alignItems: "center", gap: 6, padding: "10px 18px",
                     borderRadius: 10, fontWeight: 700, fontSize: 13, border: "none",
                     background: "linear-gradient(135deg, #D97706, #F59E0B)", color: "#1a1a2e",
-                    cursor: "pointer", fontFamily: "'Poppins', sans-serif",
+                    cursor: "pointer", fontFamily: "'Poppins', sans-serif", width: "100%", justifyContent: "center"
                   }}>
-                    <span className="material-symbols-rounded icon-filled" style={{ fontSize: 16 }}>chat</span>
-                    Enquire Now
+                    <WhatsAppIcon size={16} />
+                    Enquire on WhatsApp
                   </button>
                 </div>
               </div>
@@ -250,7 +247,7 @@ export default function PackagesPage() {
           </p>
           <a href="https://wa.me/918200909915?text=Hi, I'm interested in a custom tour package" target="_blank" rel="noreferrer"
             style={{ display: "inline-flex", alignItems: "center", gap: 9, background: "linear-gradient(135deg, #D97706, #F59E0B)", color: "#1a1a2e", padding: "13px 28px", borderRadius: 12, fontWeight: 800, fontSize: 15, textDecoration: "none" }}>
-            <span className="material-symbols-rounded icon-filled" style={{ fontSize: 20 }}>chat</span>
+            <WhatsAppIcon size={20} />
             Get Custom Quote on WhatsApp
           </a>
         </div>

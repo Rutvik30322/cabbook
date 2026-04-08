@@ -8,6 +8,7 @@ import innova from "../assets/Toyota Innova.png";
 import innovaCrysta from "../assets/Innova Crysta.png";
 import tempo from "../assets/Tempo Traveler.png";
 import paymentQR from "../assets/WhatsApp Image 2026-04-05 at 4.47.58 AM.jpeg";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 const CAR_OPTIONS = [
   {
@@ -139,9 +140,48 @@ export default function SearchResults() {
         @media (max-width: 860px) {
           .car-card-grid { grid-template-columns: 1fr; }
           .details-inner-grid { grid-template-columns: 1fr; gap: 24px; }
-          .summary-section { text-align: left; align-items: flex-start; border-top: 1px dashed #E2E8F0; padding-top: 20px; }
+          .summary-section { text-align: left; align-items: flex-start; border-top: 1px dashed #E2E8F0; padding-top: 20px; width: auto; }
           .book-btn { width: 100%; padding: 14px; fontSize: 15px; }
           .res-container { padding: 20px 16px; }
+        }
+
+        .inclusions-accordion {
+          width: 100%;
+          background: #F8FAFC;
+          border-top: 1px dashed #E2E8F0;
+          overflow: hidden;
+        }
+        
+        .inclusions-summary {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 12px 24px;
+          font-size: 13px;
+          font-weight: 700;
+          color: #2563EB;
+          cursor: pointer;
+          list-style: none; /* Firefox */
+          user-select: none;
+        }
+        
+        .inclusions-summary::-webkit-details-marker {
+          display: none; /* Chrome/Safari */
+        }
+        
+        .inclusions-accordion[open] .toggle-icon {
+          transform: rotate(180deg);
+        }
+        
+        .toggle-icon {
+          transition: transform 0.3s;
+        }
+        
+        .inclusions-content {
+          padding: 0 24px 20px;
+          background: #F8FAFC;
+          margin-top: 0px;
+          padding-top: 0px;
         }
 
         @media (max-width: 640px) {
@@ -228,9 +268,9 @@ export default function SearchResults() {
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           {CAR_OPTIONS.map(car => {
             const rawPrice = getPrice(car);
+            const finalPrice = Math.round(rawPrice * 1.13); // Add 13% markup as requested
             const isDiscounted = car.discount > 0;
-            const originalPrice = isDiscounted ? Math.round(rawPrice / (1 - car.discount/100)) : rawPrice;
-            const finalPrice = rawPrice;
+            const originalPrice = isDiscounted ? Math.round(finalPrice / (1 - car.discount/100)) : finalPrice;
             
             const isSelected = selectedId === car.id;
             const isConfirmed = confirmed === car.id;
@@ -302,30 +342,75 @@ export default function SearchResults() {
                            Including Toll Tax, State Tax
                         </div>
 
-                        <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 6, marginBottom: 4 }}>
-                           <span style={{ background: "#22c55e", color: "#fff", fontSize: 11, padding: "2px 8px", borderRadius: 4, fontWeight: 800 }}>20% OFF</span>
-                           <span style={{ color: "#94A3B8", textDecoration: "line-through", fontSize: 13 }}>₹{originalPrice.toLocaleString()}</span>
-                        </div>
-                        <div style={{ fontWeight: 900, fontSize: 30, color: "#15803d", lineHeight: 1, marginBottom: 6 }}>₹{finalPrice.toLocaleString()}</div>
-                        
-                        <div style={{ display: "flex", alignItems: "center", gap: 4, color: "#2563EB", fontSize: 12, fontWeight: 700, cursor: "pointer", marginBottom: 16 }}>
-                           <span className="material-symbols-rounded" style={{ fontSize: 16 }}>info</span>
-                           Fare Summary
-                        </div>
-
-                        <button
-                          className="book-btn"
-                          onClick={() => { 
-                            setShowBookingModal(car);
-                            setBookingStep('details');
-                          }}
-                        >
-                          Book Now
-                        </button>
+                        {car.type === "TEMPO TRAVELLER" ? (
+                          <>
+                            <div style={{ marginBottom: 28 }}></div>
+                            <button
+                              onClick={() => { 
+                                const msg = encodeURIComponent(`Hello! I'm looking for a Tempo Traveller from ${from} to ${to}.`);
+                                window.open(`https://wa.me/918200909915?text=${msg}`, '_blank');
+                              }}
+                              style={{
+                                display: "flex", alignItems: "center", gap: 6, padding: "12px 18px",
+                                borderRadius: 10, fontWeight: 700, fontSize: 13.5, border: "none",
+                                background: "linear-gradient(135deg, #D97706, #F59E0B)", color: "#1a1a2e",
+                                cursor: "pointer", fontFamily: "'Poppins', sans-serif", width: "100%", justifyContent: "center",
+                                boxShadow: "0 4px 15px rgba(245,158,11,0.25)", transition: "all 0.3s"
+                              }}
+                            >
+                              <WhatsAppIcon size={16} />
+                              Enquire on WhatsApp
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 6, marginBottom: 4 }}>
+                               <span style={{ background: "#22c55e", color: "#fff", fontSize: 11, padding: "2px 8px", borderRadius: 4, fontWeight: 800 }}>20% OFF</span>
+                               <span style={{ color: "#94A3B8", textDecoration: "line-through", fontSize: 13 }}>₹{originalPrice.toLocaleString()}</span>
+                            </div>
+                            <div style={{ fontWeight: 900, fontSize: 30, color: "#15803d", lineHeight: 1, marginBottom: 6 }}>₹{finalPrice.toLocaleString()}</div>
+                            
+                            <div style={{ marginBottom: 12 }}></div>
+                            <button
+                              className="book-btn"
+                              onClick={() => { 
+                                setShowBookingModal(car);
+                                setBookingStep('details');
+                              }}
+                            >
+                              Book Now
+                            </button>
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>
                 </div>
+
+                {/* Accordion placed FULL WIDTH underneath the entire car grid block */}
+                <details className="inclusions-accordion">
+                  <summary className="inclusions-summary">
+                     <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                       <span className="material-symbols-rounded" style={{ fontSize: 16 }}>info</span>
+                       Inclusions & Exclusions
+                     </div>
+                     <span className="material-symbols-rounded toggle-icon" style={{ fontSize: 18 }}>expand_more</span>
+                  </summary>
+                  <div className="inclusions-content">
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 8, textAlign: "left" }}>
+                       <li style={{ display: "flex", gap: 8, fontSize: 12, color: "#475569" }}><span className="material-symbols-rounded" style={{ color: "#10B981", fontSize: 16 }}>check</span> Driver Allowance</li>
+                       <li style={{ display: "flex", gap: 8, fontSize: 12, color: "#475569" }}><span className="material-symbols-rounded" style={{ color: "#10B981", fontSize: 16 }}>check</span> Base Fare and Fuel Charges</li>
+                       <li style={{ display: "flex", gap: 8, fontSize: 12, color: "#475569" }}><span className="material-symbols-rounded" style={{ color: "#10B981", fontSize: 16 }}>check</span> State Tax & Toll</li>
+                       <li style={{ display: "flex", gap: 8, fontSize: 12, color: "#475569" }}><span className="material-symbols-rounded" style={{ color: "#10B981", fontSize: 16 }}>check</span> Only One Pickup and Drop</li>
+                       <li style={{ display: "flex", gap: 8, fontSize: 12, color: "#475569" }}><span className="material-symbols-rounded" style={{ color: "#10B981", fontSize: 16 }}>check</span> GST (5%)</li>
+                       <li style={{ display: "flex", gap: 8, fontSize: 12, color: "#475569" }}><span className="material-symbols-rounded" style={{ color: "#10B981", fontSize: 16 }}>check</span> {car.bags} bags</li>
+                       <li style={{ display: "flex", gap: 8, fontSize: 12, color: "#475569", marginBottom: 4 }}><span className="material-symbols-rounded" style={{ color: "#10B981", fontSize: 16 }}>check</span> AC</li>
+                       
+                       <li style={{ display: "flex", gap: 8, fontSize: 12, color: "#64748B" }}><span className="material-symbols-rounded" style={{ color: "#EF4444", fontSize: 16 }}>close</span> Beyond package km charged at ₹{car.limitRate}/km after {km} km</li>
+                       <li style={{ display: "flex", gap: 8, fontSize: 12, color: "#64748B" }}><span className="material-symbols-rounded" style={{ color: "#EF4444", fontSize: 16 }}>close</span> Airport Entry/Parking</li>
+                    </ul>
+                  </div>
+                </details>
               </div>
             );
           })}
@@ -342,7 +427,7 @@ export default function SearchResults() {
               <span className="material-symbols-rounded icon-filled" style={{ fontSize: 18 }}>call</span> 82009 09915
             </a>
             <a href="https://wa.me/918200909915" target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", gap: 7, background: "#25d366", color: "#fff", padding: "11px 20px", borderRadius: 10, fontWeight: 700, fontSize: 13, textDecoration: "none" }}>
-              <span className="material-symbols-rounded icon-filled" style={{ fontSize: 18 }}>chat</span> WhatsApp
+              <WhatsAppIcon size={18} /> WhatsApp
             </a>
           </div>
         </div>

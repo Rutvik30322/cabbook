@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FileText, Briefcase, GraduationCap, Globe, Building, BookOpen, Clock, Check, Phone, MessageCircle } from "lucide-react";
 import SEO from "@/components/SEO";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 const visaServices = [
   {
@@ -260,7 +261,7 @@ export default function VisaPage() {
               <Phone size={15} /> 82009 09915
             </a>
             <a href="https://wa.me/918200909915?text=Hi, I need visa assistance" target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", gap: 8, background: "#25d366", color: "#fff", padding: "12px 24px", borderRadius: 10, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>
-              <MessageCircle size={15} /> WhatsApp
+              <WhatsAppIcon size={15} /> WhatsApp
             </a>
           </div>
         </div>

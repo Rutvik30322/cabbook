@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import BookingWidget from "@/components/BookingWidget";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import SEO from "@/components/SEO";
 import taxiImage from "../assets/premium_taxi_fleet.png";
 import busImage from "../assets/luxury_bus.png";
@@ -27,6 +28,7 @@ const services = [
   { icon: "directions_bus", label: "Luxury Bus", desc: "Premium AC buses for weddings, corporate & tours", color: "#D97706", bg: "#FFFBEB", href: "/services", img: busImage },
   { icon: "hotel", label: "Hotel Booking", desc: "Best deals across India — budget to luxury, no hidden costs", color: "#059669", bg: "#ECFDF5", href: "/services", img: hotelImage },
   { icon: "travel_explore", label: "Tour Packages", desc: "Curated holidays — domestic & international all-inclusive", color: "#DC2626", bg: "#FEF2F2", href: "/packages", img: tourImage },
+  { icon: "airplane_ticket", label: "Flight & Train", desc: "Domestic & International flight tickets and IRCTC train bookings", color: "#059669", bg: "#ECFDF5", href: "/services", img: "/flight_train_card.png" },
   { icon: "article", label: "Visa & Passport", desc: "Full visa, passport & immigration assistance", color: "#0891B2", bg: "#ECFEFF", href: "/services", img: visaImage },
 ];
 
@@ -402,9 +404,19 @@ export default function HomePage() {
                       </span>
                     </div>
                   </div>
-                  <div style={{ borderTop: "1px solid #F1F5F9", paddingTop: 16, display: "flex", justifyContent: "flex-end", alignItems: "baseline", gap: 5 }}>
-                    <div style={{ color: "#D97706", fontWeight: 900, fontSize: 24, lineHeight: 1 }}>{r.price}</div>
-                    <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 600 }}>One Way</div>
+                  <div style={{ borderTop: "1px solid #F1F5F9", paddingTop: 16, display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
+                    <button onClick={() => { 
+                      const msg = encodeURIComponent(`Hello! I'm looking for a cab from Vadodara to ${r.to}.`);
+                      window.open(`https://wa.me/918200909915?text=${msg}`, '_blank');
+                    }} style={{
+                      display: "flex", alignItems: "center", gap: 6, padding: "10px 18px",
+                      borderRadius: 10, fontWeight: 700, fontSize: 13, border: "none",
+                      background: "linear-gradient(135deg, #D97706, #F59E0B)", color: "#1a1a2e",
+                      cursor: "pointer", fontFamily: "'Poppins', sans-serif", width: "100%", justifyContent: "center"
+                    }}>
+                      <WhatsAppIcon size={16} />
+                      Enquire on WhatsApp
+                    </button>
                   </div>
                 </div>
               </div>
@@ -531,9 +543,7 @@ export default function HomePage() {
               <span style={{ display: "block", paddingTop: 1 }}>Call: 82009 09915</span>
             </a>
             <a href="https://wa.me/918200909915?text=Hi, I want to book a cab" target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "#25d366", color: "#fff", padding: "14px 32px", borderRadius: 12, fontWeight: 700, fontSize: 16, textDecoration: "none", boxShadow: "0 4px 15px rgba(37,211,102,0.4)", letterSpacing: "0.5px" }}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" style={{ display: "block" }}>
-                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-              </svg>
+              <WhatsAppIcon size={20} />
               <span style={{ display: "block", paddingTop: 1 }}>WhatsApp Us</span>
             </a>
           </div>

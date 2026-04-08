@@ -1,4 +1,5 @@
 import { useState } from "react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 export default function FloatingContact() {
   const [isOpen, setIsOpen] = useState(true);
@@ -82,7 +83,7 @@ export default function FloatingContact() {
 
       <div className="floating-contact-container">
         <a href="https://wa.me/918200909915" target="_blank" rel="noreferrer" className={`float-btn sub-btn wa-btn ${isOpen ? 'open' : ''}`} title="WhatsApp Us">
-          <span className="material-symbols-rounded icon-filled" style={{ fontSize: 30 }}>chat</span>
+          <WhatsAppIcon size={30} />
         </a>
         
         <a href="tel:+918200909915" className={`float-btn sub-btn call-btn ${isOpen ? 'open' : ''}`} title="Call Us">

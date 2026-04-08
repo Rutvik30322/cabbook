@@ -14,13 +14,13 @@ export default function Footer() {
 
         {/* Brand Container */}
         <div>
-          <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 20 }}>
-            <div style={{ background: "rgba(255,255,255,0.03)", padding: "10px", borderRadius: "16px", border: "1px solid rgba(245,158,11,0.2)" }}>
-              <img src="/new-logo.png" alt="Divyakshi Logo" style={{ height: 55, objectFit: "contain", display: "block" }} />
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+            <div style={{ background: "rgba(255,255,255,0.03)", padding: "6px 8px", borderRadius: "12px", border: "1px solid rgba(245,158,11,0.2)", flexShrink: 0 }}>
+              <img src="/new-logo.png" alt="Divyakshi Logo" style={{ height: 52, objectFit: "contain", display: "block" }} />
             </div>
-            <div>
-              <div style={{ color: "#F59E0B", fontWeight: 900, fontSize: 19, letterSpacing: 1.5, textShadow: "0 2px 10px rgba(245,158,11,0.3)", lineHeight: 1.1 }}>DIVYAKSHI</div>
-              <div style={{ fontSize: 9, letterSpacing: 2.5, color: "#94A3B8", fontWeight: 700, marginTop: 4 }}>TOURS & TRAVELS</div>
+            <div style={{ minWidth: 0, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+              <div style={{ background: "linear-gradient(to right, #FCD34D, #F59E0B, #D97706)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontWeight: 900, fontSize: 18, letterSpacing: 0.5, filter: "drop-shadow(0 2px 10px rgba(245,158,11,0.3))", lineHeight: 1.1, whiteSpace: "nowrap" }}>DIVYAKSHI CABS</div>
+              <div style={{ color: "#F8FAFC", fontSize: 7.5, letterSpacing: 1.5, fontWeight: 700, opacity: 0.8, whiteSpace: "nowrap", marginTop: 2 }}>UNIT OF DIVYAKSHI TOURS & TRAVELS</div>
             </div>
           </div>
           <p style={{ fontSize: 13.5, lineHeight: 1.8, color: "#94A3B8", marginBottom: 22 }}>
@@ -119,7 +119,18 @@ export default function Footer() {
           {[
             {
               icon: "location_on",
-              content: <span>414, 4th Floor, Sakar Complex,<br />Opp. Bansal Mall, Tarsali,<br />Vadodara, Gujarat – 390009</span>,
+              content: (
+                <a 
+                  href="https://www.google.com/maps?q=414,+Sakar+Complex,+Opp.+Bansal+Mall,+Tarsali,+Vadodara,+Gujarat+390009" 
+                  target="_blank" 
+                  rel="noreferrer"
+                  style={{ color: "inherit", textDecoration: "none", transition: "color 0.3s" }}
+                  onMouseEnter={e => e.currentTarget.style.color = "#fff"}
+                  onMouseLeave={e => e.currentTarget.style.color = "inherit"}
+                >
+                  414, 4th Floor, Sakar Complex,<br />Opp. Bansal Mall, Tarsali,<br />Vadodara, Gujarat – 390009
+                </a>
+              ),
             },
             {
               icon: "call",

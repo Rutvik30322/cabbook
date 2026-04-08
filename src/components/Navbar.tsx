@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
+
 
 const navLinks = [
   { href: "/", label: "Home", icon: "home" },
@@ -77,10 +79,19 @@ export default function Navbar() {
           .nav-logo-title { font-size: 17px; letter-spacing: 0px; }
           .nav-logo-subtitle { font-size: 7.5px; letter-spacing: 1px; }
         }
+        @media (max-width: 768px) {
+          .nav-logo-title { font-size: 16px; letter-spacing: 0px; }
+          .nav-logo-subtitle { font-size: 7px; letter-spacing: 0.5px; }
+          .nav-logo-img { height: 48px; }
+          .nav-call-btn { padding: 8px 10px !important; border-radius: 8px !important; }
+          .nav-call-btn .material-symbols-rounded { font-size: 22px !important; }
+        }
         @media (max-width: 480px) {
-          .nav-logo-title { font-size: 15px; letter-spacing: 0.5px; }
-          .nav-logo-subtitle { font-size: 8px; letter-spacing: 2px; }
-          .nav-logo-img { height: 45px; }
+          .nav-logo-title { font-size: 14px; letter-spacing: 0; }
+          .nav-logo-subtitle { font-size: 6px; letter-spacing: 0; }
+          .nav-logo-img { height: 42px; }
+          .nav-call-btn { padding: 8px !important; }
+          .nav-call-btn .material-symbols-rounded { font-size: 20px !important; }
           .hide-mobile, .hide-on-mobile { display: none !important; }
           .hide-on-desktop { display: inline-block !important; }
         }
@@ -198,11 +209,11 @@ export default function Navbar() {
         <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 20px", height: 76, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
 
           {/* Logo */}
-          <Link href="/" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
-            <img src="/new-logo.png" alt="Divyakshi Logo" className="nav-logo-img" />
-            <div>
-              <div className="nav-logo-title">DIVYAKSHI CABS</div>
-              <div className="nav-logo-subtitle">UNIT OF DIVYAKSHI TOURS & TRAVELS</div>
+          <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", minWidth: 0, flexShrink: 1, marginRight: 10, maxWidth: "100%" }}>
+            <img src="/new-logo.png" alt="Divyakshi Logo" className="nav-logo-img" style={{ flexShrink: 0 }} />
+            <div style={{ minWidth: 0, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+              <div className="nav-logo-title" style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>DIVYAKSHI CABS</div>
+              <div className="nav-logo-subtitle" style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>UNIT OF DIVYAKSHI TOURS & TRAVELS</div>
             </div>
           </Link>
 
@@ -229,8 +240,8 @@ export default function Navbar() {
           </div>
 
           {/* Right side */}
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <a href="tel:+918200909915" className="nav-call-btn" style={{ padding: "8px 16px", fontSize: 13, whiteSpace: "nowrap" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+            <a href="tel:+918200909915" className="nav-call-btn">
               <span className="material-symbols-rounded icon-filled" style={{ fontSize: 18 }}>call</span>
               <span className="desktop-nav">82009 09915</span>
             </a>
@@ -280,7 +291,7 @@ export default function Navbar() {
                 <span className="material-symbols-rounded icon-filled" style={{ fontSize: 18 }}>call</span> Call Now
               </a>
               <a href="https://wa.me/918200909915" target="_blank" rel="noreferrer" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 7, background: "#25d366", color: "#fff", padding: "11px", borderRadius: 10, fontWeight: 800, fontSize: 13, fontFamily: "'Poppins',sans-serif", textDecoration: "none" }}>
-                <span className="material-symbols-rounded icon-filled" style={{ fontSize: 18 }}>chat</span> WhatsApp
+                <WhatsAppIcon size={18} /> WhatsApp
               </a>
             </div>
           </div>
