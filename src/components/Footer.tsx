@@ -131,7 +131,7 @@ export default function Footer() {
             },
             {
               icon: "schedule",
-              content: <span>Mon–Sat: 9 AM – 8 PM<br />Sunday: 10 AM – 4 PM</span>,
+              content: <span>Mon–Sat: 9 AM – 8 PM<br />Sunday: 10 AM – 6 PM</span>,
             },
           ].map((item, i) => (
             <div key={i} style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 18 }}>

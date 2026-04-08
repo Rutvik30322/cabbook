@@ -1,4 +1,5 @@
-import { Switch, Route, Router as WouterRouter } from "wouter";
+import { useEffect } from "react";
+import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HomePage from "@/pages/HomePage";
@@ -13,9 +14,18 @@ import NotFound from "@/pages/not-found";
 import BookingPopup from "@/components/BookingPopup";
 import FloatingContact from "@/components/FloatingContact";
 
+function ScrollToTop() {
+  const [location] = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+  return null;
+}
+
 function Router() {
   return (
     <>
+      <ScrollToTop />
       <Navbar />
       <Switch>
         <Route path="/" component={HomePage} />

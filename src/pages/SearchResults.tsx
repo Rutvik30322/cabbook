@@ -80,6 +80,9 @@ export default function SearchResults() {
   const date = params.get("date") || "";
   const phone = params.get("phone") || "";
   const tripType = params.get("tripType") || "oneway";
+  const airportTrip = params.get("airportTrip") || "";
+  const airportName = params.get("airportName") || "";
+  const airportTime = params.get("airportTime") || "";
 
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [confirmed, setConfirmed] = useState<number | null>(null);
@@ -108,6 +111,7 @@ export default function SearchResults() {
   const tripLabel: Record<string, string> = {
     oneway: "One Way", roundtrip: "Round Trip",
     outstation: "Outstation", local: "Local/Hourly",
+    airport: "Airport Transfer",
   };
 
   const estKm: Record<string, number> = {
@@ -160,22 +164,41 @@ export default function SearchResults() {
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.07)", borderRadius: 10, padding: "8px 16px" }}>
-              <span className="material-symbols-rounded icon-filled" style={{ fontSize: 18, color: "#F59E0B" }}>trip_origin</span>
+              <span className="material-symbols-rounded icon-filled" style={{ fontSize: 18, color: "#F59E0B" }}>
+                {tripType === "airport" ? "my_location" : "trip_origin"}
+              </span>
               <span style={{ color: "#fff", fontWeight: 700, fontSize: 14 }}>{from}</span>
             </div>
-            <span className="material-symbols-rounded icon-filled" style={{ fontSize: 22, color: "#F59E0B" }}>arrow_forward</span>
+            <span className="material-symbols-rounded icon-filled" style={{ fontSize: 22, color: "#F59E0B" }}>
+              {tripType === "airport" ? "flight_takeoff" : "arrow_forward"}
+            </span>
             <div style={{ display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.07)", borderRadius: 10, padding: "8px 16px" }}>
-              <span className="material-symbols-rounded icon-filled" style={{ fontSize: 18, color: "#22c55e" }}>location_on</span>
-              <span style={{ color: "#fff", fontWeight: 700, fontSize: 14 }}>{to}</span>
+              <span className="material-symbols-rounded icon-filled" style={{ fontSize: 18, color: "#22c55e" }}>
+                {tripType === "airport" ? "flight" : "location_on"}
+              </span>
+              <span style={{ color: "#fff", fontWeight: 700, fontSize: 14 }}>
+                {tripType === "airport" ? (airportName || to) : to}
+              </span>
             </div>
+            {tripType === "airport" && airportTrip && (
+              <div style={{ background: "rgba(59,130,246,0.15)", color: "#93C5FD", borderRadius: 20, padding: "5px 14px", fontSize: 12, fontWeight: 700, border: "1px solid rgba(59,130,246,0.3)" }}>
+                ✈ {airportTrip}
+              </div>
+            )}
             {date && (
               <div style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(255,255,255,0.07)", borderRadius: 10, padding: "8px 14px" }}>
                 <span className="material-symbols-rounded icon-filled" style={{ fontSize: 16, color: "#94A3B8" }}>calendar_today</span>
                 <span style={{ color: "#94A3B8", fontSize: 13 }}>{date}</span>
               </div>
             )}
+            {airportTime && (
+              <div style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(255,255,255,0.07)", borderRadius: 10, padding: "8px 14px" }}>
+                <span className="material-symbols-rounded icon-filled" style={{ fontSize: 16, color: "#94A3B8" }}>schedule</span>
+                <span style={{ color: "#94A3B8", fontSize: 13 }}>{airportTime}</span>
+              </div>
+            )}
             <div style={{ background: "rgba(245,158,11,0.15)", color: "#F59E0B", borderRadius: 20, padding: "5px 14px", fontSize: 12, fontWeight: 700, border: "1px solid rgba(245,158,11,0.3)" }}>
-              {tripLabel[tripType]} · ~{km} km
+              {tripLabel[tripType] || tripType} · ~{km} km
             </div>
           </div>
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: 6, color: "#64748B", fontSize: 13, fontWeight: 600, textDecoration: "none" }}

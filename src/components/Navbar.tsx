@@ -31,19 +31,21 @@ export default function Navbar() {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           font-weight: 900;
-          font-size: 25px;
-          letter-spacing: 2px;
+          font-size: 19px;
+          letter-spacing: 1px;
           line-height: 1.1;
           font-family: 'Poppins',sans-serif;
           filter: drop-shadow(0 2px 10px rgba(245,158,11,0.3));
+          white-space: nowrap;
         }
         .nav-logo-subtitle {
           color: #F8FAFC;
-          font-size: 10px;
-          letter-spacing: 4px;
+          font-size: 8.5px;
+          letter-spacing: 2px;
           font-weight: 700;
           font-family: 'Poppins',sans-serif;
           opacity: 0.8;
+          white-space: nowrap;
         }
         .nav-logo-img {
           height: 64px;
@@ -71,8 +73,12 @@ export default function Navbar() {
           transform: translateY(-2px);
           box-shadow: 0 8px 25px rgba(245,158,11,0.45);
         }
+        @media (max-width: 1100px) {
+          .nav-logo-title { font-size: 17px; letter-spacing: 0px; }
+          .nav-logo-subtitle { font-size: 7.5px; letter-spacing: 1px; }
+        }
         @media (max-width: 480px) {
-          .nav-logo-title { font-size: 17px; letter-spacing: 1px; }
+          .nav-logo-title { font-size: 15px; letter-spacing: 0.5px; }
           .nav-logo-subtitle { font-size: 8px; letter-spacing: 2px; }
           .nav-logo-img { height: 45px; }
           .hide-mobile, .hide-on-mobile { display: none !important; }
@@ -87,20 +93,31 @@ export default function Navbar() {
       <div style={{
         background: "linear-gradient(to right, #0F172A, #0f0c29)",
         borderBottom: "1px solid rgba(245,158,11,0.15)",
-        padding: "8px 16px 8px 20px", display: "flex", justifyContent: "space-between", alignItems: "center",
+        padding: "7px 16px 7px 20px", display: "flex", justifyContent: "space-between", alignItems: "center",
         position: "relative", zIndex: 10000, gap: 5
       }}>
-        {/* Download App Link (Left) */}
+
+        {/* Download App — Google Play Badge style */}
         <Link href="/download-app" style={{
-          display: "flex", alignItems: "center", gap: 6,
-          color: "#FFFFFF", fontSize: 13, fontWeight: 700, textDecoration: "none",
-          fontFamily: "'Poppins', sans-serif", flexShrink: 0,
-          opacity: 0.9
+          display: "flex", alignItems: "center", gap: 7,
+          background: "#000", border: "1px solid rgba(255,255,255,0.18)",
+          borderRadius: 8, padding: "4px 10px 4px 7px",
+          textDecoration: "none", flexShrink: 0, transition: "border-color 0.2s",
         }}
-        onMouseEnter={(e: any) => { e.currentTarget.style.color = "#FCD34D"; e.currentTarget.style.opacity = "1"; }}
-        onMouseLeave={(e: any) => { e.currentTarget.style.color = "#FFFFFF"; e.currentTarget.style.opacity = "0.9"; }}>
-          <span className="material-symbols-rounded icon-filled" style={{ fontSize: 16 }}>smartphone</span>
-          <span className="hide-mobile">Download App</span>
+        onMouseEnter={(e: any) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.45)"}
+        onMouseLeave={(e: any) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.18)"}>
+          {/* Google Play colorful triangle logo */}
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{ width: 20, height: 20, flexShrink: 0 }}>
+            <path fill="#ea4335" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z"/>
+            <path fill="#fbbc04" d="M27.2 0C17.5 4.3 10.5 14.2 10.5 26.6v458.8c0 12.4 7 22.3 16.7 26.6l2.4 1.4 257-257v-6.1L29.6-1.4 27.2 0z"/>
+            <path fill="#4285f4" d="M385.4 174.2L325.3 234.3v6.1l60.1 60.1 1.4-.8 71.2-40.5c20.3-11.5 20.3-30.2 0-41.7l-71.2-40.5-1.4-.8z"/>
+            <path fill="#34a853" d="M386.8 300.6L27.2 499c-9.7 4.3-16.7 14.2-16.7 26.6l258.4-257.6L386.8 300.6z"/>
+          </svg>
+          <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.15 }}>
+            <span style={{ color: "#aaa", fontSize: 8, fontFamily: "'Poppins',sans-serif", letterSpacing: 0.3 }}>GET IT ON</span>
+            <span style={{ color: "#fff", fontSize: 12, fontWeight: 700, fontFamily: "'Poppins',sans-serif", whiteSpace: "nowrap" }} className="hide-mobile">Google Play</span>
+            <span style={{ color: "#fff", fontSize: 11, fontWeight: 700, fontFamily: "'Poppins',sans-serif" }} className="hide-on-desktop">Play</span>
+          </div>
         </Link>
 
         {/* Worldwide Packages Link (Center) */}
@@ -120,28 +137,55 @@ export default function Navbar() {
           <span className="material-symbols-rounded" style={{ fontSize: 15, color: "#FCD34D", flexShrink: 0 }}>arrow_forward</span>
         </a>
 
-        {/* Social Links (Right) */}
-        <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0, paddingRight: 10 }}>
-          <a href="https://www.facebook.com/share/1Ac7amQYbk/?mibextid=wwXIfr" target="_blank" rel="noreferrer" style={{
-            display: "flex", alignItems: "center", color: "#E2E8F0", textDecoration: "none", transition: "color 0.3s"
-          }}
-          onMouseEnter={(e: any) => e.currentTarget.style.color = "#4267B2"}
-          onMouseLeave={(e: any) => e.currentTarget.style.color = "#E2E8F0"}>
-            <svg style={{ width: 17, height: 17, fill: "currentColor" }} viewBox="0 0 24 24">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        {/* Social Links (Right) — full brand colors, 26px icons */}
+        <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+
+          {/* WhatsApp */}
+          <a href="https://wa.me/918200909915" target="_blank" rel="noreferrer" title="WhatsApp"
+            style={{ display: "flex", alignItems: "center", textDecoration: "none", transition: "transform 0.2s" }}
+            onMouseEnter={(e: any) => e.currentTarget.style.transform = "scale(1.18)"}
+            onMouseLeave={(e: any) => e.currentTarget.style.transform = "scale(1)"}>
+            <svg viewBox="0 0 32 32" style={{ width: 26, height: 26 }} xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="16" fill="#25D366"/>
+              <path fill="#fff" d="M23.5 19.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6 0-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.4.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.2.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.8-1.3.2-.7.2-1.2.1-1.3-.1-.2-.2-.3-.6-.5z"/>
             </svg>
           </a>
-          <a href="https://www.instagram.com/divyakshi_tours_and_travels?igsh=MWFhbzBrajl0YWR1ag==" target="_blank" rel="noreferrer" style={{
-            display: "flex", alignItems: "center", color: "#E2E8F0", textDecoration: "none", transition: "color 0.3s"
-          }}
-          onMouseEnter={(e: any) => e.currentTarget.style.color = "#E1306C"}
-          onMouseLeave={(e: any) => e.currentTarget.style.color = "#E2E8F0"}>
-            <svg style={{ width: 17, height: 17, fill: "currentColor" }} viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+
+          {/* Facebook */}
+          <a href="https://www.facebook.com/share/1Ac7amQYbk/?mibextid=wwXIfr" target="_blank" rel="noreferrer" title="Facebook"
+            style={{ display: "flex", alignItems: "center", textDecoration: "none", transition: "transform 0.2s" }}
+            onMouseEnter={(e: any) => e.currentTarget.style.transform = "scale(1.18)"}
+            onMouseLeave={(e: any) => e.currentTarget.style.transform = "scale(1)"}>
+            <svg viewBox="0 0 32 32" style={{ width: 26, height: 26 }} xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="16" fill="#1877F2"/>
+              <path fill="#fff" d="M20.5 16H18v-1.8c0-.7.4-1.1 1.2-1.1H20.5V10.3S19.4 10 18.1 10c-2.5 0-4 1.5-4 4.2V16H12v3h2.1v8H17v-8h2.1l.4-3z"/>
             </svg>
           </a>
+
+          {/* Instagram */}
+          <a href="https://www.instagram.com/divyakshi_tours_and_travels?igsh=MWFhbzBrajl0YWR1ag==" target="_blank" rel="noreferrer" title="Instagram"
+            style={{ display: "flex", alignItems: "center", textDecoration: "none", transition: "transform 0.2s" }}
+            onMouseEnter={(e: any) => e.currentTarget.style.transform = "scale(1.18)"}
+            onMouseLeave={(e: any) => e.currentTarget.style.transform = "scale(1)"}>
+            <svg viewBox="0 0 32 32" style={{ width: 26, height: 26 }} xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="ig2" cx="25%" cy="110%" r="140%">
+                  <stop offset="0%" stopColor="#fdf497"/>
+                  <stop offset="20%" stopColor="#fd5949"/>
+                  <stop offset="60%" stopColor="#d6249f"/>
+                  <stop offset="100%" stopColor="#285AEB"/>
+                </radialGradient>
+              </defs>
+              <circle cx="16" cy="16" r="16" fill="url(#ig2)"/>
+              <rect x="9" y="9" width="14" height="14" rx="4.5" stroke="#fff" strokeWidth="2" fill="none"/>
+              <circle cx="16" cy="16" r="3.5" stroke="#fff" strokeWidth="2" fill="none"/>
+              <circle cx="21" cy="11" r="1.1" fill="#fff"/>
+            </svg>
+          </a>
+
         </div>
       </div>
+
 
       <nav style={{
         position: "sticky", top: 0, zIndex: 9999,
@@ -157,19 +201,19 @@ export default function Navbar() {
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
             <img src="/new-logo.png" alt="Divyakshi Logo" className="nav-logo-img" />
             <div>
-              <div className="nav-logo-title">DIVYAKSHI</div>
-              <div className="nav-logo-subtitle">TOURS & TRAVELS</div>
+              <div className="nav-logo-title">DIVYAKSHI CABS</div>
+              <div className="nav-logo-subtitle">UNIT OF DIVYAKSHI TOURS & TRAVELS</div>
             </div>
           </Link>
 
           {/* Desktop nav */}
-          <div className="desktop-nav" style={{ display: "flex", alignItems: "center", gap: 2 }}>
+          <div className="desktop-nav" style={{ display: "flex", alignItems: "center", gap: 0 }}>
             {navLinks.map(l => {
               const active = location === l.href;
               return (
                 <Link key={l.href} href={l.href} style={{
-                  display: "flex", alignItems: "center", gap: 6, padding: "8px 16px", borderRadius: 10,
-                  fontSize: 14, fontWeight: 600, fontFamily: "'Poppins',sans-serif",
+                  display: "flex", alignItems: "center", gap: 4, padding: "8px 10px", borderRadius: 10,
+                  fontSize: 13, fontWeight: 600, fontFamily: "'Poppins',sans-serif", whiteSpace: "nowrap",
                   color: active ? "#FCD34D" : "#E2E8F0",
                   background: active ? "rgba(245,158,11,0.15)" : "transparent",
                   borderBottom: active ? "2px solid #FCD34D" : "2px solid transparent",
@@ -185,9 +229,9 @@ export default function Navbar() {
           </div>
 
           {/* Right side */}
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <a href="tel:+918200909915" className="nav-call-btn">
-              <span className="material-symbols-rounded icon-filled" style={{ fontSize: 20 }}>call</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <a href="tel:+918200909915" className="nav-call-btn" style={{ padding: "8px 16px", fontSize: 13, whiteSpace: "nowrap" }}>
+              <span className="material-symbols-rounded icon-filled" style={{ fontSize: 18 }}>call</span>
               <span className="desktop-nav">82009 09915</span>
             </a>
             {/* Hamburger */}

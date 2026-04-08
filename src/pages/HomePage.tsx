@@ -110,7 +110,12 @@ export default function HomePage() {
 
       <style>{`
         .hero-section {
-          padding: 14px 16px 8px;
+          padding: 14px 40px 16px;
+          min-height: 88vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          background-attachment: scroll;
         }
         .hero-title-container {
           margin-bottom: 2px;
@@ -139,6 +144,12 @@ export default function HomePage() {
           margin-top: 4px;
           margin-bottom: 0;
           line-height: 1.4;
+        }
+        @media (max-width: 1024px) {
+          .hero-section {
+            min-height: 75vh;
+            padding: 14px 20px 16px;
+          }
         }
         @media (max-width: 480px) {
           .hero-section {
@@ -172,14 +183,14 @@ export default function HomePage() {
 
       {/* HERO */}
       <section className="hero-section" style={{
-        background: "linear-gradient(135deg, rgba(15,12,41,0.85) 0%, rgba(15,23,42,0.75) 40%, rgba(15,52,96,0.85) 100%), url('/tempo_traveller_hero.png') center/cover",
+        background: "linear-gradient(to bottom, rgba(5,5,15,0.40) 0%, rgba(5,5,15,0.18) 45%, rgba(5,5,15,0.42) 100%), url('/hero_banner.png') center center / cover no-repeat",
         position: "relative", overflow: "visible"
       }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 15% 50%, rgba(245,158,11,0.12) 0%, transparent 45%), radial-gradient(circle at 85% 25%, rgba(37,99,235,0.08) 0%, transparent 40%)" }} />
         <div style={{ position: "absolute", top: 40, right: "8%", width: 140, height: 140, border: "2px solid rgba(245,158,11,0.15)", borderRadius: "50%" }} />
         <div style={{ position: "absolute", bottom: 20, left: "4%", width: 90, height: 90, border: "2px solid rgba(245,158,11,0.1)", borderRadius: "50%" }} />
 
-        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", position: "relative" }}>
           <div className="hero-title-container" style={{ textAlign: "center" }}>
             {/* Service Name — like divyakshicabs.in */}
             <div className="hero-tagline">
@@ -187,34 +198,45 @@ export default function HomePage() {
               <span style={{
                 color: "#FCD34D", fontWeight: 700,
                 textTransform: "uppercase", fontFamily: "'Poppins', sans-serif",
-                opacity: 0.9,
+                textShadow: "0 2px 12px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,1)",
               }}>Vadodara's #1 Cab Service</span>
               <div style={{ height: 2, width: 40, background: "linear-gradient(to left, transparent, #F59E0B)" }} />
             </div>
 
             {/* Big Service Brand Name */}
-            <div style={{ marginBottom: 6 }}>
+            <div style={{ marginBottom: 4, display: "flex", flexDirection: "column", alignItems: "center" }}>
               <span className="hero-brand-name" style={{
                 display: "inline-block",
                 background: "linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #D97706 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 fontWeight: 900,
-                lineHeight: 1,
+                lineHeight: 1.1,
                 fontFamily: "'Poppins', sans-serif",
-                filter: "drop-shadow(0 4px 20px rgba(245,158,11,0.4))",
+                filter: "drop-shadow(0 2px 16px rgba(0,0,0,0.95)) drop-shadow(0 6px 24px rgba(245,158,11,0.5))",
               }}>DIVYAKSHI CABS</span>
+              <span style={{ 
+                color: "#FFFFFF", 
+                letterSpacing: "4px", 
+                fontSize: "clamp(10px, 3vw, 15px)", 
+                fontWeight: 800, 
+                marginTop: 0,
+                fontFamily: "'Poppins', sans-serif",
+                textShadow: "0 3px 12px rgba(0,0,0,1), 0 1px 4px rgba(0,0,0,0.9)"
+              }}>UNIT OF DIVYAKSHI TOURS & TRAVELS</span>
             </div>
 
-            <div className="hero-badge" style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(245,158,11,0.15)", border: "1px solid rgba(245,158,11,0.3)", color: "#FCD34D", borderRadius: 30, fontSize: 12, fontWeight: 700, letterSpacing: 1 }}>
+            <div className="hero-badge" style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(10,10,20,0.60)", border: "1px solid rgba(245,158,11,0.55)", color: "#FCD34D", borderRadius: 30, fontSize: 12, fontWeight: 700, letterSpacing: 1, backdropFilter: "blur(6px)", textShadow: "0 1px 6px rgba(0,0,0,0.8)" }}>
               <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14 }}>verified</span>
               Taxi &nbsp;•&nbsp; Tours &nbsp;•&nbsp; Visa &nbsp;•&nbsp; Hotels
               <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14 }}>verified</span>
             </div>
 
-            <h1 className="hero-subtitle" style={{ color: "#CBD5E1", fontWeight: 500, lineHeight: 1.4, marginBottom: 0 }}>
+            <h1 className="hero-subtitle" style={{ color: "#F1F5F9", fontWeight: 600, lineHeight: 1.4, marginBottom: 0, textShadow: "0 2px 12px rgba(0,0,0,0.95), 0 1px 4px rgba(0,0,0,1)" }}>
               Book Your Perfect Ride from{" "}
-              <span style={{ color: "#F59E0B", fontWeight: 700 }}>Vadodara</span>
+              <span style={{ color: "#FBBF24", fontWeight: 800, textShadow: "0 2px 12px rgba(0,0,0,0.95)" }}>Vadodara</span>
+              {" "}|{" "}
+              <span style={{ color: "#86EFAC", fontWeight: 700, textShadow: "0 2px 12px rgba(0,0,0,0.95)" }}>All India Service</span>
               {" "}— Fast, Safe & Affordable
             </h1>
           </div>

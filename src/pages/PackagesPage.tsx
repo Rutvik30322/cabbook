@@ -111,15 +111,24 @@ export default function PackagesPage() {
             <span style={{ color: "#FCD34D", fontSize: 11, fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase" }}>Tours & Packages</span>
             <div style={{ height: 2, width: 30, background: "linear-gradient(to left, transparent, #F59E0B)" }} />
           </div>
-          <div style={{ marginBottom: 10 }}>
+          <div style={{ marginBottom: 4, display: "flex", flexDirection: "column", alignItems: "center" }}>
             <span style={{
               display: "inline-block",
               background: "linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #D97706 100%)",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
               fontSize: "clamp(28px, 5vw, 52px)", fontWeight: 900, letterSpacing: "clamp(2px,0.4vw,5px)",
-              lineHeight: 1, fontFamily: "'Poppins', sans-serif",
+              lineHeight: 1.1, fontFamily: "'Poppins', sans-serif",
               filter: "drop-shadow(0 3px 15px rgba(245,158,11,0.4))",
             }}>DIVYAKSHI CABS</span>
+            <span style={{ 
+              color: "#FFFFFF", 
+              letterSpacing: "4px", 
+              fontSize: "clamp(10px, 3vw, 15px)", 
+              fontWeight: 800, 
+              marginTop: 0,
+              fontFamily: "'Poppins', sans-serif",
+              textShadow: "0 3px 12px rgba(0,0,0,1), 0 1px 4px rgba(0,0,0,0.9)"
+            }}>UNIT OF DIVYAKSHI TOURS & TRAVELS</span>
           </div>
           <div className="section-badge" style={{ background: "rgba(245,158,11,0.15)", color: "#FCD34D", border: "1px solid rgba(245,158,11,0.3)", marginBottom: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
             <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14 }}>luggage</span>

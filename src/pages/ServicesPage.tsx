@@ -3,6 +3,7 @@ import busImage from "../assets/luxury_bus.png";
 import hotelImage from "../assets/Luxury Rambagh Palace Jaipur India _ Royal Palace Hotel for Foreign Tourists.jpg";
 import tourImage from "../assets/Neon7 Tour & Travel Agency – Best Travel Packages in Indore, MP.jpg";
 import visaImage from "../assets/download.jpg";
+import flightTrainImg from "../assets/flight_train_banner.png";
 import SEO from "@/components/SEO";
 
 const services = [
@@ -11,7 +12,7 @@ const services = [
     title: "Local & Outstation Taxi",
     img: taxiImage,
     desc: "Book reliable, comfortable taxis for local rides, airport transfers, and outstation trips.",
-    features: ["AC & Non-AC options", "Airport pickup & drop", "24/7 availability", "Sanitized vehicles", "Online booking"],
+    features: ["Sedan/Premium Sedan","SUV/Premium SUV","AC & Non-AC options", "Airport pickup & drop", "24/7 availability", "Sanitized vehicles", "Online booking"],
     price: "Starting ₹11/km",
   },
   {
@@ -19,7 +20,7 @@ const services = [
     title: "Tempo Traveller",
     img: "/tempo_traveller_card.png",
     desc: "Perfect for group travel, family outings, corporate trips, and pilgrimages with ample luggage space.",
-    features: ["9, 12, 14, 16 seater", "All-India permit", "Pilgrimage tours", "Corporate travel", "Wedding transport"],
+    features: ["10, 12, 14, 17, 20, 25 seater", "All-India permit", "Pilgrimage tours", "Corporate travel", "Wedding transport"],
     price: "Starting ₹22/km",
   },
   {
@@ -27,14 +28,14 @@ const services = [
     title: "Luxury Bus Rental",
     img: busImage,
     desc: "Premium luxury buses for weddings, corporate events, school trips, and large group travel.",
-    features: ["20–50 seater", "AC & entertainment", "School tours", "Wedding events", "Corporate outings"],
-    price: "Call for pricing",
+    features: ["20–56 seater - Sleeper", "AC - Non AC & entertainment", "School tours", "Wedding events", "Corporate tours","Pilgrimage tours"],
+    price: "Starting ₹45/km",
   },
   {
     icon: "hotel", color: "#059669", bg: "#ECFDF5",
     title: "Hotel Bookings",
     img: hotelImage,
-    desc: "Best hotel deals handpicked for you — from budget stays to luxury resorts across India.",
+    desc: "Best hotel deals handpicked for you — from budget stays to luxury resorts across India.(3,4,5 Star Hotels)",
     features: ["Budget to Luxury", "Pan-India coverage", "Honeymoon packages", "Group discounts", "Best price guarantee"],
     price: "Best price guaranteed",
   },
@@ -51,11 +52,12 @@ const services = [
     title: "Visa & Passport",
     img: visaImage,
     desc: "Full visa, passport, and immigration assistance for domestic and international travel.",
-    features: ["Visa assistance", "Passport services", "Document verification", "Fast-track processing", "Immigration support"],
+    features: ["Passport services","Visa assistance", "Document verification", "Fast-track processing", "Immigration support","Work Permit","Student Visa"],
     price: "Best service guaranteed",
   },
 ];
 
+import React, { useState } from "react";
 export default function ServicesPage() {
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif" }}>
@@ -76,15 +78,24 @@ export default function ServicesPage() {
             <span style={{ color: "#FCD34D", fontSize: 11, fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase" }}>Vadodara's #1 Cab Service</span>
             <div style={{ height: 2, width: 30, background: "linear-gradient(to left, transparent, #F59E0B)" }} />
           </div>
-          <div style={{ marginBottom: 10 }}>
+          <div style={{ marginBottom: 4, display: "flex", flexDirection: "column", alignItems: "center" }}>
             <span style={{
               display: "inline-block",
               background: "linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #D97706 100%)",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
               fontSize: "clamp(28px, 5vw, 52px)", fontWeight: 900, letterSpacing: "clamp(2px,0.4vw,5px)",
-              lineHeight: 1, fontFamily: "'Poppins', sans-serif",
+              lineHeight: 1.1, fontFamily: "'Poppins', sans-serif",
               filter: "drop-shadow(0 3px 15px rgba(245,158,11,0.4))",
             }}>DIVYAKSHI CABS</span>
+            <span style={{ 
+              color: "#FFFFFF", 
+              letterSpacing: "4px", 
+              fontSize: "clamp(10px, 3vw, 15px)", 
+              fontWeight: 800, 
+              marginTop: 0,
+              fontFamily: "'Poppins', sans-serif",
+              textShadow: "0 3px 12px rgba(0,0,0,1), 0 1px 4px rgba(0,0,0,0.9)"
+            }}>UNIT OF DIVYAKSHI TOURS & TRAVELS</span>
           </div>
           <div className="section-badge" style={{ background: "rgba(245,158,11,0.15)", color: "#FCD34D", border: "1px solid rgba(245,158,11,0.3)", marginBottom: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
             <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14 }}>auto_awesome</span>
@@ -100,8 +111,49 @@ export default function ServicesPage() {
       {/* Services */}
       <section style={{ padding: "72px 20px", background: "#F8FAFC" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: 26 }}>
-          {services.map(s => (
-            <div key={s.title} className="card-hover" style={{
+          {services.map((s, index) => (
+            <React.Fragment key={s.title}>
+              {index === 3 && (
+                <div style={{
+                  gridColumn: "1 / -1",
+                  background: "#1E293B",
+                  borderRadius: 20,
+                  position: "relative",
+                  overflow: "hidden",
+                  boxShadow: "0 10px 40px rgba(0,0,0,0.15)",
+                  display: "flex",
+                  alignItems: "center",
+                  marginTop: 10,
+                  marginBottom: 10,
+                }}>
+                  {/* Professional Custom Background Image */}
+                  <div style={{ position: "absolute", inset: 0 }}>
+                    <div style={{ width: "100%", height: "100%", backgroundImage: `url(${flightTrainImg})`, backgroundSize: "cover", backgroundPosition: "center" }} />
+                  </div>
+                  {/* Overlay Gradient to blend text securely without hiding the airplane on the left */}
+                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.5) 50%, transparent 100%)" }} />
+
+                  <div style={{ position: "relative", zIndex: 1, padding: "30px 40px", maxWidth: 650 }}>
+                    <div className="section-badge" style={{ background: "rgba(59,130,246,0.2)", color: "#60A5FA", border: "1px solid rgba(59,130,246,0.3)", marginBottom: 10, display: "inline-flex", alignItems: "center", gap: 6, padding: "3px 12px", fontSize: 11 }}>
+                      <span className="material-symbols-rounded icon-filled" style={{ fontSize: 13 }}>confirmation_number</span>
+                      TICKETING SERVICES
+                    </div>
+                    <h3 style={{ fontSize: "clamp(20px, 3.5vw, 30px)", fontWeight: 900, color: "#fff", lineHeight: 1.2, marginBottom: 8 }}>
+                      Flight & Train Booking
+                    </h3>
+                    <p style={{ color: "#E2E8F0", fontSize: 14, lineHeight: 1.5, marginBottom: 18, maxWidth: 500 }}>
+                      Fast and secure ticket booking for domestic/international flights and IRCTC trains. Travel hassle-free.
+                    </p>
+                    <a href="https://wa.me/918200909915?text=Hi%20Divyakshi%20Travels,%20I%20want%20to%20book%20Flight/Train%20tickets." target="_blank" rel="noreferrer" style={{
+                      display: "inline-flex", alignItems: "center", gap: 8, background: "#F59E0B", color: "#0F172A", padding: "10px 24px", borderRadius: 10, fontWeight: 800, fontSize: 14, textDecoration: "none", boxShadow: "0 4px 15px rgba(245,158,11,0.3)", transition: "transform 0.2s"
+                    }} onMouseEnter={e => e.currentTarget.style.transform = "scale(1.03)"} onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}>
+                      <span className="material-symbols-rounded icon-filled" style={{ fontSize: 18 }}>confirmation_number</span>
+                      Book Tickets Now
+                    </a>
+                  </div>
+                </div>
+              )}
+            <div className="card-hover" style={{
               background: "#fff", borderRadius: 20, overflow: "hidden",
               boxShadow: "0 4px 20px rgba(0,0,0,0.07)", border: "2px solid transparent",
               transition: "border-color 0.2s",
@@ -162,6 +214,7 @@ export default function ServicesPage() {
                   </a>
               </div>
             </div>
+            </React.Fragment>
           ))}
         </div>
       </section>

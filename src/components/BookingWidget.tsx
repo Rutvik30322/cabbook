@@ -8,13 +8,14 @@ const CITIES = [
   "Dwarka", "Somnath", "Statue of Unity", "Goa", "Shirdi", "Nashik",
 ];
 
-type TripType = "oneway" | "roundtrip" | "outstation" | "local";
+type TripType = "oneway" | "roundtrip" | "outstation" | "local" | "airport";
 
 const tabs: { key: TripType; label: string; icon: string }[] = [
   { key: "outstation", label: "Outstation", icon: "directions_car" },
   { key: "local", label: "Local Taxi", icon: "local_taxi" },
   { key: "oneway", label: "One Way", icon: "arrow_forward" },
   { key: "roundtrip", label: "Round Trip", icon: "sync_alt" },
+  { key: "airport", label: "Airport", icon: "flight" },
 ];
 
 // Helper component for current month grid
@@ -173,14 +174,96 @@ function CustomDropdown({ value, onChange, label, icon, options, placeholder = "
   );
 }
 
+const GUJARAT_LOCATIONS = [
+  // Vadodara City Areas
+  "Vadodara - Alkapuri", "Vadodara - Sayajigunj", "Vadodara - Fatehgunj",
+  "Vadodara - Manjalpur", "Vadodara - Makarpura", "Vadodara - Gotri",
+  "Vadodara - Waghodia Road", "Vadodara - Harni", "Vadodara - Nizampura",
+  "Vadodara - Old Padra Road", "Vadodara - Race Course", "Vadodara - Karelibaug",
+  "Vadodara - Sama", "Vadodara - Chhani", "Vadodara - Akota",
+  "Vadodara Railway Station", "Vadodara Airport",
+  // Major Gujarat Cities
+  "Ahmedabad", "Surat", "Rajkot", "Gandhinagar", "Bhavnagar",
+  "Jamnagar", "Junagadh", "Anand", "Nadiad", "Mehsana",
+  "Morbi", "Surendranagar", "Bharuch", "Valsad", "Navsari",
+  "Patan", "Palanpur", "Himatnagar", "Godhra", "Dahod",
+  "Botad", "Amreli", "Veraval", "Porbandar", "Dwarka",
+  "Somnath", "Diu", "Statue of Unity", "Saputara",
+  // Ahmedabad Areas
+  "Ahmedabad - Satellite", "Ahmedabad - Bopal", "Ahmedabad - SG Highway",
+  "Ahmedabad - Maninagar", "Ahmedabad - Naroda", "Ahmedabad - Gota",
+  "Ahmedabad - Prahlad Nagar", "Ahmedabad - Vastrapur",
+  // Surat Areas
+  "Surat - Adajan", "Surat - Vesu", "Surat - Pal", "Surat - Althan",
+  "Surat - Athwa", "Surat - Katargam",
+];
+
+const AIRPORTS = [
+  "Vadodara Airport (BDQ)",
+  "Ahmedabad Airport (AMD)",
+  "Mumbai Airport (BOM)",
+  "Delhi Airport (DEL)",
+  "Surat Airport (STV)",
+  "Rajkot Airport (RAJ)",
+  "Jaipur Airport (JAI)",
+  "Goa Airport (GOI)",
+  "Pune Airport (PNQ)",
+  "Hyderabad Airport (HYD)",
+];
+
+function CustomTimePicker({ value, onChange, label, icon }: { value: string; onChange: (v: string) => void; label: string; icon: string }) {
+  const timeRef = useRef<HTMLInputElement>(null);
+  const display = value
+    ? (() => {
+        const [h, m] = value.split(":");
+        const hr = parseInt(h);
+        const ampm = hr >= 12 ? "PM" : "AM";
+        const hr12 = hr % 12 || 12;
+        return `${hr12}:${m} ${ampm}`;
+      })()
+    : null;
+
+  const handleBoxClick = () => {
+    if (timeRef.current) {
+      try { timeRef.current.showPicker(); } catch { timeRef.current.click(); }
+    }
+  };
+
+  return (
+    <div className="input-box custom-trigger" onClick={handleBoxClick} style={{ cursor: "pointer" }}>
+      <div className="icon-box"><span className="material-symbols-rounded">{icon}</span></div>
+      <div className="field-content">
+        <span className="field-label">{label}</span>
+        <div className="field-input" style={{ display: "flex", alignItems: "center" }}>
+          {display ?? <span style={{ opacity: 0.5 }}>Select Time</span>}
+        </div>
+      </div>
+      <input
+        ref={timeRef}
+        type="time"
+        value={value}
+        onChange={e => onChange(e.target.value)}
+        style={{ position: "absolute", opacity: 0, pointerEvents: "none", width: 0, height: 0 }}
+        tabIndex={-1}
+      />
+    </div>
+  );
+}
+
 export default function BookingWidget() {
   const [tripType, setTripType] = useState<TripType>("outstation");
-  const [from, setFrom] = useState("Vadodara");
-  const [to, setTo] = useState("Dwarka");
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
   const [date, setDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
-  const [duration, setDuration] = useState("8 Hours / 80 km");
+  const [duration, setDuration] = useState("");
   const [phone, setPhone] = useState("");
+  // Airport specific
+  const [airportTrip, setAirportTrip] = useState("");
+  const [pickupAddress, setPickupAddress] = useState("");
+  const [dropAddress, setDropAddress] = useState("");
+  const [airportName, setAirportName] = useState("");
+  const [airportTime, setAirportTime] = useState("");
   const [, navigate] = useLocation();
 
   // Handle URL Params for pre-filling (e.g., from Popular Routes)
@@ -192,7 +275,7 @@ export default function BookingWidget() {
 
     if (pFrom) setFrom(pFrom);
     if (pTo) setTo(pTo);
-    if (pType && ["oneway", "roundtrip", "outstation", "local"].includes(pType)) {
+    if (pType && ["oneway", "roundtrip", "outstation", "local", "airport"].includes(pType)) {
       setTripType(pType as TripType);
     }
   }, []);
@@ -201,6 +284,24 @@ export default function BookingWidget() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (tripType === "airport") {
+      if (phone.length !== 10) {
+        alert("Please enter a valid 10-digit mobile number.");
+        return;
+      }
+      const params = new URLSearchParams({
+        from: pickupAddress || "Pickup City",
+        to: dropAddress || airportName || "Airport",
+        tripType: "airport",
+        date: date || "",
+        phone,
+        airportTrip,
+        airportName,
+        airportTime,
+      });
+      navigate(`/search?${params.toString()}`);
+      return;
+    }
     if (phone.length !== 10) {
       alert("Please enter a valid 10-digit mobile number.");
       return;
@@ -216,9 +317,9 @@ export default function BookingWidget() {
       <style>{`
         .widget-container {
           width: 100%;
-          max-width: 1050px;
+          max-width: 1200px;
           margin: 0 auto;
-          padding: 10px 20px;
+          padding: 10px 0px;
           font-family: 'Poppins', sans-serif;
           position: relative;
           z-index: 1000;
@@ -259,10 +360,24 @@ export default function BookingWidget() {
           position: relative;
           border: 1px dashed rgba(255,255,255,0.4);
           border-radius: 16px;
-          padding: 24px;
+          padding: 20px 24px;
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 14px;
+        }
+        .all-fields-row {
+          display: grid;
+          grid-template-columns: 1fr 36px 1fr 1fr 1fr;
+          align-items: center;
+          gap: 10px;
+          width: 100%;
+        }
+        .airport-fields-row {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          align-items: stretch;
+          gap: 10px;
+          width: 100%;
         }
         .input-row {
           display: flex;
@@ -356,24 +471,36 @@ export default function BookingWidget() {
         .submit-btn-row {
           display: flex;
           justify-content: center;
-          margin-top: 14px;
+          margin-top: 10px;
         }
         .submit-btn {
           background: linear-gradient(135deg, #FCD34D, #F59E0B);
           border: none;
-          border-radius: 8px;
-          padding: 12px 32px;
+          border-radius: 10px;
+          padding: 13px 44px;
           font-size: 16px;
           font-weight: 700;
           color: #111;
           cursor: pointer;
           box-shadow: 0 6px 15px rgba(245, 158, 11, 0.3);
           transition: transform 0.2s;
+          letter-spacing: 0.5px;
         }
         .submit-btn:hover {
           transform: scale(1.05);
         }
         /* Mobile overrides */
+        @media (max-width: 900px) {
+          .all-fields-row {
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+          }
+          .airport-fields-row {
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+          }
+          .swap-btn { display: none !important; }
+        }
         @media (max-width: 768px) {
           .widget-container { padding: 4px 8px; }
           .form-border-container { gap: 6px; padding: 10px 10px; border-radius: 12px; }
@@ -394,6 +521,14 @@ export default function BookingWidget() {
             font-size: 14px;
           }
           /* Make form rows display as 2-col grid on mobile */
+          .all-fields-row {
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+          }
+          .airport-fields-row {
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+          }
           .input-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -677,7 +812,19 @@ export default function BookingWidget() {
         {tabs.map(t => {
           const active = tripType === t.key;
           return (
-            <button key={t.key} onClick={() => setTripType(t.key)} type="button" className={`tab-btn ${active ? 'active' : 'inactive'}`}>
+            <button
+              key={t.key}
+              onClick={() => {
+                setTripType(t.key);
+                // Reset all fields on tab switch
+                setFrom(""); setTo(""); setDate(""); setReturnDate("");
+                setDuration(""); setPhone("");
+                setAirportTrip(""); setPickupAddress("");
+                setDropAddress(""); setAirportName(""); setAirportTime("");
+              }}
+              type="button"
+              className={`tab-btn ${active ? 'active' : 'inactive'}`}
+            >
               <span className="material-symbols-rounded">{t.icon}</span>
               {t.label}
             </button>
@@ -687,91 +834,89 @@ export default function BookingWidget() {
 
       <form onSubmit={handleSubmit} className="form-border-container">
         
-        {/* Top Row: From / To */}
-        <div className="input-row">
-          {tripType === "local" ? (
-             <CustomDropdown
-               label="Pickup City"
-               icon="location_on"
-               value={from}
-               onChange={setFrom}
-               options={CITIES}
-             />
-          ) : (
-            <>
-              <CustomDropdown
-                label="From City"
-                icon="location_on"
-                value={from}
-                onChange={setFrom}
-                options={CITIES}
-              />
-
-              <button type="button" onClick={swap} className="swap-btn">
-                <span className="material-symbols-rounded">swap_horiz</span>
-              </button>
-
-              <CustomDropdown
-                label="Drop City"
-                icon="location_on"
-                value={to}
-                onChange={setTo}
-                options={CITIES}
-                placeholder="Enter Here"
-              />
-            </>
-          )}
-        </div>
-
-        {/* Bottom Row: Date + Phone in same row */}
-        <div className="input-row">
-           {tripType === "local" ? (
-             <>
-               <CustomDropdown
-                 label="Duration"
-                 icon="schedule"
-                 value={duration}
-                 onChange={setDuration}
-                 options={["4 Hours / 40 km", "8 Hours / 80 km", "12 Hours / 120 km", "Full Day"]}
-               />
-               <CustomDatePicker
-                 label="Trip Date"
-                 icon="calendar_today"
-                 value={date}
-                 onChange={setDate}
-               />
-             </>
-           ) : (
-             <>
-                <CustomDatePicker
-                  label="Trip Date"
-                  icon="calendar_today"
-                  value={date}
-                  onChange={setDate}
-                />
-
-                 {tripType === "roundtrip" && (
-                   <CustomDatePicker
-                     label="Return Date"
-                     icon="event"
-                     value={returnDate}
-                     onChange={setReturnDate}
-                     minDate={date ? new Date(date) : undefined}
-                   />
-                 )}
-             </>
-           )}
-
-           {/* Phone always in same row as date */}
-           <div className="input-box">
-             <div className="icon-box">
+        {/* Single Wide Row: From, Swap, Drop, Date, Phone — all side by side */}
+        {tripType === "local" ? (
+          <div className="airport-fields-row">
+            <CustomDropdown
+              label="Pickup City"
+              icon="location_on"
+              value={from}
+              onChange={setFrom}
+              options={CITIES}
+            />
+            <CustomDropdown
+              label="Duration"
+              icon="schedule"
+              value={duration}
+              onChange={setDuration}
+              options={["4 Hours / 40 km", "8 Hours / 80 km", "12 Hours / 120 km", "Full Day"]}
+            />
+            <CustomDatePicker
+              label="Trip Date"
+              icon="calendar_today"
+              value={date}
+              onChange={setDate}
+            />
+            <div className="input-box" style={{ gridColumn: "1 / -1" }}>
+              <div className="icon-box"><span className="material-symbols-rounded">chat</span></div>
+              <div className="field-content">
+                <span className="field-label">WhatsApp Number</span>
+                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <span style={{ fontSize: 12, fontWeight: 800, color: "#F59E0B", whiteSpace: "nowrap" }}>+91</span>
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={e => {
+                      const val = e.target.value.replace(/\D/g, "").slice(0, 10);
+                      setPhone(val);
+                    }}
+                    placeholder="10-digit mobile number"
+                    className="field-input"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : tripType === "roundtrip" ? (
+          <div className="airport-fields-row">
+            <CustomDropdown
+              label="From City"
+              icon="location_on"
+              value={from}
+              onChange={setFrom}
+              options={CITIES}
+            />
+            <CustomDropdown
+              label="Drop City"
+              icon="location_on"
+              value={to}
+              onChange={setTo}
+              options={CITIES}
+              placeholder="Enter Here"
+            />
+            <CustomDatePicker
+              label="Trip Date"
+              icon="calendar_today"
+              value={date}
+              onChange={setDate}
+            />
+            <CustomDatePicker
+              label="Return Date"
+              icon="event"
+              value={returnDate}
+              onChange={setReturnDate}
+              minDate={date ? new Date(date) : undefined}
+            />
+            <div className="input-box">
+              <div className="icon-box">
                 <span className="material-symbols-rounded">chat</span>
-             </div>
-             <div className="field-content">
-               <span className="field-label">WhatsApp Number</span>
-               <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                 <span style={{ fontSize: 12, fontWeight: 800, color: "#F59E0B", whiteSpace: "nowrap" }}>+91</span>
-                 <input
+              </div>
+              <div className="field-content">
+                <span className="field-label">WhatsApp Number</span>
+                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <span style={{ fontSize: 12, fontWeight: 800, color: "#F59E0B", whiteSpace: "nowrap" }}>+91</span>
+                  <input
                     type="tel"
                     value={phone}
                     onChange={e => {
@@ -782,16 +927,141 @@ export default function BookingWidget() {
                     className="field-input"
                     required
                   />
-               </div>
-             </div>
-           </div>
-        </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
+        ) : tripType === "airport" ? (
+          <div className="airport-fields-row">
+            {/* Trip Direction */}
+            <CustomDropdown
+              label="Trip Type"
+              icon="flight_takeoff"
+              value={airportTrip}
+              onChange={setAirportTrip}
+              options={["Drop to Airport", "Pick from Airport"]}
+              placeholder="Select Trip"
+            />
+            {/* Pickup City */}
+            <CustomDropdown
+              label="Pickup City"
+              icon="my_location"
+              value={pickupAddress}
+              onChange={setPickupAddress}
+              options={GUJARAT_LOCATIONS}
+              placeholder="Select Pickup City"
+            />
+            {/* Drop City */}
+            <CustomDropdown
+              label="Drop City"
+              icon="location_on"
+              value={dropAddress}
+              onChange={setDropAddress}
+              options={GUJARAT_LOCATIONS}
+              placeholder="Select Drop City"
+            />
+            {/* Airport Name */}
+            <CustomDropdown
+              label="Airport"
+              icon="flight"
+              value={airportName}
+              onChange={setAirportName}
+              options={AIRPORTS}
+              placeholder="Select Airport"
+            />
+            {/* Date */}
+            <CustomDatePicker
+              label="Pick Up Date"
+              icon="calendar_today"
+              value={date}
+              onChange={setDate}
+            />
+            {/* Time */}
+            <CustomTimePicker
+              label="Pick Up Time"
+              icon="schedule"
+              value={airportTime}
+              onChange={setAirportTime}
+            />
+            {/* WhatsApp Number */}
+            <div className="input-box">
+              <div className="icon-box"><span className="material-symbols-rounded">chat</span></div>
+              <div className="field-content">
+                <span className="field-label">WhatsApp Number</span>
+                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <span style={{ fontSize: 12, fontWeight: 800, color: "#F59E0B", whiteSpace: "nowrap" }}>+91</span>
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={e => {
+                      const val = e.target.value.replace(/\D/g, "").slice(0, 10);
+                      setPhone(val);
+                    }}
+                    placeholder="10-digit number"
+                    className="field-input"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+        ) : (
+          <div className="all-fields-row">
+            <CustomDropdown
+              label="From City"
+              icon="location_on"
+              value={from}
+              onChange={setFrom}
+              options={CITIES}
+            />
+            <button type="button" onClick={swap} className="swap-btn">
+              <span className="material-symbols-rounded">swap_horiz</span>
+            </button>
+            <CustomDropdown
+              label="Drop City"
+              icon="location_on"
+              value={to}
+              onChange={setTo}
+              options={CITIES}
+              placeholder="Enter Here"
+            />
+            <CustomDatePicker
+              label="Trip Date"
+              icon="calendar_today"
+              value={date}
+              onChange={setDate}
+            />
+            <div className="input-box">
+              <div className="icon-box">
+                <span className="material-symbols-rounded">chat</span>
+              </div>
+              <div className="field-content">
+                <span className="field-label">WhatsApp Number</span>
+                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <span style={{ fontSize: 12, fontWeight: 800, color: "#F59E0B", whiteSpace: "nowrap" }}>+91</span>
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={e => {
+                      const val = e.target.value.replace(/\D/g, "").slice(0, 10);
+                      setPhone(val);
+                    }}
+                    placeholder="10-digit no."
+                    className="field-input"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Submit Button */}
         <div className="submit-btn-row">
           <button type="submit" className="submit-btn">
-            Explore Cab
+            🚖 Explore Cab
           </button>
         </div>
 
