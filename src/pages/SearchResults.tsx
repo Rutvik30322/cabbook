@@ -1,3 +1,4 @@
+import React from "react";
 import { useSearch, Link } from "wouter";
 import { useState, useEffect } from "react";
 
@@ -129,6 +130,51 @@ export default function SearchResults() {
 
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+      {/* Hero Section from Services Page */}
+      <section style={{ 
+        background: "linear-gradient(135deg, rgba(15,12,41,0.6) 0%, rgba(15,23,42,0.55) 50%, rgba(15,52,96,0.6) 100%), url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1600&fit=crop&auto=format') center/cover", 
+        padding: "40px 20px", textAlign: "center", position: "relative", overflow: "hidden" 
+      }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 50% 50%, rgba(245,158,11,0.08) 0%, transparent 60%)" }} />
+        <div style={{ position: "relative" }}>
+          {/* DIVYAKSHI CABS Brand Name */}
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+            <div style={{ height: 2, width: 30, background: "linear-gradient(to right, transparent, #F59E0B)" }} />
+            <span style={{ color: "#FCD34D", fontSize: 11, fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase" }}>Vadodara's #1 Cab Service</span>
+            <div style={{ height: 2, width: 30, background: "linear-gradient(to left, transparent, #F59E0B)" }} />
+          </div>
+          <div style={{ marginBottom: 4, display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <span style={{
+              display: "inline-block",
+              background: "linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #D97706 100%)",
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+              fontSize: "clamp(28px, 5vw, 52px)", fontWeight: 900, letterSpacing: "clamp(2px,0.4vw,5px)",
+              lineHeight: 1.1, fontFamily: "'Poppins', sans-serif",
+              filter: "drop-shadow(0 3px 15px rgba(245,158,11,0.4))",
+            }}>CHOOSE YOUR RIDE</span>
+            <span style={{ 
+              color: "#FFFFFF", 
+              letterSpacing: "4px", 
+              fontSize: "clamp(10px, 3vw, 15px)", 
+              fontWeight: 800, 
+              marginTop: 0,
+              fontFamily: "'Poppins', sans-serif",
+              textShadow: "0 3px 12px rgba(0,0,0,1), 0 1px 4px rgba(0,0,0,0.9)"
+            }}>BEST PRICES GUARANTEED • NO HIDDEN CHARGES</span>
+          </div>
+          <div className="section-badge" style={{ background: "rgba(34,197,94,0.15)", color: "#4ADE80", border: "1px solid rgba(34,197,94,0.3)", marginBottom: 10, display: "inline-flex", alignItems: "center", gap: 6, padding: "5px 15px", borderRadius: 20, fontSize: 12, fontWeight: 700 }}>
+            <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14 }}>verified</span>
+            SEARCH RESULTS FOUND
+          </div>
+          <h1 style={{ color: "#FFFFFF", fontSize: "clamp(16px, 2.5vw, 22px)", fontWeight: 900, marginBottom: 8, marginTop: 4, textShadow: "0 2px 12px rgba(0,0,0,0.8)" }}>
+            Reliable, Comfortable & Safe Cabs for Every Route
+          </h1>
+          <p style={{ color: "rgba(255,255,255,0.9)", maxWidth: 520, margin: "0 auto", fontSize: 13.5, lineHeight: 1.5, fontWeight: 600, textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>
+            Hand-picked selection of premium vehicles at the most competitive rates in Vadodara.
+          </p>
+        </div>
+      </section>
+
       <style>{`
         .res-container { maxWidth: 1200px; margin: 0 auto; padding: 32px 20px; }
         .car-card-grid { display: grid; grid-template-columns: 280px 1fr; min-height: 220px; transition: all 0.3s; }

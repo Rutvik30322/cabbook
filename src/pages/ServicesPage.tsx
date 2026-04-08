@@ -1,3 +1,4 @@
+import React from "react";
 import taxiImage from "../assets/premium_taxi_fleet.png";
 import busImage from "../assets/luxury_bus.png";
 import hotelImage from "../assets/Luxury Rambagh Palace Jaipur India _ Royal Palace Hotel for Foreign Tourists.jpg";
