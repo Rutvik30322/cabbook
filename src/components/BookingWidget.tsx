@@ -243,8 +243,16 @@ function CustomTimePicker({ value, onChange, label, icon }: { value: string; onC
         type="time"
         value={value}
         onChange={e => onChange(e.target.value)}
-        style={{ position: "absolute", opacity: 0, pointerEvents: "none", width: 0, height: 0 }}
-        tabIndex={-1}
+        style={{ 
+          position: "absolute", 
+          inset: 0, 
+          width: "100%", 
+          height: "100%", 
+          opacity: 0, 
+          cursor: "pointer", 
+          zIndex: 10 
+        }}
+        aria-label={label}
       />
     </div>
   );
@@ -497,7 +505,10 @@ export default function BookingWidget() {
           }
           .airport-fields-row {
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 12px;
+          }
+          .airport-fields-row > *:last-child {
+            grid-column: 1 / -1;
           }
           .swap-btn { display: none !important; }
         }
@@ -538,6 +549,15 @@ export default function BookingWidget() {
           /* Single-item rows stay full width */
           .input-row.single-item {
             grid-template-columns: 1fr;
+          }
+          /* Ensure WhatsApp always full width on mobile for Airport */
+          .airport-fields-row > div:last-child {
+               grid-column: 1 / -1 !important;
+          }
+          @media (max-width: 550px) {
+            .airport-fields-row {
+               grid-template-columns: 1fr !important;
+            }
           }
           /* hide swap button on mobile - simplify flow */
           .swap-btn {
