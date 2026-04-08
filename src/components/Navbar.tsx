@@ -7,7 +7,7 @@ const navLinks = [
   { href: "/", label: "Home", icon: "home" },
   { href: "/services", label: "Services", icon: "build" },
   { href: "/packages", label: "Packages", icon: "luggage" },
-  { href: "/one-way-cabs", label: "One-Way Cabs", icon: "directions_car" },
+  { href: "/one-way-cabs", label: "Popular Routes", icon: "directions_car" },
   { href: "/visa", label: "Visa & Passport", icon: "article" },
   { href: "/contact", label: "Contact", icon: "call" },
 ];

@@ -103,8 +103,10 @@ export default function VisaPage() {
           <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(212,160,23,0.15)", border: "1px solid rgba(212,160,23,0.3)", color: "#F5C842", padding: "4px 14px", borderRadius: 30, fontSize: 10, fontWeight: 700, letterSpacing: 1, marginBottom: 10 }}>
             Passport • Tourist Visa • Work Permit • Student Visa
           </div>
-          <h1 style={{ color: "#CBD5E1", fontSize: "clamp(15px, 2vw, 20px)", fontWeight: 500, marginBottom: 6, marginTop: 4 }}>Visa, Passport & Immigration Services — Vadodara</h1>
-          <p style={{ color: "#94a3b8", maxWidth: 480, margin: "0 auto", fontSize: 13, lineHeight: 1.5 }}>
+          <h1 style={{ color: "#FFFFFF", fontSize: "clamp(16px, 2.5vw, 22px)", fontWeight: 900, marginBottom: 8, marginTop: 4, textShadow: "0 2px 12px rgba(0,0,0,0.8)" }}>
+            Visa, Passport & Immigration Services — Vadodara
+          </h1>
+          <p style={{ color: "rgba(255,255,255,0.9)", maxWidth: 480, margin: "0 auto", fontSize: 13.5, lineHeight: 1.5, fontWeight: 600, textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>
             Expert guidance for all your international travel documents — passport to PR
           </p>
         </div>

@@ -135,8 +135,10 @@ export default function PackagesPage() {
             <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14 }}>luggage</span>
             TOUR PACKAGES
           </div>
-          <h1 style={{ color: "#CBD5E1", fontSize: "clamp(15px, 2vw, 20px)", fontWeight: 500, marginBottom: 6, marginTop: 4 }}>Curated Holiday Packages — Gujarat, India & International</h1>
-          <p style={{ color: "#94A3B8", maxWidth: 460, margin: "0 auto", fontSize: 13, lineHeight: 1.5 }}>
+          <h1 style={{ color: "#FFFFFF", fontSize: "clamp(16px, 2.5vw, 22px)", fontWeight: 900, marginBottom: 8, marginTop: 4, textShadow: "0 2px 12px rgba(0,0,0,0.8)" }}>
+            Curated Holiday Packages — Gujarat, India & International
+          </h1>
+          <p style={{ color: "rgba(255,255,255,0.9)", maxWidth: 520, margin: "0 auto", fontSize: 13.5, lineHeight: 1.5, fontWeight: 600, textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>
             Handpicked destinations, expert guides & completely hassle-free planning from Vadodara
           </p>
         </div>

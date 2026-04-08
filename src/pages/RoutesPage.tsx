@@ -23,8 +23,8 @@ export default function RoutesPage() {
   return (
     <div style={{ fontFamily: "'Poppins', sans-serif", background: "#f8fafc", minHeight: "100vh" }}>
       <SEO 
-        title="One-Way Cab Booking from Vadodara | Divyakshi Cabs - Ahmedabad, Mumbai, Surat" 
-        description="Divyakshi Cabs offers one-way cab booking from Vadodara to Ahmedabad, Mumbai, Surat, Rajkot, Somnath, Dwarka & 30+ cities. Affordable one-way fares. Book now!" 
+        title="Popular Cab Routes from Vadodara | Divyakshi Cabs - Ahmedabad, Mumbai, Surat" 
+        description="Divyakshi Cabs offers popular one-way cab routes from Vadodara to Ahmedabad, Mumbai, Surat, Rajkot, Somnath, Dwarka & 30+ cities. Affordable fares. Book now!" 
       />
       
       {/* 1. Header Hero */}
@@ -64,15 +64,15 @@ export default function RoutesPage() {
             textShadow: "0 3px 12px rgba(0,0,0,1), 0 1px 4px rgba(0,0,0,0.9)"
           }}>UNIT OF DIVYAKSHI TOURS & TRAVELS</span>
         </div>
-        <h1 style={{ fontSize: "clamp(18px, 3.5vw, 30px)", fontWeight: 800, marginBottom: 12, lineHeight: 1.2, color: "#CBD5E1" }}>
-          Book One-Way Cabs from <span style={{ color: "#FCD34D" }}>Vadodara</span>
+        <h1 style={{ fontSize: "clamp(20px, 3.5vw, 32px)", fontWeight: 900, marginBottom: 12, lineHeight: 1.2, color: "#FFFFFF", textShadow: "0 2px 12px rgba(0,0,0,0.8)" }}>
+          Book Popular Routes from <span style={{ color: "#FCD34D" }}>Vadodara</span>
         </h1>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, fontSize: 14, fontWeight: 600 }}>
           <Link href="/" style={{ color: "rgba(255,255,255,0.8)", textDecoration: "none", display: "flex", alignItems: "center", gap: 6 }}>
             <span className="material-symbols-rounded" style={{ fontSize: 18 }}>home</span> Home
           </Link>
           <span style={{ opacity: 0.3 }}>/</span>
-          <span style={{ color: "#FCD34D" }}>One-Way Cabs</span>
+          <span style={{ color: "#FCD34D" }}>Popular Routes</span>
         </div>
       </section>
 
