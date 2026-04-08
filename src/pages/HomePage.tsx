@@ -28,7 +28,6 @@ const services = [
   { icon: "directions_bus", label: "Luxury Bus", desc: "Premium AC buses for weddings, corporate & tours", color: "#D97706", bg: "#FFFBEB", href: "/services", img: busImage },
   { icon: "hotel", label: "Hotel Booking", desc: "Best deals across India — budget to luxury, no hidden costs", color: "#059669", bg: "#ECFDF5", href: "/services", img: hotelImage },
   { icon: "travel_explore", label: "Tour Packages", desc: "Curated holidays — domestic & international all-inclusive", color: "#DC2626", bg: "#FEF2F2", href: "/packages", img: tourImage },
-  { icon: "airplane_ticket", label: "Flight & Train", desc: "Domestic & International flight tickets and IRCTC train bookings", color: "#059669", bg: "#ECFDF5", href: "/services", img: "/flight_train_card.png" },
   { icon: "article", label: "Visa & Passport", desc: "Full visa, passport & immigration assistance", color: "#0891B2", bg: "#ECFEFF", href: "/services", img: visaImage },
 ];
 
