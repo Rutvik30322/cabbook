@@ -42,14 +42,15 @@ export default function Navbar() {
         }
         .nav-logo-subtitle {
           color: #F8FAFC;
-          font-size: 7.9px;
-          letter-spacing: 1px;
+          font-size: 8px;
+          letter-spacing: 0px;
           font-weight: 700;
           font-family: 'Poppins',sans-serif;
           opacity: 0.85;
-          white-space: nowrap;
-          overflow: hidden;
-          max-width: 100%;
+          text-align: justify;
+          text-align-last: justify;
+          -moz-text-align-last: justify;
+          width: 100%;
           display: block;
         }
         .nav-logo-img {
@@ -95,13 +96,15 @@ export default function Navbar() {
           .nav-call-btn { padding: 8px 10px !important; border-radius: 8px !important; }
           .nav-call-btn .material-symbols-rounded { font-size: 22px !important; }
         }
+        @media (max-width: 900px) {
+          .hide-mobile, .hide-on-mobile { display: none !important; }
+        }
         @media (max-width: 480px) {
           .nav-logo-title { font-size: 14px; letter-spacing: 0; }
           .nav-logo-subtitle { font-size: 5.5px; letter-spacing: 0; }
           .nav-logo-img { height: 42px; }
           .nav-call-btn { padding: 8px !important; }
           .nav-call-btn .material-symbols-rounded { font-size: 20px !important; }
-          .hide-mobile, .hide-on-mobile { display: none !important; }
           .hide-on-desktop { display: inline-block !important; }
         }
         @media (min-width: 481px) {
@@ -221,8 +224,8 @@ export default function Navbar() {
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", minWidth: 0, flexShrink: 1, marginRight: 10, maxWidth: "100%" }}>
             <img src="/new-logo.png" alt="Divyakshi Logo" className="nav-logo-img" style={{ flexShrink: 0 }} />
             <div style={{ display: "inline-flex", flexDirection: "column", width: "fit-content" }}>
-              <div className="nav-logo-title">DIVYAKSHI CABS</div>
-              <div className="nav-logo-subtitle" style={{ width: "100%" }}>UNIT OF DIVYAKSHI TOURS &amp; TRAVELS</div>
+              <div className="nav-logo-title" style={{ width: "max-content" }}>DIVYAKSHI CABS</div>
+              <div className="nav-logo-subtitle">UNIT OF DIVYAKSHI TOURS &amp; TRAVELS</div>
             </div>
           </Link>
 
