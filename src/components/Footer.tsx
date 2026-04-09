@@ -18,9 +18,9 @@ export default function Footer() {
             <div style={{ background: "rgba(255,255,255,0.03)", padding: "6px 8px", borderRadius: "12px", border: "1px solid rgba(245,158,11,0.2)", flexShrink: 0 }}>
               <img src="/new-logo.png" alt="Divyakshi Logo" style={{ height: 52, objectFit: "contain", display: "block" }} />
             </div>
-            <div style={{ minWidth: 0, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <div style={{ display: "inline-flex", flexDirection: "column", justifyContent: "center", width: "fit-content" }}>
               <div style={{ background: "linear-gradient(to right, #FCD34D, #F59E0B, #D97706)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontWeight: 900, fontSize: 18, letterSpacing: 0.5, filter: "drop-shadow(0 2px 10px rgba(245,158,11,0.3))", lineHeight: 1.1, whiteSpace: "nowrap" }}>DIVYAKSHI CABS</div>
-              <div style={{ color: "#F8FAFC", fontSize: 7.5, letterSpacing: 1.5, fontWeight: 700, opacity: 0.8, whiteSpace: "nowrap", marginTop: 2 }}>UNIT OF DIVYAKSHI TOURS & TRAVELS</div>
+              <div style={{ color: "#F8FAFC", fontSize: 7.5, letterSpacing: 1.5, fontWeight: 700, opacity: 0.85, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "clip", maxWidth: "100%", marginTop: 2 }}>UNIT OF DIVYAKSHI TOURS & TRAVELS</div>
             </div>
           </div>
           <p style={{ fontSize: 13.5, lineHeight: 1.8, color: "#94A3B8", marginBottom: 22 }}>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import souImg from "../assets/Statue of Unity.jpg";
 import somnathImg from "../assets/16 Best Places to Visit in Dwarka, Things to Do & Sightseeing.jpg";
 import rajasthanImg from "../assets/Luxury Rambagh Palace Jaipur India _ Royal Palace Hotel for Foreign Tourists.jpg";
-import chardhamImg from "../assets/chardham.jpg";
+import chardhamImg from "../assets/chardham.png";
 import himachalImg from "../assets/Himachal.png";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import SEO from "@/components/SEO";
@@ -232,6 +232,91 @@ export default function PackagesPage() {
               </div>
             </div>
           ))}
+
+          {/* Explore More Packages — Ad Card */}
+          {cat === "All" && (
+            <div className="card-hover" style={{
+              background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)",
+              borderRadius: 20, overflow: "hidden",
+              boxShadow: "0 4px 24px rgba(0,0,0,0.18)",
+              display: "flex", flexDirection: "column",
+              cursor: "pointer",
+              border: "2px solid rgba(245,158,11,0.35)",
+              position: "relative",
+            }}
+              onClick={() => {
+                const msg = encodeURIComponent("Hello! I want to explore more tour packages from Divyakshi Travels. Please share your complete packages list.");
+                window.open(`https://wa.me/918200909915?text=${msg}`, '_blank');
+              }}
+            >
+              {/* Glowing badge */}
+              <div style={{
+                position: "absolute", top: 14, right: 14, zIndex: 10,
+                background: "linear-gradient(135deg, #D97706, #F59E0B)",
+                color: "#1a1a2e", borderRadius: 20, padding: "4px 12px",
+                fontSize: 11, fontWeight: 800, letterSpacing: "0.3px",
+              }}>✨ 50+ Packages</div>
+
+              {/* 2×2 Image Collage */}
+              <div style={{ height: 210, display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 1fr", gap: 2, overflow: "hidden", position: "relative" }}>
+                {[
+                  "https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=300&h=200&fit=crop&auto=format",
+                  "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=300&h=200&fit=crop&auto=format",
+                  "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=300&h=200&fit=crop&auto=format",
+                  "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=300&h=200&fit=crop&auto=format",
+                ].map((src, i) => (
+                  <div key={i} style={{ overflow: "hidden" }}>
+                    <img src={src}
+                      alt={["Bali", "Maldives", "Singapore", "Paris"][i]}
+                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s" }}
+                      onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.08)")}
+                      onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+                    />
+                  </div>
+                ))}
+                <div style={{
+                  position: "absolute", inset: 0,
+                  background: "radial-gradient(circle, rgba(15,23,42,0.45) 0%, transparent 70%)",
+                  pointerEvents: "none",
+                }} />
+              </div>
+
+              {/* Card body */}
+              <div style={{ padding: "20px 22px 22px", flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                <div>
+                  <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10 }}>
+                    {["🌴 Bali", "🏝️ Maldives", "🇸🇬 Singapore", "🗼 Paris"].map(tag => (
+                      <span key={tag} style={{ fontSize: 10, fontWeight: 700, color: "#FCD34D", background: "rgba(245,158,11,0.15)", border: "1px solid rgba(245,158,11,0.3)", borderRadius: 20, padding: "2px 8px" }}>{tag}</span>
+                    ))}
+                  </div>
+                  <h3 style={{ fontWeight: 900, fontSize: 18, color: "#FFFFFF", marginBottom: 8, lineHeight: 1.3 }}>
+                    Explore More Destinations
+                  </h3>
+                  <p style={{ color: "#94A3B8", fontSize: 13, lineHeight: 1.6, marginBottom: 16 }}>
+                    Bali · Maldives · Singapore · Paris · Thailand · Switzerland &amp; more — custom international packages crafted just for you.
+                  </p>
+                  <div style={{ display: "flex", gap: 16, marginBottom: 16, flexWrap: "wrap" }}>
+                    {[["travel_explore", "50+ Destinations"], ["verified_user", "100% Trusted"], ["support_agent", "24/7 Support"]].map(([icon, label]) => (
+                      <div key={label} style={{ display: "flex", alignItems: "center", gap: 4, color: "#CBD5E1", fontSize: 11, fontWeight: 600 }}>
+                        <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14, color: "#F59E0B" }}>{icon}</span>
+                        {label}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <button style={{
+                  display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+                  width: "100%", padding: "11px 18px", borderRadius: 10, border: "none",
+                  background: "linear-gradient(135deg, #D97706, #F59E0B)", color: "#1a1a2e",
+                  fontWeight: 800, fontSize: 13.5, cursor: "pointer", fontFamily: "'Poppins', sans-serif",
+                }}>
+                  <WhatsAppIcon size={16} />
+                  Get Custom International Package
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

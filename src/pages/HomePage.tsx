@@ -19,7 +19,7 @@ import souImg from "../assets/Statue of Unity.jpg";
 import mumbaiImg from "../assets/Mumbai _333.jpg";
 import dwarkaImg from "../assets/The Magnificent Dwarkadhish Temple.jpg";
 import somnathImg from "../assets/16 Best Places to Visit in Dwarka, Things to Do & Sightseeing.jpg";
-import chardhamImg from "../assets/chardham.jpg";
+import chardhamImg from "../assets/chardham.png";
 import himachalImg from "../assets/Himachal.png";
 
 const services = [
@@ -32,37 +32,37 @@ const services = [
 ];
 
 const popularRoutes = [
-  { from: "Vadodara", to: "Ahmedabad", km: "115 km", price: "₹1,800", time: "1.5 hrs", img: ahmedabadImg },
-  { from: "Vadodara", to: "Surat", km: "155 km", price: "₹2,400", time: "2.5 hrs", img: suratImg },
-  { from: "Vadodara", to: "Statue of Unity", km: "90 km", price: "₹1,600", time: "1.5 hrs", img: souImg },
-  { from: "Vadodara", to: "Mumbai", km: "425 km", price: "₹6,500", time: "6 hrs", img: mumbaiImg },
-  { from: "Vadodara", to: "Dwarka", km: "440 km", price: "₹7,200", time: "7 hrs", img: dwarkaImg },
-  { from: "Vadodara", to: "Somnath", km: "480 km", price: "₹7,500", time: "8 hrs", img: somnathImg },
+  { from: "Vadodara", to: "Ahmedabad", km: "115 km", price: "₹1,800", time: "1.5 hrs", img: ahmedabadImg, pos: "center" },
+  { from: "Vadodara", to: "Surat", km: "155 km", price: "₹2,400", time: "2.5 hrs", img: suratImg, pos: "center" },
+  { from: "Vadodara", to: "Statue of Unity", km: "90 km", price: "₹1,600", time: "1.5 hrs", img: souImg, pos: "top" },
+  { from: "Vadodara", to: "Mumbai", km: "425 km", price: "₹6,500", time: "6 hrs", img: mumbaiImg, pos: "center" },
+  { from: "Vadodara", to: "Dwarka", km: "440 km", price: "₹7,200", time: "7 hrs", img: dwarkaImg, pos: "top" },
+  { from: "Vadodara", to: "Somnath", km: "480 km", price: "₹7,500", time: "8 hrs", img: somnathImg, pos: "top" },
 ];
 
 const cars = [
   {
-    name: "Hatchback", models: "Swift / WagonR / i10", seats: 4, rate: "₹11/km",
+    name: "Hatchback", models: "Swift / WagonR / i10", seats: 4, rate: "₹10/km",
     color: "#2563EB", badge: "Economy",
     img: hatchbackImg,
   },
   {
-    name: "Sedan", models: "Dzire / Etios / Amaze", seats: 4, rate: "₹13/km",
+    name: "Sedan", models: "Dzire / Etios / Amaze", seats: 4, rate: "₹12/km",
     color: "#7C3AED", badge: "Popular",
     img: sedanImg,
   },
   {
-    name: "SUV (Ertiga)", models: "Ertiga / Scorpio / Bolero", seats: 7, rate: "₹15/km",
+    name: "SUV (Ertiga)", models: "Ertiga / Scorpio / Bolero", seats: 7, rate: "₹13/km",
     color: "#059669", badge: "Extra Value",
     img: ertigaImg,
   },
   {
-    name: "Premium SUV", models: "Toyota Innova / Advanced", seats: 7, rate: "₹19/km",
+    name: "Premium SUV", models: "Toyota Innova / Advanced", seats: 7, rate: "₹15/km",
     color: "#0891B2", badge: "Executive",
     img: toyotaInnovaImg,
   },
   {
-    name: "Innova Crysta", models: "Luxury / Group / Premium", seats: 7, rate: "₹17/km",
+    name: "Innova Crysta", models: "Luxury / Group / Premium", seats: 7, rate: "₹19/km",
     color: "#D97706", badge: "Premium",
     img: suvImg,
   },
@@ -406,10 +406,25 @@ export default function HomePage() {
                   e.currentTarget.style.boxShadow = "0 10px 30px rgba(0,0,0,0.06)";
                 }}>
                 {/* Car image */}
-                <div className="fleet-card-img-container" style={{ overflow: "hidden", position: "relative", background: "#F8FAFC", display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
-                  <img src={c.img} alt={`Divyakshi Travels ${c.name} Taxi Vadodara - ${c.models}`} style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block", transition: "transform 0.5s" }} 
-                    onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.1) rotate(-2deg)")}
-                    onMouseLeave={e => (e.currentTarget.style.transform = "scale(1) rotate(0)")}
+                <div className="fleet-card-img-container" style={{ 
+                  overflow: "hidden", 
+                  position: "relative", 
+                  background: "linear-gradient(135deg, #FFFFFF, #F8FAFC)", 
+                  height: 210,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}>
+                  <img src={c.img} alt={`Divyakshi Travels ${c.name} Taxi Vadodara - ${c.models}`} style={{ 
+                    width: "100%", 
+                    height: "100%", 
+                    objectFit: "contain", 
+                    display: "block", 
+                    transition: "all 0.5s ease",
+                    transform: "scale(1.1)" // Safely zoom while using contain to fill more space
+                  }} 
+                    onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.2)")}
+                    onMouseLeave={e => (e.currentTarget.style.transform = "scale(1.1)")}
                   />
                   <div style={{ position: "absolute", top: 16, right: 16, background: c.color, color: "#fff", borderRadius: 20, padding: "5px 14px", fontSize: 11, fontWeight: 800, zIndex: 2, textTransform: "uppercase", letterSpacing: "0.5px", boxShadow: "0 4px 10px rgba(0,0,0,0.1)" }}>{c.badge}</div>
                 </div>
@@ -457,8 +472,11 @@ export default function HomePage() {
               onMouseEnter={e => e.currentTarget.style.borderColor = "#F59E0B"}
               onMouseLeave={e => e.currentTarget.style.borderColor = "#E2E8F0"}>
                 {/* Route image */}
-                <div style={{ height: 180, overflow: "hidden" }}>
-                  <img src={r.img} alt={r.to} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                <div style={{ height: 210, overflow: "hidden", position: "relative" }}>
+                  <img src={r.img} alt={r.to} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: r.pos || "center", display: "block", transition: "transform 0.6s ease" }}
+                    onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.15)")}
+                    onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+                  />
                 </div>
                 {/* Info */}
                 <div style={{ padding: "20px" }}>

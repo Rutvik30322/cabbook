@@ -43,11 +43,15 @@ export default function Navbar() {
         .nav-logo-subtitle {
           color: #F8FAFC;
           font-size: 8.5px;
-          letter-spacing: 2px;
+          letter-spacing: 1.5px;
           font-weight: 700;
           font-family: 'Poppins',sans-serif;
-          opacity: 0.8;
+          opacity: 0.85;
           white-space: nowrap;
+          overflow: hidden;
+          text-overflow: clip;
+          max-width: 100%;
+          display: block;
         }
         .nav-logo-img {
           height: 64px;
@@ -77,18 +81,18 @@ export default function Navbar() {
         }
         @media (max-width: 1100px) {
           .nav-logo-title { font-size: 17px; letter-spacing: 0px; }
-          .nav-logo-subtitle { font-size: 7.5px; letter-spacing: 1px; }
+          .nav-logo-subtitle { font-size: 7px; letter-spacing: 1px; }
         }
         @media (max-width: 768px) {
           .nav-logo-title { font-size: 16px; letter-spacing: 0px; }
-          .nav-logo-subtitle { font-size: 7px; letter-spacing: 0.5px; }
+          .nav-logo-subtitle { font-size: 6.5px; letter-spacing: 0.5px; }
           .nav-logo-img { height: 48px; }
           .nav-call-btn { padding: 8px 10px !important; border-radius: 8px !important; }
           .nav-call-btn .material-symbols-rounded { font-size: 22px !important; }
         }
         @media (max-width: 480px) {
           .nav-logo-title { font-size: 14px; letter-spacing: 0; }
-          .nav-logo-subtitle { font-size: 6px; letter-spacing: 0; }
+          .nav-logo-subtitle { font-size: 5.5px; letter-spacing: 0; }
           .nav-logo-img { height: 42px; }
           .nav-call-btn { padding: 8px !important; }
           .nav-call-btn .material-symbols-rounded { font-size: 20px !important; }
@@ -211,9 +215,9 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", minWidth: 0, flexShrink: 1, marginRight: 10, maxWidth: "100%" }}>
             <img src="/new-logo.png" alt="Divyakshi Logo" className="nav-logo-img" style={{ flexShrink: 0 }} />
-            <div style={{ minWidth: 0, overflow: "hidden", display: "flex", flexDirection: "column" }}>
-              <div className="nav-logo-title" style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>DIVYAKSHI CABS</div>
-              <div className="nav-logo-subtitle" style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>UNIT OF DIVYAKSHI TOURS & TRAVELS</div>
+            <div style={{ display: "inline-flex", flexDirection: "column", width: "fit-content" }}>
+              <div className="nav-logo-title">DIVYAKSHI CABS</div>
+              <div className="nav-logo-subtitle" style={{ width: "100%" }}>UNIT OF DIVYAKSHI TOURS &amp; TRAVELS</div>
             </div>
           </Link>
 
