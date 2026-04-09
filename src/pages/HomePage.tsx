@@ -57,14 +57,14 @@ const cars = [
     img: ertigaImg,
   },
   {
-    name: "Innova Crysta", models: "Luxury / Group / Premium", seats: 7, rate: "₹17/km",
-    color: "#D97706", badge: "Premium",
-    img: suvImg,
-  },
-  {
     name: "Premium SUV", models: "Toyota Innova / Advanced", seats: 7, rate: "₹19/km",
     color: "#0891B2", badge: "Executive",
     img: toyotaInnovaImg,
+  },
+  {
+    name: "Innova Crysta", models: "Luxury / Group / Premium", seats: 7, rate: "₹17/km",
+    color: "#D97706", badge: "Premium",
+    img: suvImg,
   },
   {
     name: "Tempo Traveller", models: "12 / 14 / 16 Seater", seats: 16, rate: "₹22/km",
@@ -184,7 +184,7 @@ export default function HomePage() {
 
       {/* HERO */}
       <section className="hero-section" style={{
-        background: "linear-gradient(to bottom, rgba(5,5,15,0.40) 0%, rgba(5,5,15,0.18) 45%, rgba(5,5,15,0.42) 100%), url('/hero_banner.png') center center / cover no-repeat",
+        background: "linear-gradient(to bottom, rgba(5,5,15,0.22) 0%, rgba(5,5,15,0.08) 45%, rgba(5,5,15,0.25) 100%), url('/hero_banner.png') center center / cover no-repeat",
         position: "relative", overflow: "visible"
       }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 15% 50%, rgba(245,158,11,0.12) 0%, transparent 45%), radial-gradient(circle at 85% 25%, rgba(37,99,235,0.08) 0%, transparent 40%)" }} />
@@ -278,33 +278,74 @@ export default function HomePage() {
             <h1 className="section-title">Best Travel Services in Vadodara</h1>
             <p className="section-desc">From Vadodara and across India — we handle every detail so you can relax</p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 280px), 1fr))", gap: 22 }}>
+          <style>{`
+            .services-grid {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 30px;
+            }
+            .service-card-img {
+              height: 240px;
+            }
+            @media (max-width: 1024px) {
+              .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+              }
+              .service-card-img {
+                height: 200px;
+              }
+            }
+            @media (max-width: 640px) {
+              .services-grid {
+                grid-template-columns: 1fr;
+              }
+            }
+          `}</style>
+          <div className="services-grid">
             {services.map(s => (
               <Link key={s.label} href={s.href} className="card-hover" style={{
-                display: "block", background: "#fff", borderRadius: 18, overflow: "hidden",
-                boxShadow: "0 4px 20px rgba(0,0,0,0.07)", border: "2px solid transparent",
-                textDecoration: "none", transition: "border-color 0.2s",
+                display: "block", background: "#fff", borderRadius: 24, overflow: "hidden",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.08)", border: "1px solid #F1F5F9",
+                textDecoration: "none", transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                position: "relative"
               }}
-                onMouseEnter={e => (e.currentTarget.style.borderColor = s.color)}
-                onMouseLeave={e => (e.currentTarget.style.borderColor = "transparent")}>
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = s.color;
+                  e.currentTarget.style.transform = "translateY(-8px)";
+                  e.currentTarget.style.boxShadow = `0 20px 40px ${s.color}15`;
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = "#F1F5F9";
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "0 10px 30px rgba(0,0,0,0.08)";
+                }}>
                 {/* Image */}
-                <div style={{ height: 170, overflow: "hidden", position: "relative" }}>
-                  <img src={s.img} alt={s.label} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.4s" }}
-                    onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.06)")}
+                <div className="service-card-img" style={{ overflow: "hidden", position: "relative" }}>
+                  <img src={s.img} alt={s.label} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.6s ease" }}
+                    onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.1)")}
                     onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
                   />
-                  <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to top, ${s.color}55, transparent)` }} />
-                </div>
-                <div style={{ padding: "18px 20px" }}>
-                  <div style={{ width: 46, height: 46, background: s.bg, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12, marginTop: -36, position: "relative", zIndex: 1, border: `3px solid #fff`, boxShadow: "0 4px 12px rgba(0,0,0,0.12)" }}>
-                    <span className="material-symbols-rounded icon-filled" style={{ fontSize: 22, color: s.color }}>{s.icon}</span>
+                  <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to top, rgba(15, 23, 42, 0.6), transparent 60%)` }} />
+                  <div style={{ position: "absolute", bottom: 20, left: 20, right: 20, zIndex: 2 }}>
+                    <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(255,255,255,0.95)", padding: "4px 12px", borderRadius: 20, color: s.color, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.5, backdropFilter: "blur(4px)" }}>
+                      <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14 }}>{s.icon}</span>
+                      {s.label.split(' ')[0]}
+                    </div>
                   </div>
-                  <h3 style={{ fontWeight: 800, fontSize: 17, color: "#0F172A", marginBottom: 6 }}>{s.label}</h3>
-                  <p style={{ color: "#64748B", fontSize: 13, lineHeight: 1.65, marginBottom: 14 }}>{s.desc}</p>
-                  <span style={{ color: s.color, fontWeight: 700, fontSize: 13, display: "flex", alignItems: "center", gap: 4 }}>
-                    Learn More
-                    <span className="material-symbols-rounded icon-filled" style={{ fontSize: 16 }}>arrow_forward</span>
-                  </span>
+                </div>
+                <div style={{ padding: "24px 28px" }}>
+                  <h3 style={{ fontWeight: 800, fontSize: 20, color: "#0F172A", marginBottom: 10 }}>{s.label}</h3>
+                  <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.7, marginBottom: 20, height: "3.4em", overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}>{s.desc}</p>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <span style={{ color: s.color, fontWeight: 700, fontSize: 14, display: "flex", alignItems: "center", gap: 6 }}>
+                      Explore Service
+                      <span className="material-symbols-rounded icon-filled" style={{ fontSize: 18 }}>arrow_forward</span>
+                    </span>
+                    <div style={{ width: 40, height: 40, borderRadius: "50%", background: s.bg, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <span className="material-symbols-rounded icon-filled" style={{ fontSize: 20, color: s.color }}>{s.icon}</span>
+                    </div>
+                  </div>
                 </div>
               </Link>
             ))}
@@ -323,34 +364,69 @@ export default function HomePage() {
             <h2 className="section-title">Choose Your Perfect Ride</h2>
             <p className="section-desc">Well-maintained, sanitized vehicles with experienced drivers for every budget</p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 220px), 1fr))", gap: 22 }}>
+          <style>{`
+            .fleet-grid {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 30px;
+            }
+            .fleet-card-img-container {
+              height: 200px;
+            }
+            @media (max-width: 1024px) {
+              .fleet-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+              }
+              .fleet-card-img-container {
+                height: 180px;
+              }
+            }
+            @media (max-width: 640px) {
+              .fleet-grid {
+                grid-template-columns: 1fr;
+              }
+            }
+          `}</style>
+          <div className="fleet-grid">
             {cars.map(c => (
               <div key={c.name} className="card-hover" style={{
-                background: "#F8FAFC", borderRadius: 18, overflow: "hidden",
-                border: "2px solid #E2E8F0", boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
-                transition: "all 0.25s",
+                background: "#fff", borderRadius: 24, overflow: "hidden",
+                border: "1px solid #F1F5F9", boxShadow: "0 10px 30px rgba(0,0,0,0.06)",
+                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
               }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = c.color; e.currentTarget.style.background = "#fff"; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = "#E2E8F0"; e.currentTarget.style.background = "#F8FAFC"; }}>
+                onMouseEnter={e => { 
+                  e.currentTarget.style.borderColor = c.color; 
+                  e.currentTarget.style.transform = "translateY(-8px)";
+                  e.currentTarget.style.boxShadow = `0 20px 40px ${c.color}15`;
+                }}
+                onMouseLeave={e => { 
+                  e.currentTarget.style.borderColor = "#F1F5F9"; 
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "0 10px 30px rgba(0,0,0,0.06)";
+                }}>
                 {/* Car image */}
-                <div style={{ height: 165, overflow: "hidden", position: "relative", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", padding: "12px" }}>
-                  <img src={c.img} alt={`Divyakshi Travels ${c.name} Taxi Vadodara - ${c.models}`} style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block" }} />
-                  <div style={{ position: "absolute", top: 12, right: 12, background: c.color, color: "#fff", borderRadius: 20, padding: "4px 12px", fontSize: 11, fontWeight: 700, zIndex: 2 }}>{c.badge}</div>
+                <div className="fleet-card-img-container" style={{ overflow: "hidden", position: "relative", background: "#F8FAFC", display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
+                  <img src={c.img} alt={`Divyakshi Travels ${c.name} Taxi Vadodara - ${c.models}`} style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block", transition: "transform 0.5s" }} 
+                    onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.1) rotate(-2deg)")}
+                    onMouseLeave={e => (e.currentTarget.style.transform = "scale(1) rotate(0)")}
+                  />
+                  <div style={{ position: "absolute", top: 16, right: 16, background: c.color, color: "#fff", borderRadius: 20, padding: "5px 14px", fontSize: 11, fontWeight: 800, zIndex: 2, textTransform: "uppercase", letterSpacing: "0.5px", boxShadow: "0 4px 10px rgba(0,0,0,0.1)" }}>{c.badge}</div>
                 </div>
-                <div style={{ padding: "18px 20px" }}>
-                  <h3 style={{ fontWeight: 800, fontSize: 18, color: "#0F172A", marginBottom: 3 }}>{c.name}</h3>
-                  <div style={{ color: "#64748B", fontSize: 12.5, marginBottom: 12 }}>{c.models}</div>
-                  <div style={{ display: "flex", gap: 10, marginBottom: 14 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 5, background: "#F1F5F9", borderRadius: 20, padding: "4px 12px", fontSize: 12, color: "#475569" }}>
-                      <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14, color: c.color }}>group</span>
+                <div style={{ padding: "24px 28px" }}>
+                  <h3 style={{ fontWeight: 800, fontSize: 22, color: "#0F172A", marginBottom: 6 }}>{c.name}</h3>
+                  <div style={{ color: "#64748B", fontSize: 14, marginBottom: 18, fontWeight: 500 }}>{c.models}</div>
+                  <div style={{ display: "flex", gap: 12, marginBottom: 20 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 6, background: "#F1F5F9", borderRadius: 12, padding: "6px 14px", fontSize: 13, color: "#475569", fontWeight: 600 }}>
+                      <span className="material-symbols-rounded icon-filled" style={{ fontSize: 18, color: c.color }}>group</span>
                       {c.seats} seats
                     </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 5, background: "#F1F5F9", borderRadius: 20, padding: "4px 12px", fontSize: 12, color: "#475569" }}>
-                      <span className="material-symbols-rounded icon-filled" style={{ fontSize: 14, color: c.color }}>ac_unit</span>
+                    <div style={{ display: "flex", alignItems: "center", gap: 6, background: "#F1F5F9", borderRadius: 12, padding: "6px 14px", fontSize: 13, color: "#475569", fontWeight: 600 }}>
+                      <span className="material-symbols-rounded icon-filled" style={{ fontSize: 18, color: c.color }}>ac_unit</span>
                       AC
                     </div>
                   </div>
-                  <div style={{ background: `linear-gradient(135deg, ${c.color}, ${c.color}cc)`, color: "#fff", borderRadius: 10, padding: "10px 14px", fontWeight: 800, fontSize: 15, textAlign: "center" }}>
+                  <div style={{ background: `linear-gradient(135deg, ${c.color}, ${c.color}dd)`, color: "#fff", borderRadius: 14, padding: "14px", fontWeight: 900, fontSize: 17, textAlign: "center", boxShadow: `0 8px 20px ${c.color}33`, letterSpacing: "0.5px" }}>
                     Starting {c.rate}
                   </div>
                 </div>
@@ -434,17 +510,49 @@ export default function HomePage() {
             </div>
             <h2 className="section-title">Popular Travel Destinations</h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 160px), 1fr))", gap: 14 }}>
+          <style>{`
+            .dest-grid {
+              display: grid;
+              grid-template-columns: repeat(5, 1fr);
+              gap: 16px;
+            }
+            .dest-card {
+              height: 220px;
+            }
+            @media (max-width: 1100px) {
+              .dest-grid {
+                grid-template-columns: repeat(3, 1fr);
+              }
+            }
+            @media (max-width: 768px) {
+              .dest-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+            @media (max-width: 480px) {
+              .dest-grid {
+                grid-template-columns: 1fr;
+              }
+              .dest-card {
+                height: 180px;
+              }
+            }
+          `}</style>
+          <div className="dest-grid">
             {destinations.map(d => (
-              <Link key={d.name} href="/packages" className="card-hover" style={{
-                display: "block", borderRadius: 18, overflow: "hidden",
-                boxShadow: "0 4px 16px rgba(0,0,0,0.1)", position: "relative", height: 200, textDecoration: "none",
-              }}>
-                <img src={d.img} alt={d.name} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%)" }} />
-                <div style={{ position: "absolute", bottom: 16, left: 16, right: 16 }}>
-                  <div style={{ color: "#fff", fontWeight: 800, fontSize: 16, marginBottom: 5 }}>{d.name}</div>
-                  <div style={{ display: "inline-flex", alignItems: "center", gap: 4, background: "rgba(245,158,11,0.9)", color: "#1a1a2e", borderRadius: 20, padding: "3px 10px", fontSize: 11, fontWeight: 700 }}>
+              <Link key={d.name} href="/packages" style={{
+                display: "block", borderRadius: 20, overflow: "hidden",
+                boxShadow: "0 8px 20px rgba(0,0,0,0.12)", position: "relative", 
+                textDecoration: "none", transition: "all 0.4s ease",
+              }} className="card-hover dest-card">
+                <img src={d.img} alt={d.name} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.6s ease" }} 
+                  onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.15)")}
+                  onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+                />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(15,23,42,0.9) 0%, rgba(15,23,42,0.2) 60%, transparent 100%)" }} />
+                <div style={{ position: "absolute", bottom: 16, left: 16, right: 16, zIndex: 2 }}>
+                  <div style={{ color: "#fff", fontWeight: 800, fontSize: 15, marginBottom: 6, letterSpacing: "0.3px", textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>{d.name}</div>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 4, background: "linear-gradient(135deg, #F59E0B, #D97706)", color: "#fff", borderRadius: 6, padding: "3px 8px", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.5px" }}>
                     {d.tag}
                   </div>
                 </div>
@@ -464,17 +572,41 @@ export default function HomePage() {
             </div>
             <h2 style={{ fontSize: "clamp(24px,3.5vw,36px)", fontWeight: 900, color: "#fff", lineHeight: 1.2, marginBottom: 12 }}>The Divyakshi Difference</h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 20 }}>
+          <style>{`
+            .why-grid {
+              display: grid;
+              grid-template-columns: repeat(6, 1fr);
+              gap: 16px;
+            }
+            @media (max-width: 1200px) {
+              .why-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+              }
+            }
+            @media (max-width: 768px) {
+              .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+            @media (max-width: 480px) {
+              .why-grid {
+                grid-template-columns: 1fr;
+              }
+            }
+          `}</style>
+          <div className="why-grid">
             {whyUs.map(w => (
               <div key={w.label} className="card-hover" style={{
-                background: "rgba(255,255,255,0.05)", borderRadius: 18, padding: "28px 22px",
-                textAlign: "center", border: "1px solid rgba(255,255,255,0.08)", backdropFilter: "blur(10px)",
+                background: "rgba(255,255,255,0.05)", borderRadius: 20, padding: "24px 16px",
+                textAlign: "center", border: "1px solid rgba(255,255,255,0.08)", backdropFilter: "blur(12px)",
+                transition: "all 0.3s ease", display: "flex", flexDirection: "column", alignItems: "center"
               }}>
-                <div style={{ width: 60, height: 60, background: w.bg, borderRadius: 18, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
-                  <span className="material-symbols-rounded icon-filled" style={{ fontSize: 28, color: w.color }}>{w.icon}</span>
+                <div style={{ width: 54, height: 54, background: w.bg, borderRadius: 16, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16, boxShadow: `0 8px 16px rgba(0,0,0,0.2)` }}>
+                  <span className="material-symbols-rounded icon-filled" style={{ fontSize: 24, color: w.color }}>{w.icon}</span>
                 </div>
-                <h3 style={{ fontWeight: 800, fontSize: 17, color: "#fff", marginBottom: 8 }}>{w.label}</h3>
-                <p style={{ color: "#94A3B8", fontSize: 13, lineHeight: 1.65 }}>{w.desc}</p>
+                <h3 style={{ fontWeight: 800, fontSize: 15, color: "#fff", marginBottom: 8, letterSpacing: "0.5px" }}>{w.label}</h3>
+                <p style={{ color: "#94A3B8", fontSize: 12, lineHeight: 1.6, margin: 0 }}>{w.desc}</p>
               </div>
             ))}
           </div>

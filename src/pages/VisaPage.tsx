@@ -57,6 +57,8 @@ const countries = [
   { name: "Dubai / UAE", flag: "🇦🇪", type: "Tourist / Work", time: "3–7 days", color: "#10b981" },
   { name: "Thailand", flag: "🇹🇭", type: "Tourist", time: "3–5 days", color: "#f59e0b" },
   { name: "Singapore", flag: "🇸🇬", type: "Tourist / Business", time: "5–7 days", color: "#06b6d4" },
+  { name: "New Zealand", flag: "🇳🇿", type: "Tourist / Work / Student", time: "15–30 days", color: "#3b82f6" },
+  { name: "Vietnam", flag: "🇻🇳", type: "Tourist / E-Visa", time: "3–5 days", color: "#ef4444" },
 ];
 
 export default function VisaPage() {
