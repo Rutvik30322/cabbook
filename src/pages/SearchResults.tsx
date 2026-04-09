@@ -176,10 +176,10 @@ export default function SearchResults() {
       </section>
 
       <style>{`
-        .res-container { maxWidth: 1200px; margin: 0 auto; padding: 32px 20px; }
-        .car-card-grid { display: grid; grid-template-columns: 280px 1fr; min-height: 220px; transition: all 0.3s; }
-        .details-inner-grid { display: grid; grid-template-columns: 1fr auto; gap: 40px; }
-        .summary-section { text-align: right; display: flex; flex-direction: column; align-items: flex-end; width: 280px; }
+        .res-container { maxWidth: 850px; margin: 0 auto; padding: 32px 20px; }
+        .car-card-grid { display: grid; grid-template-columns: 240px 1fr; min-height: 190px; transition: all 0.3s; }
+        .details-inner-grid { display: grid; grid-template-columns: 1fr auto; gap: 20px; }
+        .summary-section { text-align: right; display: flex; flex-direction: column; align-items: flex-end; width: 220px; }
         .book-btn { width: 160px; padding: 12px; border-radius: 10px; border: none; background: linear-gradient(to right, #FCD34D, #F59E0B); color: #000; fontWeight: 800; fontSize: 13.5px; cursor: pointer; boxShadow: 0 4px 15px rgba(245,158,11,0.25); transition: all 0.3s; }
         .book-btn:hover { transform: translateY(-2px); boxShadow: 0 8px 25px rgba(245,158,11,0.4); }
 
@@ -247,7 +247,7 @@ export default function SearchResults() {
 
       {/* Search summary bar */}
       <div style={{ background: "linear-gradient(135deg, #0F172A, #1E293B)", padding: "18px 20px", borderBottom: "1px solid rgba(245,158,11,0.2)" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap", justifyContent: "space-between" }}>
+        <div style={{ maxWidth: 850, margin: "0 auto", display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.07)", borderRadius: 10, padding: "8px 16px" }}>
               <span className="material-symbols-rounded icon-filled" style={{ fontSize: 18, color: "#F59E0B" }}>
@@ -352,18 +352,18 @@ export default function SearchResults() {
                            <span style={{ background: "#84CC16", color: "#fff", fontSize: 10, padding: "2px 6px", borderRadius: 3, fontWeight: 700 }}>Or Similar</span>
                         </div>
                         
-                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px 16px", marginBottom: 14 }}>
-                           <div style={{ display: "flex", alignItems: "center", gap: 6, color: "#475569", fontSize: 12.5 }}>
-                              <span className="material-symbols-rounded" style={{ fontSize: 16, color: "#64748B" }}>ac_unit</span> AC
+                        <div style={{ display: "grid", gridTemplateColumns: "max-content max-content", gap: "10px 32px", marginBottom: 16 }}>
+                           <div style={{ display: "flex", alignItems: "center", gap: 6, color: "#475569", fontSize: 13, fontWeight: 500 }}>
+                              <span className="material-symbols-rounded" style={{ fontSize: 18, color: "#64748B" }}>ac_unit</span> AC
                            </div>
-                           <div style={{ display: "flex", alignItems: "center", gap: 6, color: "#475569", fontSize: 12.5 }}>
-                              <span className="material-symbols-rounded" style={{ fontSize: 16, color: "#64748B" }}>group</span> {car.seats}-Passengers
+                           <div style={{ display: "flex", alignItems: "center", gap: 6, color: "#475569", fontSize: 13, fontWeight: 500 }}>
+                              <span className="material-symbols-rounded" style={{ fontSize: 18, color: "#64748B" }}>group</span> {car.seats}-Passengers
                            </div>
-                           <div style={{ display: "flex", alignItems: "center", gap: 6, color: "#475569", fontSize: 12.5 }}>
-                              <span className="material-symbols-rounded" style={{ fontSize: 16, color: "#64748B" }}>luggage</span> {car.bags}-Luggage
+                           <div style={{ display: "flex", alignItems: "center", gap: 6, color: "#475569", fontSize: 13, fontWeight: 500 }}>
+                              <span className="material-symbols-rounded" style={{ fontSize: 18, color: "#64748B" }}>luggage</span> {car.bags}-Luggage
                            </div>
-                           <div style={{ display: "flex", alignItems: "center", gap: 6, color: "#475569", fontSize: 12.5 }}>
-                              <span className="material-symbols-rounded" style={{ fontSize: 16, color: "#64748B" }}>cleaning_services</span> Sanitise cab
+                           <div style={{ display: "flex", alignItems: "center", gap: 6, color: "#475569", fontSize: 13, fontWeight: 500 }}>
+                              <span className="material-symbols-rounded" style={{ fontSize: 18, color: "#64748B" }}>cleaning_services</span> Sanitise cab
                            </div>
                         </div>
 
