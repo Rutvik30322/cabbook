@@ -42,14 +42,13 @@ export default function Navbar() {
         }
         .nav-logo-subtitle {
           color: #F8FAFC;
-          font-size: 8.5px;
-          letter-spacing: 1.5px;
+          font-size: 7.9px;
+          letter-spacing: 1px;
           font-weight: 700;
           font-family: 'Poppins',sans-serif;
           opacity: 0.85;
           white-space: nowrap;
           overflow: hidden;
-          text-overflow: clip;
           max-width: 100%;
           display: block;
         }
@@ -79,14 +78,20 @@ export default function Navbar() {
           transform: translateY(-2px);
           box-shadow: 0 8px 25px rgba(245,158,11,0.45);
         }
-        @media (max-width: 1100px) {
+        @media (max-width: 1200px) {
           .nav-logo-title { font-size: 17px; letter-spacing: 0px; }
-          .nav-logo-subtitle { font-size: 7px; letter-spacing: 1px; }
+          .nav-logo-subtitle { font-size: 7px; letter-spacing: 0px; }
+          .nav-logo-img { height: 54px; }
+        }
+        @media (max-width: 1100px) {
+          .nav-logo-title { font-size: 15px; letter-spacing: 0px; }
+          .nav-logo-subtitle { font-size: 6.5px; letter-spacing: 0px; }
+          .nav-logo-img { height: 48px; }
         }
         @media (max-width: 768px) {
           .nav-logo-title { font-size: 16px; letter-spacing: 0px; }
-          .nav-logo-subtitle { font-size: 6.5px; letter-spacing: 0.5px; }
-          .nav-logo-img { height: 48px; }
+          .nav-logo-subtitle { font-size: 6.5px; letter-spacing: 0px; }
+          .nav-logo-img { height: 44px; }
           .nav-call-btn { padding: 8px 10px !important; border-radius: 8px !important; }
           .nav-call-btn .material-symbols-rounded { font-size: 22px !important; }
         }
