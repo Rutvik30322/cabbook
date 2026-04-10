@@ -184,7 +184,7 @@ export default function HomePage() {
 
       {/* HERO */}
       <section className="hero-section" style={{
-        background: "linear-gradient(to bottom, rgba(5,5,15,0.22) 0%, rgba(5,5,15,0.08) 45%, rgba(5,5,15,0.25) 100%), url('/hero_banner.png') center center / cover no-repeat",
+        background: "url('/light_highway_scenery.png') center center / cover no-repeat",
         position: "relative", overflow: "visible"
       }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 15% 50%, rgba(245,158,11,0.12) 0%, transparent 45%), radial-gradient(circle at 85% 25%, rgba(37,99,235,0.08) 0%, transparent 40%)" }} />
